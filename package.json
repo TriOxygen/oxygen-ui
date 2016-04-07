@@ -1,0 +1,48 @@
+{
+  "name": "oxygen-md",
+  "version": "1.0.0",
+  "description": "Material Design Components",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildStyles": "babel ./src/Styles --out-dir ./lib/Styles",
+    "build": "npm run buildStyles &&  babel ./src --out-dir ./lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TriOxygen/oxygen-md.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TriOxygen/oxygen-md/issues"
+  },
+  "homepage": "https://github.com/TriOxygen/oxygen-md#readme",
+  "engines": {
+    "node": ">=0.12"
+  },
+  "devDependencies": {
+    "babel": "^6.3.13",
+    "babel-core": "^6.3.21",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "babel-runtime": "^6.5.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.5.0",
+    "babel-core": "^6.5.0",
+    "babel-plugin-oxygen-css": "git@github.com:TriOxygen/babel-plugin-oxygen-css.git",
+    "babel-plugin-transform-async-functions": "^6.5.0",
+    "babel-plugin-transform-async-to-generator": "^6.5.0",
+    "babel-plugin-transform-class-properties": "^6.5.0",
+    "babel-plugin-transform-export-extensions": "^6.5.0",
+    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-1": "^6.5.0",
+    "babel-runtime": "^6.6.1",
+    "classnames": "^2.2.3",
+    "react": "^0.14.3"
+  }
+}
