@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Motion, spring } from 'react-motion';
-import { Units } from 'oxygen-md/Styles';
-import { Paper } from 'oxygen-md';
+import { Units } from './Styles';
+import Paper from './Paper';
 
 class SplitPane extends Component {
   state = {
