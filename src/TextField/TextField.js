@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
-import { Colors, Typography, Units } from './Styles';
+import { Colors, Typography, Units } from '../Styles';
+import EnhancedTextArea from './EnhancedTextArea';
 
 class TextField extends Component {
 
@@ -11,6 +12,7 @@ class TextField extends Component {
     onBlur: PropTypes.func,
     autoFocus: PropTypes.bool,
     readOnly: PropTypes.bool,
+    dense: PropTypes.bool,
     icon: PropTypes.node,
     theme: PropTypes.object,
     type: PropTypes.string,
@@ -92,7 +94,7 @@ class TextField extends Component {
     const theme = this.props.theme || this.context.theme;
     const { focused, value } = this.state;
     return Object.assign({
-      color: ( focused && !value) ? theme.primary1 : theme.text.disabled,
+      color: ( focused && !value) ? theme.primary1 : theme.text.secondary,
     });
   }
 
@@ -104,11 +106,14 @@ class TextField extends Component {
   }
 
   getValue() {
+    if (this.props.multiline) {
+      return this.refs.input.getValue();
+    }
     return this.refs.input.value;
   }
 
   renderInputElement(props) {
-    const { readOnly, type } = this.props;
+    const { readOnly, type, multiline } = this.props;
     const { value } = this.state;
     if (readOnly) {
       return (
@@ -126,6 +131,20 @@ class TextField extends Component {
       );
 
     } else {
+      if (multiline) {
+        return (
+          <EnhancedTextArea
+            ref="input"
+            className={inputStyles.root}
+            type={type}
+            onChange={this.handleChange}
+            onBlur={this.handleBlur}
+            onFocus={this.handleFocus}
+            {...props}
+            value={value}
+          />
+        );
+      }
       return (
         <input
           ref="input"
@@ -138,12 +157,11 @@ class TextField extends Component {
           value={value}
         />
       );
-
     }
   }
 
   render() {
-    const { placeholder, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
+    const { placeholder, dense, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
     const { focused, value } = this.state;
     let placeholderText;
     let floatingLabelEl;
@@ -154,10 +172,10 @@ class TextField extends Component {
     }
     const rootClasses = classNames(styles.root, className, {
       [styles.hasIcon]: icon,
+      [styles.dense]: dense,
       [styles.hasFloatingLabel]: floatingLabelText,
     });
     const placeHolderClasses = classNames(placeHolderStyles.root, {
-      [placeHolderStyles.hasIcon]: icon,
       [placeHolderStyles.hasFloatingLabel]: floatingLabelText,
     });
     const underlineClasses = classNames(underlineStyles.root, underlineStyles.active, {
@@ -174,7 +192,7 @@ class TextField extends Component {
       <div className={rootClasses} onTouchTap={onTouchTap}>
         {icon && <div className={styles.iconContainer}>{icon}</div>}
         <div className={placeHolderClasses}>
-          <span style={this.getPlaceholderStyle()}>{placeholderText}</span>
+          <span className={placeHolderStyles.text} style={this.getPlaceholderStyle()}>{placeholderText}</span>
           {this.renderInputElement(other)}
           {floatingLabelText && <hr className={underlineStyles.root} style={this.getUnderlineStyle()}/>}
           {floatingLabelText && <hr className={underlineClasses} style={this.getUnderlineStyle(true)}/>}
@@ -192,21 +210,31 @@ export default TextField;
 const styles = oxygenCss({
   root: {
     position: 'relative',
-    height: 48,
-    '&hasFloatingLabel': {
-       height: 72,
-      ' errorText': {
-        bottom: Units.phone.gutter.mini
-      },
+    paddingTop: Units.phone.gutter.mini * 2,
+    paddingBottom: Units.phone.gutter.mini * 2,
+    '&dense': {
+      paddingTop: Units.phone.gutter.mini * 1.5,
+      paddingBottom: Units.phone.gutter.mini * 1.5,
       ' iconContainer': {
-        padding: '24px 12px',
+        height: 32,
+        padding: '8px 12px' ,
+      }
+    },
+    '&hasFloatingLabel': {
+      ' iconContainer': {
+        padding: '32px 12px',
+      },
+      ' errorText': {
+        top: 10,
+        // left: 48 + Units.phone.gutter.mini
       }
     },
     '&hasIcon': {
+      paddingLeft: 48,
       ' errorText': {
-        left: 48
+        // left: 48 + Units.phone.gutter.mini
       }
-    }
+    },
   },
   iconContainer: {
     position: 'absolute',
@@ -216,14 +244,16 @@ const styles = oxygenCss({
     width: 48,
     height: 48,
     padding: 12,
+
   },
   errorText: {
-    position: 'absolute',
+    position: 'relative',
     left: Units.phone.gutter.mini,
     right: Units.phone.gutter.mini,
-    bottom: Units.phone.gutter.mini / 2,
+    top: 2,
     color: Colors.material.red[500].hex,
-    fontSize: 11,
+    fontSize: 12,
+    lineHeight: '12px'
   }
 });
 
@@ -234,7 +264,9 @@ const underlineStyles = oxygenCss({
     right: 0,
     borderStyle: 'none none solid none',
     borderWidth: 1,
-    bottom: - 4,
+    bottom: - 8,
+    margin: 0,
+    padding: 0,
     '&active': {
       transition: 'all 0.3s ease',
       transform: 'scaleX(0)',
@@ -246,15 +278,16 @@ const underlineStyles = oxygenCss({
 
 const inputStyles = oxygenCss({
   root: {
+    position: 'relative',
     border: 0,
-    position: 'absolute',
-    left: 0,
-    width: '100%',
     resize: 'none',
     background: 'transparent',
-    lineHeight: '24px',
+    lineHeight: '16px',
     fontSize: Typography.phone.body1.fontSize,
     fontWeight: Typography.phone.body1.fontWeight,
+    margin: 0,
+    padding: 0,
+    width: '100%',
     ':focus': {
       outline: 'none',
     },
@@ -263,40 +296,40 @@ const inputStyles = oxygenCss({
 
 const placeHolderStyles = oxygenCss({
   root: {
-    position: 'absolute',
-    left: Units.phone.gutter.mini,
-    right: Units.phone.gutter.mini,
-    top: 12,
-    height: 24,
-    lineHeight: '24px',
+    position: 'relative',
+    lineHeight: '16px',
     boxSizing: 'border-box',
-    padding: `0 0 ${Units.phone.gutter.mini}px 0`,
-    '&hasFloatingLabel': {
-       top: 24,
+    marginLeft: Units.phone.gutter.mini,
+    marginRight: Units.phone.gutter.mini,
+    text: {
+      lineHeight: 'inherit',
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 0,
+      top: 0,
     },
-    '&hasIcon': {
-      left: 48,
+    // paddingTop: Units.phone.gutter.mini * 1,
+    '&hasFloatingLabel': {
+      paddingTop: Units.phone.gutter.mini * 3,
     }
   }
-  //       color: theme.text.disabled,
-
 });
 
 const labelStyles = oxygenCss({
   root: {
     fontSize: Typography.phone.body1.fontSize,
     fontWeight: Typography.phone.body1.fontWeight,
-    top: 0,
+    top: 24,
     height: 16,
     right: 0,
     position: 'absolute',
     left: 0,
-    marginBottom: 2,
     transition: 'all 0.3s ease',
     transformOrigin: 'bottom left',
     cursor: 'pointer',
     '&focus': {
-      transform: 'scale(0.75) translate3d(0, -24px, 0) ',
+      transform: 'scale(0.75) translate3d(0, -28px, 0) ',
     }
   }
 });

@@ -45,7 +45,8 @@ export CardActions from './Card/CardActions';
 export Drawer from './Drawer/Drawer';
 export DrawerHeader from './Drawer/DrawerHeader';
 
-export TextField from './TextField';
+export TextField from './TextField/TextField';
+export EnhancedTextArea from './TextField/EnhancedTextArea';
 // export CircularProgress from './CircularProgress';
 
 import * as Menus from './Menus';
