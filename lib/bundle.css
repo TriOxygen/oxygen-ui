@@ -676,6 +676,102 @@
   border-radius: 2px;
   shadow: 0 2px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
 }
+.omd_cd {
+  -webkit-animation: rotator 1.4s linear infinite;
+          animation: rotator 1.4s linear infinite;
+}
+.omd_ce {
+  stroke-dasharray: 200px;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+          animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+@-webkit-keyframes colors {
+  0% {
+    stroke: #F44336;
+  }
+  25% {
+    stroke: #2196F3;
+  }
+  50% {
+    stroke: #4CAF50;
+  }
+  75% {
+    stroke: #9E9E9E;
+  }
+  100% {
+    stroke: #F44336;
+  }
+}
+@keyframes colors {
+  0% {
+    stroke: #F44336;
+  }
+  25% {
+    stroke: #2196F3;
+  }
+  50% {
+    stroke: #4CAF50;
+  }
+  75% {
+    stroke: #9E9E9E;
+  }
+  100% {
+    stroke: #F44336;
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 200;
+  }
+  50% {
+    stroke-dashoffset: 50;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 200;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 200;
+  }
+  50% {
+    stroke-dashoffset: 50;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 200;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
 .omd_bF {
   position: relative;
   height: 100%;
@@ -786,6 +882,7 @@
   resize: none;
   background: transparent;
   line-height: 16px;
+  min-height: 16px;
   font-size: 14px;
   font-weight: 300;
   margin: 0px;
@@ -914,6 +1011,22 @@
 .omd_b_ {
   font-size: 16px;
   font-weight: 400;
+}
+.omd_cf {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 .omd_b- {
   box-sizing: border-box;

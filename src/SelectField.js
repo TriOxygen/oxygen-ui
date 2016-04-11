@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
-import TextField from './TextField';
+import TextField from './TextField/TextField';
 import Portal from './Portal';
 import Menu from './Menus/Menu';
 import { Motion, spring } from 'react-motion';

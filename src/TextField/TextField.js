@@ -283,6 +283,7 @@ const inputStyles = oxygenCss({
     resize: 'none',
     background: 'transparent',
     lineHeight: '16px',
+    minHeight: 16,
     fontSize: Typography.phone.body1.fontSize,
     fontWeight: Typography.phone.body1.fontWeight,
     margin: 0,

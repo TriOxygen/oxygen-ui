@@ -34,6 +34,8 @@ export ToolbarTitle from './Toolbar/ToolbarTitle';
 export SnackBar from './SnackBar/SnackBar';
 
 export SelectField from './SelectField';
+export VerticalCenter from './VerticalCenter';
+export Spinner from './Spinner';
 
 export Card from './Card/Card';
 export CardTitle from './Card/CardTitle';
