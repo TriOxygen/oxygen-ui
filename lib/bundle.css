@@ -781,12 +781,14 @@
   left: 0px;
   top: 0px;
   bottom: 0px;
+  overflow: auto;
 }
 .omd_bH {
   position: absolute;
   right: 0px;
   top: 0px;
   bottom: 0px;
+  overflow: auto;
 }
 .omd_bI {
   position: relative;

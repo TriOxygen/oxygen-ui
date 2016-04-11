@@ -9,6 +9,7 @@ export default class CardContent extends Component {
     className: PropTypes.string
   };
 
+
   render() {
     const { children, className, ...other } = this.props;
     const classes = classNames(className, css.content);

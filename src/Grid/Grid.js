@@ -16,6 +16,7 @@ class Grid extends Component {
   };
 
   static defaultProps = {
+    gutter: true,
   };
 
   static contextTypes = {

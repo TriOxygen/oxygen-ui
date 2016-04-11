@@ -7,16 +7,22 @@ class Card extends Component {
   static propTypes = {
     children: PropTypes.node,
     onTouchTap: PropTypes.func,
+    payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
     className: PropTypes.string
   };
 
+  handleTouchTap = (event) => {
+    const { onTouchTap, payload } = this.props;
+    onTouchTap && onTouchTap(payload);
+  };
+
   render() {
-    const { children, className, ...other } = this.props;
+    const { children, className, onTouchTap, ...other } = this.props;
     const classes = classNames(className, {
-      [css.clickable]: this.props.onTouchTap
+      [css.clickable]: onTouchTap
     });
     return (
-      <Paper className={classes} {...other} hover>
+      <Paper className={classes} {...other} hover onTouchTap={this.handleTouchTap}>
         {children}
       </Paper>
     );
