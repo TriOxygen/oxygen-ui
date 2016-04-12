@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 class FlatButton extends Component {
   static propTypes = {
+    payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
     disabled: PropTypes.bool,
     dense: PropTypes.bool,
     primary: PropTypes.bool,
@@ -59,9 +60,9 @@ class FlatButton extends Component {
   }
 
   handleTouchTap = (event) => {
-    const { disabled, onTouchTap, href } = this.props;
+    const { disabled, onTouchTap, payload, href } = this.props;
     if (!disabled && onTouchTap) {
-      onTouchTap(href);
+      onTouchTap(payload || href);
       event.preventDefault();
       event.stopPropagation();
     }
