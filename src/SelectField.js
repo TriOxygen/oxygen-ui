@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import ReactDOM from 'react-dom';
-import TextField from './TextField';
+import TextField from './TextField/TextField';
 import Portal from './Portal';
 import Menu from './Menus/Menu';
 import { Motion, spring } from 'react-motion';
@@ -11,22 +11,10 @@ class SelectField extends Component {
 
   static propTypes = {
     disabled: PropTypes.bool,
-    dense: PropTypes.bool,
-    primary: PropTypes.bool,
-    secondary: PropTypes.bool,
-    color: PropTypes.string,
-    hoverColor: PropTypes.string,
     children: PropTypes.node,
-    icon: PropTypes.node,
-    link: PropTypes.bool,
-    href: PropTypes.string,
-    onTouchTap: PropTypes.func,
     onChange: PropTypes.func,
     theme: PropTypes.object,
     fullWidth: PropTypes.bool,
-    floatingLabelText: PropTypes.string,
-    value: PropTypes.string,
-    defaultValue: PropTypes.string,
     placeholder: PropTypes.string
   };
 

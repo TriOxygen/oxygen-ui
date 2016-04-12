@@ -15,6 +15,10 @@ class EnhancedTextArea extends Component {
     this._textarea.focus();
   }
 
+  select() {
+    this._textarea.select();
+  }
+
   componentDidMount() {
     const { _textarea, _span } = this;
     if (_textarea.addEventListener) {

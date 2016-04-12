@@ -786,6 +786,7 @@
   resize: none;
   background: transparent;
   line-height: 16px;
+  min-height: 16px;
   font-size: 14px;
   font-weight: 300;
   margin: 0px;

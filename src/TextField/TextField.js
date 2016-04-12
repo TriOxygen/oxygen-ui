@@ -197,8 +197,8 @@ class TextField extends Component {
           {floatingLabelText && <hr className={underlineStyles.root} style={this.getUnderlineStyle()}/>}
           {floatingLabelText && <hr className={underlineClasses} style={this.getUnderlineStyle(true)}/>}
           {floatingLabelEl}
+          {children}
         </div>
-        {children}
         {errorText && <div className={styles.errorText}>{errorText}</div>}
       </div>
     );
@@ -283,6 +283,7 @@ const inputStyles = oxygenCss({
     resize: 'none',
     background: 'transparent',
     lineHeight: '16px',
+    minHeight: 16,
     fontSize: Typography.phone.body1.fontSize,
     fontWeight: Typography.phone.body1.fontWeight,
     margin: 0,
