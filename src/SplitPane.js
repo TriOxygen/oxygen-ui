@@ -105,12 +105,14 @@ const css = oxygenCss({
     left: 0,
     top: 0,
     bottom: 0,
+    overflow: 'auto',
   },
   right: {
     position: 'absolute',
     right: 0,
     top: 0,
     bottom: 0,
+    overflow: 'auto',
   }
 });
 

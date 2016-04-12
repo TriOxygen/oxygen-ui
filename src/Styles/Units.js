@@ -34,6 +34,11 @@ const toolbar = {
   height: 56,
 };
 
+const spinner = {
+  offset: 200,
+  duration: 1.4
+};
+
 const menu = {
   padding: 8,
   margin: 16,
@@ -63,6 +68,7 @@ const list = {
 const desktop = {
   iconSize: 24,
   borderRadius: 2,
+  spinner,
   menu,
   list,
   button,
@@ -78,6 +84,7 @@ const desktop = {
 const tablet = {
   iconSize: 24,
   borderRadius: 2,
+  spinner,
   menu,
   list,
   button,
@@ -93,6 +100,7 @@ const tablet = {
 const phone = {
   iconSize: 24,
   borderRadius: 2,
+  spinner,
   menu,
   list,
   button,

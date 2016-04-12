@@ -62,7 +62,7 @@ class Paper extends Component {
     };
     if (hover) {
       props.onMouseEnter = this.handleEnter;
-      props. onMouseLeave = this.handleLeave;
+      props.onMouseLeave = this.handleLeave;
     };
     return (
       <div {...other} {...props} >
