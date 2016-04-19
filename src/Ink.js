@@ -89,7 +89,7 @@ class Ink extends Component {
   }
 
   pushBlot(timeStamp, clientX, clientY) {
-    const el = this.refs.canvas;
+    const el = this._canvas;
 
     const { top, bottom, left, right } = el.getBoundingClientRect();
     const { color } = window.getComputedStyle(el);
@@ -168,7 +168,7 @@ class Ink extends Component {
 
     return (
       <canvas
-        ref="canvas"
+        ref={canvas => this._canvas = canvas}
         className={styles.root}
         style={{ ...this.props.style }}
         height={ height * density }
