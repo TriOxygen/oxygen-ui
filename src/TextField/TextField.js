@@ -25,13 +25,17 @@ class TextField extends Component {
     placeholder: PropTypes.string
   };
 
+  static defaultProps = {
+    type: 'text',
+  };
+
   static contextTypes = {
     theme: PropTypes.object
   };
 
   state = {
     focused: false,
-    value: this.props.value || this.props.defaultValue,
+    value: this.props.value || this.props.defaultValue || '',
   };
 
   handleBlur = () => {
@@ -161,7 +165,7 @@ class TextField extends Component {
   }
 
   render() {
-    const { placeholder, dense, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
+    const { placeholder, dense, defaultValue, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
     const { focused, value } = this.state;
     let placeholderText;
     let floatingLabelEl;
