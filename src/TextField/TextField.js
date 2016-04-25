@@ -155,7 +155,7 @@ class TextField extends Component {
             type={type}
             onChange={this.handleChange}
             onBlur={this.handleBlur}
-          onKeyUp={this.handleKey}
+            onKeyUp={this.handleKey}
             onFocus={this.handleFocus}
             {...props}
             value={value}
@@ -179,7 +179,7 @@ class TextField extends Component {
   }
 
   render() {
-    const { placeholder, dense, defaultValue, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
+    const { placeholder, fullWidth, dense, defaultValue, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
     const { focused, value } = this.state;
     let placeholderText;
     let floatingLabelEl;
@@ -189,6 +189,7 @@ class TextField extends Component {
       placeholderText = !value ? placeholder : null;
     }
     const rootClasses = classNames(styles.root, className, {
+      [styles.fullWidth]: fullWidth,
       [styles.hasIcon]: icon,
       [styles.dense]: dense,
       [styles.hasFloatingLabel]: floatingLabelText,
@@ -227,6 +228,10 @@ export default TextField;
 
 const styles = oxygenCss({
   root: {
+    '&fullWidth': {
+      display: 'block',
+      flexGrow: 1
+    },
     position: 'relative',
     paddingTop: Units.phone.gutter.mini * 2,
     paddingBottom: Units.phone.gutter.mini * 2,

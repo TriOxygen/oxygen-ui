@@ -10,6 +10,7 @@ const styles = oxygenCss({
     padding: `0 ${Units.phone.gutter.mini}px`,
     lineHeight: `${Units.phone.toolbar.height}px`,
     flex: `0 0 ${Units.phone.toolbar.height}px`,
+    height: Units.phone.toolbar.height,
     zIndex: 1,
     '@desktop': {
       padding: `0 ${Units.desktop.gutter.mini}px`,
@@ -102,7 +103,7 @@ class Toolbar extends Component {
     return (
       <View row className={classes} style={this.getStyle()} {...other}>
         {leftElement && <View grow={0} >{leftElement}</View>}
-        <View block grow={1}>{children}</View>
+        <View middle grow={1}>{children}</View>
         {rightElement && <View grow={0} >{rightElement}</View>}
       </View>
     );

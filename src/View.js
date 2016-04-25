@@ -5,12 +5,12 @@ const styles = oxygenCss({
   root: {
     boxSizing: 'border-box',
     display: 'flex',
-    '&block': {
-      display: 'block'
-    },
   },
   row: {
     flexDirection: 'row',
+  },
+  middle: {
+    alignItems: 'center'
   },
   responsiveRow: {
     flexDirection: 'row',
@@ -47,7 +47,7 @@ export default class View extends Component {
     row: PropTypes.bool,
     className: PropTypes.string,
     column: PropTypes.bool,
-    block: PropTypes.bool,
+    middle: PropTypes.bool,
     auto: PropTypes.bool,
     height: PropTypes.string,
     style: PropTypes.object,
@@ -60,10 +60,10 @@ export default class View extends Component {
   };
 
   render() {
-    const { className, block, row, column, children, responsiveRow, ...other } = this.props;
+    const { className, middle, row, column, children, responsiveRow, ...other } = this.props;
     const classes = classNames(className, styles.root, {
-      [styles.block]: block,
       [styles.row]: row,
+      [styles.middle]: middle,
       [styles.responsiveRow]: responsiveRow,
       [styles.column]: !row && column
     });
