@@ -47,7 +47,7 @@ class Toolbar extends Component {
     const { zDepth, primary, secondary, transparent } = this.props;
     return Object.assign({},
       transparent ? null : {
-        backgroundColor: theme.theme.statusBar.material,
+        backgroundColor: theme.theme.statusBar.hex,
         color: theme.theme.statusBar.text.default,
         boxShadow: Shadow[zDepth]
       },
@@ -67,7 +67,7 @@ class Toolbar extends Component {
     const { primary, secondary, transparent, zDepth } = this.props;
     return Object.assign({},
       transparent ? null : {
-        backgroundColor: theme.theme.statusBar.material,
+        backgroundColor: theme.theme.statusBar.hex,
         color: theme.theme.statusBar.text.default,
         boxShadow: Shadow[zDepth]
       },
