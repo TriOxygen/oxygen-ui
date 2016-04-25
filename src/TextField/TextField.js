@@ -3,6 +3,9 @@ import classNames from 'classnames';
 import { Colors, Typography, Units } from '../Styles';
 import EnhancedTextArea from './EnhancedTextArea';
 
+const ENTER = 13;
+
+
 class TextField extends Component {
 
   static propTypes = {
@@ -19,6 +22,7 @@ class TextField extends Component {
     className: PropTypes.string,
     fullWidth: PropTypes.bool,
     floatingLabelText: PropTypes.string,
+    onPressEnter: PropTypes.func,
     errorText: PropTypes.string,
     value: PropTypes.string,
     defaultValue: PropTypes.string,
@@ -52,6 +56,14 @@ class TextField extends Component {
 
   handleChange = (event) => {
     this.setState({ value: event.target.value });
+  };
+
+  handleKey = (event) => {
+    const { keyCode } = event;
+    const { onPressEnter } = this.props;
+    if (keyCode === ENTER) {
+      onPressEnter && onPressEnter(this.state.value);
+    }
   };
 
   focus = () => {
@@ -143,6 +155,7 @@ class TextField extends Component {
             type={type}
             onChange={this.handleChange}
             onBlur={this.handleBlur}
+          onKeyUp={this.handleKey}
             onFocus={this.handleFocus}
             {...props}
             value={value}
@@ -156,6 +169,7 @@ class TextField extends Component {
           type={type}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
+          onKeyUp={this.handleKey}
           onFocus={this.handleFocus}
           {...props}
           value={value}

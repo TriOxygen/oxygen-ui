@@ -102,7 +102,7 @@ class Toolbar extends Component {
     return (
       <View row className={classes} style={this.getStyle()} {...other}>
         {leftElement && <View grow={0} >{leftElement}</View>}
-        <View grow={1}>{children}</View>
+        <View block grow={1}>{children}</View>
         {rightElement && <View grow={0} >{rightElement}</View>}
       </View>
     );
