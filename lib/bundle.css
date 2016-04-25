@@ -1037,6 +1037,9 @@
   display: -ms-flexbox;
   display: flex;
 }
+.omd_b-.omd_cg {
+  display: block;
+}
 .omd_ca {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
