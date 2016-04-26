@@ -626,7 +626,7 @@
   -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12);
   min-height: 36px;
   line-height: 36px;
   padding: 0 8px;
@@ -640,11 +640,11 @@
   margin-left: 8px;
 }
 .omd_bz:hover {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.16), 0 3px 10px rgba(0,0,0,0.23);
   text-decoration: none;
 }
 .omd_bz:focus {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.16), 0 3px 10px rgba(0,0,0,0.23);
 }
 .omd_bz .omd_bA {
   min-height: 32px;
@@ -674,7 +674,7 @@
   bottom: -60px;
   right: 8px;
   border-radius: 2px;
-  shadow: 0 2px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+  shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12);
 }
 .omd_cd {
   -webkit-animation: rotator 1.4s linear infinite;
