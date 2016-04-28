@@ -26,6 +26,13 @@ class FloatingActionButtonDemo extends Component {
           <FloatingActionButton disabled icon={<ContentClear />}/>
         </ButtonContainer>
         <ButtonContainer>
+          <FloatingActionButton inversed icon={<ContentClear />}/>
+          <FloatingActionButton inversed color={mdTheme.primary} icon={<ContentClear />}/>
+          <FloatingActionButton inversed color={mdTheme.secondary} icon={<ContentClear />}/>
+          <FloatingActionButton inversed color={mdTheme.tertiary} icon={<ContentClear />}/>
+          <FloatingActionButton inversed disabled icon={<ContentClear />}/>
+        </ButtonContainer>
+        <ButtonContainer>
           <FloatingActionButton mini icon={<ContentClear />}/>
           <FloatingActionButton mini color={mdTheme.primary} icon={<ContentClear />}/>
           <FloatingActionButton mini color={mdTheme.secondary} icon={<ContentClear />}/>

@@ -45,7 +45,8 @@ class FloatingActionButton extends Component {
     href: PropTypes.string,
     style: PropTypes.object,
     icon: PropTypes.node,
-    children: PropTypes.node
+    children: PropTypes.node,
+    inversed: PropTypes.bool
   };
 
   state = {
@@ -62,7 +63,7 @@ class FloatingActionButton extends Component {
   };
 
   getButtonStyles() {
-    const { disabled, color } = this.props;
+    const { inversed, disabled, color } = this.props;
     const { mdTheme } = this.context;
     const colors = color && mdTheme.colors[color];
     const { hover, active } = this.state;
@@ -73,13 +74,21 @@ class FloatingActionButton extends Component {
         backgroundColor: mdTheme.button.raised.disabled,
       };
     } else if (colors) {
-      style = {
+      style = inversed ? {
+        boxShadow: hover ? Shadow[3] : Shadow[2],
+        color: active ? colors[700].hex : hover ? colors[600].hex : colors[500].hex,
+        backgroundColor: active ? colors[700].text.default : hover ? colors[600].text.default : colors[500].text.default,
+      } : {
         boxShadow: hover ? Shadow[3] : Shadow[2],
         backgroundColor: active ? colors[700].hex : hover ? colors[600].hex : colors[500].hex,
         color: active ? colors[700].text.default : hover ? colors[600].text.default : colors[500].text.default,
       };
     } else {
-      style = {
+      style = inversed ? {
+        boxShadow: hover ? Shadow[3] : Shadow[2],
+        backgroundColor: mdTheme.text.default,
+        color: hover | active ? 'rgba(0, 0, 0, 0.1)' : mdTheme.theme.card.hex,
+      } : {
         boxShadow: hover ? Shadow[3] : Shadow[2],
         color: mdTheme.text.default,
         backgroundColor: hover | active ? 'rgba(0, 0, 0, 0.1)' : mdTheme.theme.card.hex,
