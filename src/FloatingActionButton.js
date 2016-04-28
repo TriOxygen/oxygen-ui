@@ -39,9 +39,7 @@ class FloatingActionButton extends Component {
   static propTypes = {
     disabled: PropTypes.bool,
     mini: PropTypes.bool,
-    primary: PropTypes.bool,
-    theme: PropTypes.object,
-    secondary: PropTypes.bool,
+    color: PropTypes.string,
     link: PropTypes.bool,
     onTouchTap: PropTypes.func,
     href: PropTypes.string,
@@ -56,39 +54,35 @@ class FloatingActionButton extends Component {
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object
   };
 
   static defaultProps = {
     primary: true
   };
 
-  getButtonStyles(theme) {
-    const { disabled, primary, secondary } = this.props;
+  getButtonStyles() {
+    const { disabled, color } = this.props;
+    const { mdTheme } = this.context;
+    const colors = color && mdTheme.colors[color];
     const { hover, active } = this.state;
     let style;
     if (disabled) {
       style = {
         boxShadow: 'none',
-        backgroundColor: theme.button.raised.disabled,
+        backgroundColor: mdTheme.button.raised.disabled,
       };
-    } else if (primary) {
+    } else if (colors) {
       style = {
         boxShadow: hover ? Shadow[3] : Shadow[2],
-        backgroundColor: active ? theme.primary[700].hex : hover ? theme.primary[600].hex : theme.primary[500].hex,
-        color: active ? theme.primary[700].text.default : hover ? theme.primary[600].text.default : theme.primary[500].text.default,
-      };
-    } else if (secondary) {
-      style = {
-        boxShadow: hover ? Shadow[3] : Shadow[2],
-        backgroundColor: active ? theme.secondary[700].hex : hover ? theme.secondary[600].hex : theme.secondary[500].hex,
-        color: active ? theme.secondary[700].text.default : hover ? theme.secondary[600].text.default : theme.secondary[500].text.default,
+        backgroundColor: active ? colors[700].hex : hover ? colors[600].hex : colors[500].hex,
+        color: active ? colors[700].text.default : hover ? colors[600].text.default : colors[500].text.default,
       };
     } else {
       style = {
         boxShadow: hover ? Shadow[3] : Shadow[2],
-        color: theme.text.default,
-        backgroundColor: hover | active ? 'rgba(0, 0, 0, 0.1)' : theme.theme.card.hex,
+        color: mdTheme.text.default,
+        backgroundColor: hover | active ? 'rgba(0, 0, 0, 0.1)' : mdTheme.theme.card.hex,
       };
     }
     return style;
@@ -137,7 +131,6 @@ class FloatingActionButton extends Component {
   };
 
   render() {
-    const theme = this.props.theme || this.context.theme;
     const { disabled, children, link, mini, icon, ...other } = this.props;
     const ink = !disabled && <Ink />;
     const classes = classNames(styles.floatingActionButton, {
@@ -147,7 +140,7 @@ class FloatingActionButton extends Component {
     const props = {
       className: classes,
       disabled,
-      style: this.getButtonStyles(theme),
+      style: this.getButtonStyles(),
       ...other,
       tabIndex: 0,
       onKeyPress: this.handleKeyPress,

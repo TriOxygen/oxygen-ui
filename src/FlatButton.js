@@ -8,10 +8,8 @@ class FlatButton extends Component {
     payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
     disabled: PropTypes.bool,
     dense: PropTypes.bool,
-    primary: PropTypes.bool,
-    theme: PropTypes.object,
+    color: PropTypes.string,
     fullWidth: PropTypes.bool,
-    secondary: PropTypes.bool,
     link: PropTypes.bool,
     href: PropTypes.string,
     onTouchTap: PropTypes.func,
@@ -25,7 +23,7 @@ class FlatButton extends Component {
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object
   };
 
   static defaultProps = {
@@ -33,27 +31,24 @@ class FlatButton extends Component {
   };
 
   getButtonStyles(theme) {
-    const { disabled, primary, secondary } = this.props;
+    const { disabled, color } = this.props;
+    const { mdTheme } = this.context;
+    const colors = color && mdTheme.colors[color];
     const { hover, active } = this.state;
     let style;
     if (disabled) {
       style = {
-        color: hover && active ? theme.text.disabled : theme.text.disabled,
+        color: hover && active ? mdTheme.text.disabled : mdTheme.text.disabled,
       };
-    } else if (primary) {
+    } else if (color) {
       style = {
-        color: active ? theme.primary[700].hex : hover ? theme.primary[600].hex : theme.primary[500].hex,
-        backgroundColor: active ? theme.button.flat.active : hover ? theme.button.flat.hover : null,
-      };
-    } else if (secondary) {
-      style = {
-        color: active ? theme.secondary[700].hex : hover ? theme.secondary[600].hex : theme.secondary[500].hex,
-        backgroundColor: active ? theme.button.flat.active : hover ? theme.button.flat.hover : null,
+        color: active ? colors[700].hex : hover ? colors[600].hex : colors[500].hex,
+        backgroundColor: active ? mdTheme.button.flat.active : hover ? mdTheme.button.flat.hover : null,
       };
     } else {
       style = {
-        color: theme.text.default,
-        backgroundColor: active? theme.button.flat.active : hover ? theme.button.flat.hover : null
+        color: mdTheme.text.default,
+        backgroundColor: active? mdTheme.button.flat.active : hover ? mdTheme.button.flat.hover : null
       };
     }
     return style;
@@ -106,7 +101,6 @@ class FlatButton extends Component {
   };
 
   render() {
-    const theme = this.props.theme || this.context.theme;
     const { link, disabled, fullWidth, dense, label, children, ...other } = this.props;
     const ink = !disabled && <Ink />;
     const buttonClasses = classNames(styles.flatButton, {
@@ -116,7 +110,7 @@ class FlatButton extends Component {
     const props = {
       className: buttonClasses,
       disabled,
-      style: this.getButtonStyles(theme),
+      style: this.getButtonStyles(),
       ...other,
       onKeyPress: this.handleKeyPress,
       onTouchTap: this.handleTouchTap,

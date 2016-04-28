@@ -26,7 +26,8 @@ var babelConfig = JSON.parse(fs.readFileSync(path.resolve('.babelrc')));
 console.log([path.join(__dirname, '..', 'src'), path.join(__dirname, 'app')]);
 
 module.exports = {
-  devtool: 'eval',
+  cache: true,
+  devtool: 'cheap-module-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:3002',
     'webpack/hot/only-dev-server',

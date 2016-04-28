@@ -6,6 +6,19 @@ import Theme from 'Styles/Theme';
 import IconButton from 'IconButton';
 import Toolbar from 'Toolbar/Toolbar';
 import Layout from 'Layout';
+import {
+  CheckboxDemo,
+  RadioDemo,
+  RaisedButtonDemo,
+  ToggleDemo,
+  FlatButtonDemo,
+  FloatingActionButtonDemo,
+  MenuButtonDemo,
+  IconButtonDemo,
+  MenuDemo,
+  ListDemo,
+} from './Demos';
+
 
 import NavigationMenu from 'oxygen-md-svg-icons/lib/Navigation/Menu';
 import SocialPerson from 'oxygen-md-svg-icons/lib/Social/Person';
@@ -17,11 +30,17 @@ const css = oxygenCss({
     fontSize: 14,
     margin: 0,
     padding: 0,
+    fontFamily: `'Hind Siliguri', sans-serif`,
+    fontSize: 14,
+    fontWeight: 400,
   },
   HTML: {
     fontSize: 14,
     margin: 0,
     padding: 0,
+    fontFamily: `'Hind Siliguri', sans-serif`,
+    fontSize: 14,
+    fontWeight: 400,
   },
   root: {
     position: 'absolute',
@@ -93,7 +112,16 @@ export default class App extends Component {
             Demo
           </Toolbar>
           <div>
-            Test
+            <MenuButtonDemo />
+            <RaisedButtonDemo />
+            <FlatButtonDemo />
+            <FloatingActionButtonDemo />
+            <RadioDemo />
+            <ToggleDemo />
+            <CheckboxDemo />
+            <IconButtonDemo />
+            <MenuDemo />
+            <ListDemo />
           </div>
         </Layout>
         {menu}

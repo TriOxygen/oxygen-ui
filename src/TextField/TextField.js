@@ -17,7 +17,7 @@ class TextField extends Component {
     readOnly: PropTypes.bool,
     dense: PropTypes.bool,
     icon: PropTypes.node,
-    theme: PropTypes.object,
+    color: PropTypes.string,
     type: PropTypes.string,
     className: PropTypes.string,
     fullWidth: PropTypes.bool,
@@ -34,7 +34,7 @@ class TextField extends Component {
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object
   };
 
   state = {
@@ -70,6 +70,10 @@ class TextField extends Component {
     this.refs.input.focus();
   };
 
+  select = () => {
+    this.refs.input.select();
+  };
+
   blur = () => {
     this.refs.input.blur();
   };
@@ -90,27 +94,30 @@ class TextField extends Component {
   }
 
   getPlaceholderStyle() {
-    const theme = this.props.theme || this.context.theme;
+    const { mdTheme } = this.context;
     return Object.assign({}, {
-      color: theme.text.disabled
+      color: mdTheme.text.disabled
     });
   }
 
   getUnderlineStyle(active = false) {
-    const theme = this.props.theme || this.context.theme;
-    const { errorText } = this.props;
+    const { mdTheme } = this.context;
+    const { color, errorText } = this.props;
+    const colors = mdTheme.colors[color || mdTheme.primary];
     const { focused } = this.state;
     return Object.assign({
-      borderColor: active && focused ? theme.primary1 : errorText ? Colors.material.red[500].hex : theme.text.disabled,
+      borderColor: active && focused ? colors[500].hex : errorText ? Colors.material.red[500].hex : theme.text.disabled,
       transform: focused? 'scaleX(1)' : null,
     });
   }
 
   getLabelStyle() {
-    const theme = this.props.theme || this.context.theme;
+    const { mdTheme } = this.context;
+    const { color } = this.props;
+    const colors = mdTheme.colors[color || mdTheme.primary];
     const { focused, value } = this.state;
     return Object.assign({
-      color: ( focused && !value) ? theme.primary1 : theme.text.secondary,
+      color: ( focused && !value) ? colors[500].text.secondary : mdTheme.text.secondary,
     });
   }
 

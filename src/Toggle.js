@@ -11,17 +11,16 @@ class Toggle extends Component {
     left: PropTypes.bool,
     fullWidth: PropTypes.bool,
     label: PropTypes.node,
-    primary: PropTypes.bool,
-    theme: PropTypes.object,
-    secondary: PropTypes.bool,
+    color: PropTypes.string,
     onChange: PropTypes.func
   };
 
   static defaultProps = {
+    color: 'teal'
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object
   };
 
   state = {
@@ -55,38 +54,14 @@ class Toggle extends Component {
     }
   }
 
-  getStyles() {
-    const theme = this.props.theme || this.context.theme;
-    const { primary, secondary } = this.props;
+  getStyles(gradient = 500) {
+    const { mdTheme } = this.context;
+    const { color } = this.props;
     const { checked } = this.state;
-    let themeStyles = {};
-    if (primary && checked) {
-      themeStyles = {
-        backgroundColor: theme.primary[200].hex
-      }
-    } else if (secondary && checked) {
-      themeStyles = {
-        backgroundColor: theme.secondary[200].hex
-      }
+    const colors = mdTheme.colors[color];
+    return {
+      backgroundColor: checked ? colors[gradient].hex : null
     }
-    return themeStyles;
-  }
-
-  getToggleStyles() {
-    const theme = this.props.theme || this.context.theme;
-    const { primary, secondary } = this.props;
-    const { checked } = this.state;
-    let themeStyles = {};
-    if (primary && checked) {
-      themeStyles = {
-        backgroundColor: theme.primary[500].hex
-      }
-    } else if (secondary && checked) {
-      themeStyles = {
-        backgroundColor: theme.secondary[500].hex
-      }
-    }
-    return themeStyles;
   }
 
   render() {
@@ -123,9 +98,9 @@ class Toggle extends Component {
         {left ? label : null}
         <div
           className={labelClasses}
-          style={this.getStyles()}
+          style={this.getStyles(200)}
         >
-          <div className={toggleStyles.toggle} style={this.getToggleStyles()}>
+          <div className={toggleStyles.toggle} style={this.getStyles()}>
             {ink}
           </div>
         </div>

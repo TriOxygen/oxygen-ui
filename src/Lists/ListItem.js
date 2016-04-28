@@ -52,7 +52,7 @@ class ListItem extends Component {
 
   static propTypes = {
     payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
-    theme: PropTypes.object,
+    color: PropTypes.string,
     style: PropTypes.object,
     dense: PropTypes.bool,
     active: PropTypes.bool,
@@ -63,7 +63,8 @@ class ListItem extends Component {
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object,
+    color: PropTypes.string
   };
 
   state = {
@@ -71,20 +72,25 @@ class ListItem extends Component {
   };
 
   getStyle() {
-    const theme = this.props.theme || this.context.theme;
-    const { hover } = this.state;
-    const { divider, active, style } = this.props;
+    const { mdTheme, color: contextColor } = this.context;
+    const { hover, hasFocus } = this.state;
+    const { active, divider, color, style } = this.props;
+    const colors = mdTheme.colors[color || contextColor || mdTheme.primary];
     return mergeStyles(
+      hasFocus ? {
+        backgroundColor: colors[200].hex,
+        color: colors[200].text.default
+      } : null,
       hover ? {
-        backgroundColor: theme.primary3,
-        color: theme.primary3Text
+        backgroundColor: colors[100].hex,
+        color: colors[100].text.default
       } : null,
       divider ? {
-        borderColor: theme.text.divider,
+        borderColor: mdTheme.text.divider,
       } : null,
       active ? {
-        backgroundColor: theme.primary2,
-        color: theme.primary2Text
+        backgroundColor: colors[700].hex,
+        color: colors[700].text.default
       } : null,
       style
     );

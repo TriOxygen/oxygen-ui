@@ -16,14 +16,16 @@ class Radio extends Component {
     left: PropTypes.bool,
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
-    primary: PropTypes.bool,
-    theme: PropTypes.object,
-    secondary: PropTypes.bool,
+    theme: PropTypes.string,
     onTouchTap: PropTypes.func
   };
 
+  static defaultProps = {
+    color: 'teal'
+  };
+
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object
   };
 
   state = {
@@ -51,35 +53,21 @@ class Radio extends Component {
   }
 
   getStyles() {
-    const theme = this.props.theme || this.context.theme;
-    const { primary, secondary, checked } = this.props;
-    let themeStyles = {};
-    if (primary && checked) {
-      themeStyles = {
-        borderColor: theme.primary[500].hex
-      }
-    } else if (secondary && checked) {
-      themeStyles = {
-        borderColor: theme.secondary[500].hex
-      }
-    }
-    return themeStyles;
+    const { mdTheme } = this.context;
+    const { color, checked } = this.props;
+    const colors = mdTheme.colors[color];
+    return {
+      borderColor: colors[500].hex
+    };
   }
 
   getCheckStyles() {
-    const theme = this.props.theme || this.context.theme;
-    const { checked, primary, secondary } = this.props;
-    let themeStyles = {};
-    if (primary && checked) {
-      themeStyles = {
-        backgroundColor: theme.primary[500].hex
-      }
-    } else if (secondary && checked) {
-      themeStyles = {
-        backgroundColor: theme.secondary[500].hex
-      }
-    }
-    return themeStyles;
+    const { mdTheme } = this.context;
+    const { color, checked } = this.props;
+    const colors = mdTheme.colors[color];
+    return {
+      backgroundColor: colors[500].hex
+    };
   }
 
   render() {

@@ -57,6 +57,7 @@ class MenuItem extends Component {
     divider: PropTypes.bool,
     autoFocus: PropTypes.bool,
     onTouchTap: PropTypes.func,
+    style: PropTypes.object,
     children: PropTypes.node
   };
 
@@ -64,7 +65,8 @@ class MenuItem extends Component {
   };
 
   static contextTypes = {
-    mdTheme: PropTypes.object
+    mdTheme: PropTypes.object,
+    color: PropTypes.string
   };
 
   state = {
@@ -73,10 +75,10 @@ class MenuItem extends Component {
   };
 
   getStyle() {
-    const { mdTheme } = this.context;
+    const { mdTheme, color: contextColor } = this.context;
     const { hover, hasFocus } = this.state;
-    const { active, divider, color } = this.props;
-    const colors = mdTheme.colors[color || mdTheme.primary];
+    const { active, divider, color, style } = this.props;
+    const colors = mdTheme.colors[color || contextColor || mdTheme.primary];
     return mergeStyles(
       hasFocus ? {
         backgroundColor: colors[200].hex,
@@ -93,6 +95,7 @@ class MenuItem extends Component {
         backgroundColor: colors[700].hex,
         color: colors[700].text.default
       } : null,
+      style
     );
   }
 

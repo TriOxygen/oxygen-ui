@@ -7,9 +7,7 @@ class RaisedButton extends Component {
   static propTypes = {
     disabled: PropTypes.bool,
     dense: PropTypes.bool,
-    primary: PropTypes.bool,
-    secondary: PropTypes.bool,
-    theme: PropTypes.object,
+    color: PropTypes.string,
     fullWidth: PropTypes.bool,
     label: PropTypes.string,
     link: PropTypes.bool,
@@ -25,7 +23,7 @@ class RaisedButton extends Component {
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object
   };
 
   static defaultProps = {
@@ -33,37 +31,31 @@ class RaisedButton extends Component {
   };
 
   getButtonStyles(theme) {
-    const { disabled, primary, secondary, inversed } = this.props;
+    const { disabled, color, inversed } = this.props;
+    const { mdTheme } = this.context;
+    const colors = color && mdTheme.colors[color];
     const { hover, active } = this.state;
     let style;
     if (disabled) {
       style = {
         boxShadow: 'none',
-        backgroundColor: theme.button.raised.disabled,
+        backgroundColor: mdTheme.button.raised.disabled,
       };
-    } else if (primary) {
+    } else if (colors) {
       style = inversed ? {
-        color: active ? theme.primary[700].hex : hover ? theme.primary[600].hex : theme.primary[500].hex,
-        backgroundColor: active ? theme.primary[700].text.default : hover ? theme.primary[600].text.default : theme.primary[500].text.default,
+        color: active ? colors[700].hex : hover ? colors[600].hex : colors[500].hex,
+        backgroundColor: active ? colors[700].text.default : hover ? colors[600].text.default : colors[500].text.default,
       } : {
-        backgroundColor: active ? theme.primary[700].hex : hover ? theme.primary[600].hex : theme.primary[500].hex,
-        color: active ? theme.primary[700].text.default : hover ? theme.primary[600].text.default : theme.primary[500].text.default,
-      };
-    } else if (secondary) {
-      style = inversed ? {
-        color: active ? theme.secondary[700].hex : hover ? theme.secondary[600].hex : theme.secondary[500].hex,
-        backgroundColor: active ? theme.secondary[700].text.default : hover ? theme.secondary[600].text.default : theme.secondary[500].text.default,
-      } : {
-        backgroundColor: active ? theme.secondary[700].hex : hover ? theme.secondary[600].hex : theme.secondary[500].hex,
-        color: active ? theme.secondary[700].text.default : hover ? theme.secondary[600].text.default : theme.secondary[500].text.default,
+        backgroundColor: active ? colors[700].hex : hover ? colors[600].hex : colors[500].hex,
+        color: active ? colors[700].text.default : hover ? colors[600].text.default : colors[500].text.default,
       };
     } else {
       style = inversed ? {
-        backgroundColor: theme.text.default,
-        color: hover | active ? 'rgba(0, 0, 0, 0.1)' : theme.theme.card.hex,
+        backgroundColor: mdTheme.text.default,
+        color: hover | active ? 'rgba(0, 0, 0, 0.1)' : mdTheme.theme.card.hex,
       } : {
-        color: theme.text.default,
-        backgroundColor: hover | active ? 'rgba(0, 0, 0, 0.1)' : theme.theme.card.hex,
+        color: mdTheme.text.default,
+        backgroundColor: hover | active ? 'rgba(0, 0, 0, 0.1)' : mdTheme.theme.card.hex,
       };
     }
     return style;
@@ -158,7 +150,7 @@ const styles = oxygenCss({
       borderRadius: Units.desktop.borderRadius,
       fontSize: `${Units.desktop.button.fontSize}px`,
     },
-    dense: {
+    '&dense': {
       minHeight: `${Units.phone.button.dense.height}px`,
       lineHeight: `${Units.phone.button.dense.height}px`,
       '@desktop': {

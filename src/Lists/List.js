@@ -4,16 +4,26 @@ import Paper from '../Paper';
 class List extends Component {
 
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    color: PropTypes.string
   };
 
   static contextTypes = {
     theme: PropTypes.object
   };
 
+ static childContextTypes = {
+    color: PropTypes.string,
+  };
+
+  getChildContext() {
+    return {
+      color: this.props.color
+    }
+  }
 
   render() {
-    const { children, ...other } = this.props;
+    const { children, color, ...other } = this.props;
     return (
       <Paper {...other}>
           {children}

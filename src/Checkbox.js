@@ -5,22 +5,14 @@ import { Units, Colors } from './Styles';
 
 class Checkbox extends Toggle {
   getStyles() {
-    const theme = this.props.theme || this.context.theme;
-    const { primary, secondary } = this.props;
+    const { mdTheme } = this.context;
+    const { color } = this.props;
     const { checked } = this.state;
-    let themeStyles = {};
-    if (primary && checked) {
-      themeStyles = {
-        backgroundColor: theme.primary[500].hex,
-        borderColor: theme.primary[500].hex
-      }
-    } else if (secondary && checked) {
-      themeStyles = {
-        backgroundColor: theme.secondary[500].hex,
-        borderColor: theme.secondary[500].hex
-      }
+    const colors = mdTheme.colors[color];
+    return {
+      backgroundColor: checked ? colors[500].hex : null,
+      borderColor: checked ? colors[500].hex : null
     }
-    return themeStyles;
   }
 
   render() {

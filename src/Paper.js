@@ -12,6 +12,7 @@ class Paper extends Component {
     children: PropTypes.node,
     style: PropTypes.object,
     className: PropTypes.string,
+    fullWidth: PropTypes.bool,
     color: PropTypes.object,
     hover: PropTypes.bool
   };
@@ -23,6 +24,7 @@ class Paper extends Component {
   static defaultProps = {
     zDepth: 1,
     rounded: true,
+    fullWidth: true,
   };
 
   state = {
@@ -56,8 +58,9 @@ class Paper extends Component {
   };
 
   render() {
-    const { children, spaced, padded, rounded, className, hover, ...other } = this.props;
+    const { children, spaced, fullWidth, padded, rounded, className, hover, ...other } = this.props;
     const classes = classNames(className, styles.root, {
+      [styles.fullWidth]: fullWidth,
       [styles.spaced]: spaced,
       [styles.padded]: padded,
       [styles.rounded]: rounded,
@@ -85,6 +88,12 @@ const styles = oxygenCss({
     boxSizing: 'border-box',
     overflow: 'hidden',
     transition: 'box-shadow 450ms cubic-bezier(0.23, 1, 0.32, 1)',
+    display: 'inline-block',
+    verticalAlign: 'top',
+    '&fullWidth': {
+      display: 'block',
+      flexGrow: 1
+    },
     '&padded': {
       padding: Units.phone.gutter.mini,
     },
