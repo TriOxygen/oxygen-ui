@@ -41,6 +41,7 @@ class RaisedButton extends Component {
       style = {
         boxShadow: 'none',
         backgroundColor: mdTheme.button.raised.disabled,
+        color: mdTheme.text.disabled,
       };
     } else if (colors) {
       style = inversed ? {
