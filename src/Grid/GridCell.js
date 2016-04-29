@@ -6,7 +6,6 @@ class GridCell extends Component {
 
   static propTypes = {
     gutter: PropTypes.bool,
-    theme: PropTypes.object,
     top: PropTypes.bool,
     bottom: PropTypes.bool,
     center: PropTypes.bool,
@@ -19,10 +18,6 @@ class GridCell extends Component {
   static defaultProps = {
     // center: true,
     top: true
-  };
-
-  static contextTypes = {
-    theme: PropTypes.object
   };
 
   getStyle() {

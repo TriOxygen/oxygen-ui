@@ -10,6 +10,7 @@ class Menu extends Component {
   static propTypes = {
     children: PropTypes.node,
     closeOnEsc: PropTypes.bool,
+    disabled: PropTypes.bool,
     padded: PropTypes.bool,
     mdColor: PropTypes.string,
     onMenuItemTap: PropTypes.func,
@@ -42,8 +43,11 @@ class Menu extends Component {
    return false;
   }
 
-  onMenuItemTap = (furtherTap, payload, label) => {
-    const { onMenuItemTap } = this.props;
+  onMenuItemTap = (furtherTap, payload, label, event) => {
+    const { onMenuItemTap, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     if (furtherTap) {
       furtherTap(payload, label);
     }
@@ -51,11 +55,18 @@ class Menu extends Component {
     if (this.props.onRequestClose) {
       this.props.onRequestClose();
     }
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   };
 
   handleKey = (event) => {
     const { keyCode } = event;
-    const { onRequestClose } = this.props;
+    const { onRequestClose, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
     onRequestClose && keyCode === ESC && onRequestClose();
   };
 

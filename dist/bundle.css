@@ -334,6 +334,9 @@
   line-height: 56px;
   border-radius: 50%;
 }
+.omd_U.omd_eF {
+  cursor: default;
+}
 .omd_U.omd_V {
   width: 40px;
   height: 40px;

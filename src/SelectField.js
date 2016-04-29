@@ -88,6 +88,7 @@ class SelectField extends Component {
                     rounded={false}
                     padded={false}
                     zDepth={2}
+                    disabled={progress < 1}
                     onMenuItemTap={this.select}
                     onRequestClose={this.handleMenuClose}
                     style={{

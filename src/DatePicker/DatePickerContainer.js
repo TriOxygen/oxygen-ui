@@ -5,24 +5,11 @@ import Paper from '../Paper';
 import ButtonContainer from '../ButtonContainer';
 import FlatButton from '../FlatButton';
 import { Units } from '../Styles';
-import { addMessages, translate as _l } from 'lib/I18n';
 import DatePickerMonth from './DatePickerMonth';
-
-addMessages({
-  ['en-US']: {
-    'Cancel': 'Cancel',
-    'Ok': 'Ok',
-  }
-});
-
 
 const ESC = 27;
 
-export default class DialogContainer extends Component {
-
-  static contextTypes = {
-    theme: PropTypes.object
-  };
+export default class DatePickerContainer extends Component {
 
   static propTypes = {
     date: PropTypes.object,
@@ -30,7 +17,6 @@ export default class DialogContainer extends Component {
     ok: PropTypes.string,
     children: PropTypes.node,
     top: PropTypes.number,
-    theme: PropTypes.object,
     y: PropTypes.number,
     opacity: PropTypes.number,
     onRequestClose: PropTypes.func,
@@ -45,8 +31,8 @@ export default class DialogContainer extends Component {
   };
 
   static defaultProps = {
-    cancel: _l`Cancel`,
-    ok: _l`Ok`,
+    cancel: 'Cancel',
+    ok: 'Ok',
   };
 
   handleTap = () => {

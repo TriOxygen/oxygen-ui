@@ -10,15 +10,27 @@ export default class DatePicker extends Component {
     locale: PropTypes.string,
     type: PropTypes.string,
     fullWidth: PropTypes.bool,
+    mdColor: PropTypes.string,
     floatingLabelText: PropTypes.string,
     value: PropTypes.string,
     defaultValue: PropTypes.string,
     placeholder: PropTypes.string
   };
 
+
   static defaultProps = {
     locale: 'en-US',
   };
+
+  static childContextTypes = {
+    mdColor: PropTypes.string,
+  };
+
+  getChildContext() {
+    return {
+      mdColor: this.props.mdColor
+    }
+  }
 
   state = {
     open: false,

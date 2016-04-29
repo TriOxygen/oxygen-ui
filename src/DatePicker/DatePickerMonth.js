@@ -14,14 +14,9 @@ class DatePickerMonth extends Component {
     months: PropTypes.array
   };
 
-  static contextTypes = {
-    theme: PropTypes.object
-  };
-
   static propTypes = {
     date: PropTypes.object,
     chosenDate: PropTypes.object,
-    theme: PropTypes.object,
     locale: PropTypes.string,
     children: PropTypes.node,
     onNextMonth: PropTypes.func,
@@ -33,7 +28,8 @@ class DatePickerMonth extends Component {
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string,
   };
 
   constructor() {
@@ -97,10 +93,11 @@ class DatePickerMonth extends Component {
   }
 
   getDayStyle() {
-    const theme = this.props.theme || this.context.theme;
+    const { mdTheme, mdColor } = this.context;
+    const colors = mdTheme.colors[mdColor || mdTheme.primary];
     return Object.assign({}, {
-      backgroundColor: theme.primary[500].hex,
-      color: theme.primary[500].text.default
+      backgroundColor: colors[500].hex,
+      color: colors[500].text.default
     });
   }
 

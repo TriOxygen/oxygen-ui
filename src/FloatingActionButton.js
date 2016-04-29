@@ -26,6 +26,9 @@ const styles = oxygenCss({
     height: `${Units.phone.floatingActionButton.size}px`,
     lineHeight: `${Units.phone.floatingActionButton.size}px`,
     borderRadius: '50%',
+    '&disabled': {
+      cursor: 'default'
+    },
     '&mini': {
       width: `${Units.phone.floatingActionButton.miniSize}px`,
       height: `${Units.phone.floatingActionButton.miniSize}px`,
@@ -144,7 +147,8 @@ class FloatingActionButton extends Component {
     const { disabled, children, link, mini, icon, ...other } = this.props;
     const ink = !disabled && <Ink />;
     const classes = classNames(styles.floatingActionButton, {
-      [styles.mini]: mini
+      [styles.mini]: mini,
+      [styles.disabled]: disabled
     });
 
     const props = {

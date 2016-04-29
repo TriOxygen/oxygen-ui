@@ -5,6 +5,14 @@ import MenuItem from 'Menus/MenuItem';
 import Theme from 'Styles/Theme';
 import IconButton from 'IconButton';
 import RaisedButton from 'RaisedButton';
+import FlatButton from 'FlatButton';
+import VerticalCenter from 'VerticalCenter';
+import Spinner from 'Spinner';
+import Paper from 'Paper';
+import Dialog from 'Dialog/Dialog';
+import DialogContent from 'Dialog/DialogContent';
+import DialogActions from 'Dialog/DialogActions';
+import DialogTitle from 'Dialog/DialogTitle';
 import Toolbar from 'Toolbar/Toolbar';
 import Layout from 'Layout';
 import SnackBar from 'SnackBar/SnackBar';
@@ -100,6 +108,14 @@ export default class App extends Component {
     this.setState({ time: Date.now(), message: 'Sheep says ' + Math.random() })
   };
 
+  closeDialog = () => {
+    this.setState({ dialog: false });
+  };
+
+  confirmDialog = () => {
+    this.setState({ time: Date.now(), message: 'Delete confirmed', dialog: false });
+  };
+
   renderMenu() {
     const { drawerPosition } = this.state;
     return (
@@ -117,7 +133,7 @@ export default class App extends Component {
 
   render() {
     const { mdTheme } = this;
-    const { message, time } = this.state;
+    const { message, time, dialog } = this.state;
     const menu = this.renderMenu();
     return (
       <div className={css.root} style={this.getStyle()}>
@@ -127,6 +143,7 @@ export default class App extends Component {
           leftElement={<IconButton onTouchTap={this.openDrawer}><NavigationMenu block/></IconButton>}
           >
             <RaisedButton label={'Meeeeeh'} onTouchTap={this.randomMessage}/>
+            <RaisedButton label={'Dialog'} onTouchTap={() => this.setState({ dialog: true })}/>
           </Toolbar>
           <div>
             <MenuButtonDemo />
@@ -140,8 +157,21 @@ export default class App extends Component {
             <MenuDemo />
             <ListDemo />
             <TextFieldDemo />
+            <Paper fullWidth={false} style={{ width: 320, height: 320}}>
+              <VerticalCenter>
+                <Spinner />
+              </VerticalCenter>
+            </Paper>
           </div>
         </Layout>
+        <Dialog open={!!dialog} onRequestClose={this.closeDialog}>
+          <DialogTitle>{'Delete user'}</DialogTitle>
+          <DialogContent>{'Are you sure you want to delete this user?'}</DialogContent>
+          <DialogActions>
+            <FlatButton label={'Cancel'} onTouchTap={this.closeDialog} />
+            <FlatButton label={'Delete'} onTouchTap={this.confirmDialog} />
+          </DialogActions>
+        </Dialog>
         <SnackBar message={message} time={time}/>
         {menu}
       </div>

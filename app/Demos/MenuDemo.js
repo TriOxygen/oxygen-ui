@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Paper from 'Paper';
 import Menu from 'Menus/Menu';
 import MenuItem from 'Menus/MenuItem';
+import SelectField from 'SelectField';
 import DialogTitle from 'Dialog/DialogTitle';
 import demoStyles from './demoStyles';
 
@@ -30,6 +31,13 @@ class FlatButtonDemo extends Component {
           <MenuItem icon={<ActionAccountBox/>} dense>Test</MenuItem>
           <MenuItem icon={<ActionAccountBox/>} dense>Test</MenuItem>
         </Menu>
+
+        <SelectField floatingLabelText='Drop down'>
+          <MenuItem label={'Add'} payload="add"/>
+          <MenuItem label={'Locked'} payload="locked"/>
+          <MenuItem label={'Active'} payload="active"/>
+        </SelectField>
+
         </Paper>
     );
   }

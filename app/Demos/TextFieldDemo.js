@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Paper from 'Paper';
 import TextField from 'TextField/TextField';
+import DatePicker from 'DatePicker/DatePicker';
 import Divider from 'Divider';
 import List from 'Lists/List';
 import DialogTitle from 'Dialog/DialogTitle';
@@ -20,6 +21,8 @@ class FlatButtonDemo extends Component {
         <List mdColor={'blue'}>
           <TextField mdColor={'red'} floatingLabelText='Label' />
           <TextField floatingLabelText='Something with error text' errorText={'No way'}/>
+          <DatePicker floatingLabelText='Pick some date' />
+          <DatePicker mdColor={'blue'} floatingLabelText='Pick some date' />
           <Divider />
           <TextField placeholder='Neatly Divided'/>
           <Divider />

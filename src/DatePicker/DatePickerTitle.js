@@ -6,14 +6,14 @@ class DatePickerTitle extends Component {
   static propTypes = {
     locale: PropTypes.string,
     date: PropTypes.object,
-    theme: PropTypes.object,
     children: PropTypes.node,
     weekDays: PropTypes.array,
     months: PropTypes.array,
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string
   };
 
   shouldComponentUpdate(nextProps) {
@@ -21,10 +21,11 @@ class DatePickerTitle extends Component {
   }
 
   getStyle() {
-    const theme = this.props.theme || this.context.theme;
+    const { mdTheme, mdColor } = this.context;
+    const colors = mdTheme.colors[mdColor || mdTheme.primary];
     return Object.assign({}, {
-      backgroundColor: theme.primary[500].hex,
-      color: theme.primary[500].text.default
+      backgroundColor: colors[500].hex,
+      color: colors[500].text.default
     });
   }
 

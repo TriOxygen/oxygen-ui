@@ -6,7 +6,6 @@ import GridCell from './GridCell';
 class Grid extends Component {
 
   static propTypes = {
-    theme: PropTypes.object,
     top: PropTypes.bool,
     bottom: PropTypes.bool,
     gutter: PropTypes.bool,
@@ -17,10 +16,6 @@ class Grid extends Component {
 
   static defaultProps = {
     gutter: true,
-  };
-
-  static contextTypes = {
-    theme: PropTypes.object
   };
 
   render() {
