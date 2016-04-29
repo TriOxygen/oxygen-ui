@@ -39,7 +39,7 @@ class FloatingActionButton extends Component {
   static propTypes = {
     disabled: PropTypes.bool,
     mini: PropTypes.bool,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     link: PropTypes.bool,
     onTouchTap: PropTypes.func,
     href: PropTypes.string,
@@ -55,7 +55,8 @@ class FloatingActionButton extends Component {
   };
 
   static contextTypes = {
-    mdTheme: PropTypes.object
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string
   };
 
   static defaultProps = {
@@ -63,9 +64,9 @@ class FloatingActionButton extends Component {
   };
 
   getButtonStyles() {
-    const { inversed, disabled, color } = this.props;
-    const { mdTheme } = this.context;
-    const colors = color && mdTheme.colors[color];
+    const { inversed, disabled, mdColor } = this.props;
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const colors = mdTheme.colors[mdColor || contextColor];
     const { hover, active } = this.state;
     let style;
     if (disabled) {

@@ -18,9 +18,9 @@ class FloatingActionButtonDemo extends Component {
       <Paper className={demoStyles.container} fullWidth={false}>
         <DialogTitle>Checkbox</DialogTitle>
         <Checkbox label={'1'} value={1} disabled/>
-        <Checkbox label={'2'} value={2} color={mdTheme.primary} />
-        <Checkbox label={'3'} value={3} color={mdTheme.secondary}/>
-        <Checkbox label={'4'} value={4} color={mdTheme.tertiary}/>
+        <Checkbox label={'2'} value={2} mdColor={mdTheme.primary} />
+        <Checkbox label={'3'} value={3} mdColor={mdTheme.secondary}/>
+        <Checkbox label={'4'} value={4} mdColor={mdTheme.tertiary}/>
         <Checkbox label={'5'} value={5} />
       </Paper>
     );

@@ -11,19 +11,20 @@ export default class DrawerHeader extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     transparent: PropTypes.bool,
     zDepth: PropTypes.number
   };
 
   static contextTypes = {
-    mdTheme: PropTypes.object
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string
   };
 
   getStyle() {
-    const { mdTheme } = this.context;
-    const { zDepth, color, transparent } = this.props;
-    const colors = mdTheme.colors[color || mdTheme.primary];
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const { zDepth, mdColor, transparent } = this.props;
+    const colors = mdTheme.colors[mdColor || contextColor || mdTheme.primary];
 
     return {
       backgroundColor: transparent ? mdTheme.theme.statusBar.material : colors[500].hex,

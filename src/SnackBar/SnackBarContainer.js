@@ -16,7 +16,7 @@ export default class SnackBar extends Component {
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object
   };
 
   componentWillUnmount() {
@@ -26,7 +26,7 @@ export default class SnackBar extends Component {
   }
 
   getStyle() {
-    const { shade } = this.context.theme;
+    const { shade } = this.context.mdTheme;
     let { position } = this.props;
     if (position > 1) {
       position = 1;

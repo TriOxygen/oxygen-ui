@@ -7,7 +7,7 @@ class RaisedButton extends Component {
   static propTypes = {
     disabled: PropTypes.bool,
     dense: PropTypes.bool,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     fullWidth: PropTypes.bool,
     label: PropTypes.string,
     link: PropTypes.bool,
@@ -23,7 +23,8 @@ class RaisedButton extends Component {
   };
 
   static contextTypes = {
-    mdTheme: PropTypes.object
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string
   };
 
   static defaultProps = {
@@ -31,9 +32,9 @@ class RaisedButton extends Component {
   };
 
   getButtonStyles(theme) {
-    const { disabled, color, inversed } = this.props;
-    const { mdTheme } = this.context;
-    const colors = color && mdTheme.colors[color];
+    const { disabled, mdColor, inversed } = this.props;
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const colors = mdTheme.colors[mdColor || contextColor];
     const { hover, active } = this.state;
     let style;
     if (disabled) {
@@ -89,6 +90,7 @@ class RaisedButton extends Component {
     const ink = !disabled && <Ink />;
     const buttonClasses = classNames(styles.raisedButton, {
       [styles.dense]: dense,
+      [styles.disabled]: disabled,
       [styles.fullWidth]: fullWidth
     });
     const props = {
@@ -135,6 +137,9 @@ const styles = oxygenCss({
     minWidth: Units.phone.button.width,
     margin: 'auto 0',
     boxSizing: 'border-box',
+    '&disabled': {
+      cursor: 'default'
+    },
     ':hover': {
       boxShadow: Shadow[2],
       textDecoration: 'none',

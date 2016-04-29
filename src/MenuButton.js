@@ -15,7 +15,7 @@ class MenuButton extends IconButton {
     dense: PropTypes.bool,
     primary: PropTypes.bool,
     secondary: PropTypes.bool,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     hoverColor: PropTypes.string,
     children: PropTypes.node,
     icon: PropTypes.node,

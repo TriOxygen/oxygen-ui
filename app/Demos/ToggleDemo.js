@@ -18,9 +18,9 @@ class FloatingActionButtonDemo extends Component {
       <Paper className={demoStyles.container} fullWidth={false}>
         <DialogTitle>Toggle</DialogTitle>
         <Toggle label={'1'} value={1} disabled/>
-        <Toggle label={'2'} value={2} color={mdTheme.primary} />
-        <Toggle label={'3'} value={3} color={mdTheme.secondary}/>
-        <Toggle label={'4'} value={4} color={mdTheme.tertiary}/>
+        <Toggle label={'2'} value={2} mdColor={mdTheme.primary} />
+        <Toggle label={'3'} value={3} mdColor={mdTheme.secondary}/>
+        <Toggle label={'4'} value={4} mdColor={mdTheme.tertiary}/>
         <Toggle label={'5'} value={5} />
       </Paper>
     );

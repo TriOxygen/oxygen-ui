@@ -52,7 +52,7 @@ class ListItem extends Component {
 
   static propTypes = {
     payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     style: PropTypes.object,
     dense: PropTypes.bool,
     active: PropTypes.bool,
@@ -64,7 +64,7 @@ class ListItem extends Component {
 
   static contextTypes = {
     mdTheme: PropTypes.object,
-    color: PropTypes.string
+    mdColor: PropTypes.string
   };
 
   state = {
@@ -72,10 +72,10 @@ class ListItem extends Component {
   };
 
   getStyle() {
-    const { mdTheme, color: contextColor } = this.context;
+    const { mdTheme, mdColor: contextColor } = this.context;
     const { hover, hasFocus } = this.state;
-    const { active, divider, color, style } = this.props;
-    const colors = mdTheme.colors[color || contextColor || mdTheme.primary];
+    const { active, divider, mdColor, style } = this.props;
+    const colors = mdTheme.colors[mdColor || contextColor || mdTheme.primary];
     return mergeStyles(
       hasFocus ? {
         backgroundColor: colors[200].hex,

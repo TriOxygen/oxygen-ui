@@ -5,25 +5,21 @@ class List extends Component {
 
   static propTypes = {
     children: PropTypes.node,
-    color: PropTypes.string
+    mdColor: PropTypes.string
   };
 
-  static contextTypes = {
-    theme: PropTypes.object
-  };
-
- static childContextTypes = {
-    color: PropTypes.string,
+  static childContextTypes = {
+    mdColor: PropTypes.string,
   };
 
   getChildContext() {
     return {
-      color: this.props.color
+      mdColor: this.props.mdColor
     }
   }
 
   render() {
-    const { children, color, ...other } = this.props;
+    const { children, mdColor, ...other } = this.props;
     return (
       <Paper {...other}>
           {children}

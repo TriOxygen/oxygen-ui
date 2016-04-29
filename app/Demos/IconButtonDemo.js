@@ -18,14 +18,12 @@ class FlatButtonDemo extends Component {
     return (
       <Paper className={demoStyles.container} fullWidth={false}>
         <DialogTitle>Icon buttons</DialogTitle>
-        <IconButton><ContentClear /></IconButton>
-        <IconButton primary><ContentClear /></IconButton>
-        <IconButton secondary><ContentClear /></IconButton>
+        <IconButton mdColor={mdTheme.primary}><ContentClear /></IconButton>
+        <IconButton mdColor={mdTheme.secondary}><ContentClear /></IconButton>
+        <IconButton mdColor={mdTheme.tertiary}><ContentClear /></IconButton>
+        <IconButton mdColor={'purple'}><ContentClear /></IconButton>
         <IconButton disabled><ContentClear /></IconButton>
 
-        <p style={{ color: '#123981' }}>
-          <IconButton><ContentClear /></IconButton>
-        </p>
       </Paper>
     );
   }

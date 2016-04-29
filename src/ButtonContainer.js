@@ -3,20 +3,27 @@ import classNames from 'classnames';
 import { Units } from './Styles';
 
 class ButtonContainer extends Component {
-
-  static displayName = 'ButtonContainer';
-
   static propTypes = {
     fullWidth: PropTypes.bool,
     children: PropTypes.node,
     className: PropTypes.string,
     alignRight: PropTypes.bool,
-    theme: PropTypes.object
+    mdColor: PropTypes.string
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object
   };
+
+  static childContextTypes = {
+    mdColor: PropTypes.string,
+  };
+
+  getChildContext() {
+    return {
+      mdColor: this.props.mdColor
+    }
+  }
 
   static defaultProps = {
     fullWidth: true

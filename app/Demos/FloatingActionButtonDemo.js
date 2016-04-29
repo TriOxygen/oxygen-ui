@@ -20,23 +20,23 @@ class FloatingActionButtonDemo extends Component {
         <DialogTitle>FloatingAction Buttons</DialogTitle>
         <ButtonContainer>
           <FloatingActionButton icon={<ContentClear />}/>
-          <FloatingActionButton color={mdTheme.primary} icon={<ContentClear />}/>
-          <FloatingActionButton color={mdTheme.secondary} icon={<ContentClear />}/>
-          <FloatingActionButton color={mdTheme.tertiary} icon={<ContentClear />}/>
+          <FloatingActionButton mdColor={mdTheme.primary} icon={<ContentClear />}/>
+          <FloatingActionButton mdColor={mdTheme.secondary} icon={<ContentClear />}/>
+          <FloatingActionButton mdColor={mdTheme.tertiary} icon={<ContentClear />}/>
           <FloatingActionButton disabled icon={<ContentClear />}/>
         </ButtonContainer>
         <ButtonContainer>
           <FloatingActionButton inversed icon={<ContentClear />}/>
-          <FloatingActionButton inversed color={mdTheme.primary} icon={<ContentClear />}/>
-          <FloatingActionButton inversed color={mdTheme.secondary} icon={<ContentClear />}/>
-          <FloatingActionButton inversed color={mdTheme.tertiary} icon={<ContentClear />}/>
+          <FloatingActionButton inversed mdColor={mdTheme.primary} icon={<ContentClear />}/>
+          <FloatingActionButton inversed mdColor={mdTheme.secondary} icon={<ContentClear />}/>
+          <FloatingActionButton inversed mdColor={mdTheme.tertiary} icon={<ContentClear />}/>
           <FloatingActionButton inversed disabled icon={<ContentClear />}/>
         </ButtonContainer>
         <ButtonContainer>
           <FloatingActionButton mini icon={<ContentClear />}/>
-          <FloatingActionButton mini color={mdTheme.primary} icon={<ContentClear />}/>
-          <FloatingActionButton mini color={mdTheme.secondary} icon={<ContentClear />}/>
-          <FloatingActionButton mini color={mdTheme.tertiary} icon={<ContentClear />}/>
+          <FloatingActionButton mini mdColor={mdTheme.primary} icon={<ContentClear />}/>
+          <FloatingActionButton mini mdColor={mdTheme.secondary} icon={<ContentClear />}/>
+          <FloatingActionButton mini mdColor={mdTheme.tertiary} icon={<ContentClear />}/>
           <FloatingActionButton mini disabled icon={<ContentClear />}/>
         </ButtonContainer>
       </Paper>

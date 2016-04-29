@@ -29,7 +29,7 @@ class Toolbar extends Component {
     children: PropTypes.node,
     leftElement: PropTypes.node,
     rightElement: PropTypes.node,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     className: PropTypes.string,
     onTouchTapLeftIcon: PropTypes.func,
     onTouchTapRightIcon: PropTypes.func,
@@ -45,8 +45,8 @@ class Toolbar extends Component {
 
   getStyle() {
     const { mdTheme } = this.context;
-    const { zDepth, color, transparent } = this.props;
-    const colors = mdTheme.colors[color];
+    const { zDepth, mdColor, transparent } = this.props;
+    const colors = mdTheme.colors[mdColor];
 
     return Object.assign({},
       transparent ? null : {
@@ -54,7 +54,7 @@ class Toolbar extends Component {
         color: mdTheme.theme.statusBar.text.default,
         boxShadow: Shadow[zDepth]
       },
-      color && !transparent ? {
+      colors && !transparent ? {
         backgroundColor: colors[500].hex,
         color: colors[500].text.default
       } : null,

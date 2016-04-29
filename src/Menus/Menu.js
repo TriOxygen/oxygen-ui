@@ -11,7 +11,7 @@ class Menu extends Component {
     children: PropTypes.node,
     closeOnEsc: PropTypes.bool,
     padded: PropTypes.bool,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     onMenuItemTap: PropTypes.func,
     onRequestClose: PropTypes.func
   };
@@ -21,17 +21,13 @@ class Menu extends Component {
     padded: true,
   };
 
-  static contextTypes = {
-    theme: PropTypes.object
-  };
-
- static childContextTypes = {
-    color: PropTypes.string,
+  static childContextTypes = {
+    mdColor: PropTypes.string,
   };
 
   getChildContext() {
     return {
-      color: this.props.color
+      mdColor: this.props.mdColor
     }
   }
 
@@ -89,7 +85,7 @@ class Menu extends Component {
   };
 
   render() {
-    const { children, color, padded, ...other } = this.props;
+    const { children, mdColor, padded, ...other } = this.props;
     return (
       <Paper {...other} className={padded && css.padded || null}>
         {React.Children.map(children, child => {

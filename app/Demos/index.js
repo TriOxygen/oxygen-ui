@@ -8,3 +8,4 @@ export CheckboxDemo from './CheckboxDemo';
 export IconButtonDemo from './IconButtonDemo';
 export MenuDemo from './MenuDemo';
 export ListDemo from './ListDemo';
+export TextFieldDemo from './TextFieldDemo';

@@ -18,24 +18,31 @@ class RaisedButtonDemo extends Component {
         <DialogTitle>Raised Buttons</DialogTitle>
         <ButtonContainer>
           <RaisedButton label='Raised' />
-          <RaisedButton color={mdTheme.primary} label='Primary' />
-          <RaisedButton color={mdTheme.secondary} label='Secondary' />
-          <RaisedButton color={mdTheme.tertiary} label='Tertiary' />
+          <RaisedButton mdColor={mdTheme.primary} label='Primary' />
+          <RaisedButton mdColor={mdTheme.secondary} label='Secondary' />
+          <RaisedButton mdColor={mdTheme.tertiary} label='Tertiary' />
           <RaisedButton disabled label='Raised disabled' />
         </ButtonContainer>
         <ButtonContainer>
           <RaisedButton inversed label='Raised' />
-          <RaisedButton inversed color={mdTheme.primary} label='Primary' />
-          <RaisedButton inversed color={mdTheme.secondary} label='Secondary' />
-          <RaisedButton inversed color={mdTheme.tertiary} label='Tertiary' />
+          <RaisedButton inversed mdColor={mdTheme.primary} label='Primary' />
+          <RaisedButton inversed mdColor={mdTheme.secondary} label='Secondary' />
+          <RaisedButton inversed mdColor={mdTheme.tertiary} label='Tertiary' />
           <RaisedButton inversed disabled label='Raised disabled' />
         </ButtonContainer>
         <ButtonContainer>
           <RaisedButton dense label='Raised' />
-          <RaisedButton dense color={mdTheme.primary} label='Primary' />
-          <RaisedButton dense color={mdTheme.secondary} label='Secondary' />
-          <RaisedButton dense color={mdTheme.tertiary} label='Tertiary' />
+          <RaisedButton dense mdColor={mdTheme.primary} label='Primary' />
+          <RaisedButton dense mdColor={mdTheme.secondary} label='Secondary' />
+          <RaisedButton dense mdColor={mdTheme.tertiary} label='Tertiary' />
           <RaisedButton dense disabled label='Raised disabled' />
+        </ButtonContainer>
+        <ButtonContainer mdColor={'purple'}>
+          <RaisedButton dense label='These' />
+          <RaisedButton dense label='Get' />
+          <RaisedButton dense label='Color' />
+          <RaisedButton dense label='From' />
+          <RaisedButton dense disabled label='Container' />
         </ButtonContainer>
       </Paper>
     );

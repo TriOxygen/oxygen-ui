@@ -20,6 +20,16 @@ export default class Drawer extends Component {
     position: 0,
   };
 
+ static childContextTypes = {
+    mdColor: PropTypes.string,
+  };
+
+  getChildContext() {
+    return {
+      mdColor: this.props.mdColor
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.position !== this.state.position) {
       this.setState({ position: nextProps.position });

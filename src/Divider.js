@@ -11,17 +11,19 @@ const styles = oxygenCss({
 class Divider extends Component {
 
   static propTypes = {
-    theme: PropTypes.object,
+    mdColor: PropTypes.string,
   };
 
   static contextTypes = {
-    theme: PropTypes.object
+    mdTheme: PropTypes.object,
   };
 
   getStyle() {
-    const theme = this.props.theme || this.context.theme;
+    const { mdTheme } = this.context;
+    const { mdColor } = this.props;
+    const colors = mdColor && mdTheme.colors[mdColor];
     return {
-      backgroundColor: theme.text.divider,
+      backgroundColor: mdColor && colors[500].hex || mdTheme.text.divider,
     };
   }
 

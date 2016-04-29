@@ -11,12 +11,12 @@ class Toggle extends Component {
     left: PropTypes.bool,
     fullWidth: PropTypes.bool,
     label: PropTypes.node,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     onChange: PropTypes.func
   };
 
   static defaultProps = {
-    color: 'teal'
+    defaultColor: 'teal'
   };
 
   static contextTypes = {
@@ -55,10 +55,10 @@ class Toggle extends Component {
   }
 
   getStyles(gradient = 500) {
-    const { mdTheme } = this.context;
-    const { color } = this.props;
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const { mdColor, defaultColor } = this.props;
     const { checked } = this.state;
-    const colors = mdTheme.colors[color];
+    const colors = mdTheme.colors[mdColor || contextColor || defaultColor];
     return {
       backgroundColor: checked ? colors[gradient].hex : null
     }

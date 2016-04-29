@@ -14,6 +14,16 @@ class RadioGroup extends Component {
     onChange: PropTypes.func
   };
 
+ static childContextTypes = {
+    mdColor: PropTypes.string,
+  };
+
+  getChildContext() {
+    return {
+      mdColor: this.props.mdColor
+    }
+  }
+
   state = {
     value: this.props.value
   };

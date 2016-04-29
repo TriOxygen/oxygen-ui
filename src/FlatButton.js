@@ -8,7 +8,7 @@ class FlatButton extends Component {
     payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
     disabled: PropTypes.bool,
     dense: PropTypes.bool,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     fullWidth: PropTypes.bool,
     link: PropTypes.bool,
     href: PropTypes.string,
@@ -23,7 +23,8 @@ class FlatButton extends Component {
   };
 
   static contextTypes = {
-    mdTheme: PropTypes.object
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string
   };
 
   static defaultProps = {
@@ -31,16 +32,16 @@ class FlatButton extends Component {
   };
 
   getButtonStyles(theme) {
-    const { disabled, color } = this.props;
-    const { mdTheme } = this.context;
-    const colors = color && mdTheme.colors[color];
+    const { disabled, mdColor } = this.props;
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const colors = mdTheme.colors[mdColor || contextColor];
     const { hover, active } = this.state;
     let style;
     if (disabled) {
       style = {
         color: hover && active ? mdTheme.text.disabled : mdTheme.text.disabled,
       };
-    } else if (color) {
+    } else if (colors) {
       style = {
         color: active ? colors[700].hex : hover ? colors[600].hex : colors[500].hex,
         backgroundColor: active ? mdTheme.button.flat.active : hover ? mdTheme.button.flat.hover : null,
@@ -105,6 +106,7 @@ class FlatButton extends Component {
     const ink = !disabled && <Ink />;
     const buttonClasses = classNames(styles.flatButton, {
       [styles.dense]: dense,
+      [styles.disabled]: disabled,
       [styles.fullWidth]: fullWidth
     });
     const props = {
@@ -162,6 +164,9 @@ const styles = oxygenCss({
       padding: `0 ${Units.desktop.gutter.mini}px`,
       borderRadius: Units.desktop.borderRadius,
       fontSize: `${Units.desktop.button.fontSize}px`,
+    },
+    '&disabled': {
+      cursor: 'default'
     },
     '&dense': {
       minHeight: `${Units.phone.button.dense.height}px`,

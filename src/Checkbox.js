@@ -5,10 +5,10 @@ import { Units, Colors } from './Styles';
 
 class Checkbox extends Toggle {
   getStyles() {
-    const { mdTheme } = this.context;
-    const { color } = this.props;
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const { mdColor, defaultColor } = this.props;
     const { checked } = this.state;
-    const colors = mdTheme.colors[color];
+    const colors = mdTheme.colors[mdColor || contextColor || defaultColor];
     return {
       backgroundColor: checked ? colors[500].hex : null,
       borderColor: checked ? colors[500].hex : null

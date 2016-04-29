@@ -10,7 +10,7 @@ class IconButton extends Component {
     dense: PropTypes.bool,
     primary: PropTypes.bool,
     secondary: PropTypes.bool,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     className: PropTypes.string,
     hoverColor: PropTypes.string,
     children: PropTypes.node,
@@ -30,10 +30,12 @@ class IconButton extends Component {
 
   getButtonStyles() {
     const { mdTheme } = this.context;
-    // const { disabled } = this.props;
+    const { mdColor, disabled } = this.props;
     const { hover, active } = this.state;
+    const colors = mdColor && mdTheme.colors[mdColor];
     return Object.assign({}, {
-      backgroundColor: active ? mdTheme.button.flat.active : hover ? mdTheme.button.flat.hover : null
+      color: disabled ? mdTheme.text.disabled : colors && colors[500].hex,
+      backgroundColor: disabled ? 'transparent' : active ? mdTheme.button.flat.active : hover ? mdTheme.button.flat.hover : 'transparent'
     });
   }
 
@@ -86,7 +88,10 @@ class IconButton extends Component {
   render() {
     const { dense, disabled, children, className, link, ...other } = this.props;
     const ink = !disabled && <Ink />;
-    const buttonClasses = classNames(styles.iconButton, className, dense ? styles.dense : null);
+    const buttonClasses = classNames(styles.iconButton, className, {
+      [styles.dense]: dense,
+      [styles.disabled]: disabled
+    });
     const props = {
       ...other,
       className: buttonClasses,
@@ -126,6 +131,9 @@ export const styles = oxygenCss({
     overflow: 'hidden',
     verticalAlign: 'middle',
     margin: 'auto auto',
+    '&disabled': {
+      cursor: 'default'
+    },
     '@desktop': {
       width: Units.desktop.iconSize * 2,
       height: Units.desktop.iconSize * 2,

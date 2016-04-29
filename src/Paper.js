@@ -13,7 +13,7 @@ class Paper extends Component {
     style: PropTypes.object,
     className: PropTypes.string,
     fullWidth: PropTypes.bool,
-    color: PropTypes.object,
+    mdColor: PropTypes.string,
     hover: PropTypes.bool
   };
 
@@ -33,8 +33,8 @@ class Paper extends Component {
 
   getStyle() {
     const { mdTheme } = this.context;
-    const { zDepth, transparent, color, style } = this.props;
-    const colors = mdTheme.colors[color];
+    const { zDepth, transparent, mdColor, style } = this.props;
+    const colors = mdTheme.colors[mdColor];
     const { hover } = this.state;
     return Object.assign({},
       transparent ? null : {
@@ -42,7 +42,7 @@ class Paper extends Component {
         color: mdTheme.text.default,
         boxShadow: hover ? Shadow[zDepth + 1] : Shadow[zDepth]
       },
-      color && !transparent ? {
+      colors && !transparent ? {
         backgroundColor: colors[500].hex,
         color: colors[500].text.default
       } : null,

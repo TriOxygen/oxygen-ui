@@ -4,8 +4,10 @@ import DrawerHeader from 'Drawer/DrawerHeader';
 import MenuItem from 'Menus/MenuItem';
 import Theme from 'Styles/Theme';
 import IconButton from 'IconButton';
+import RaisedButton from 'RaisedButton';
 import Toolbar from 'Toolbar/Toolbar';
 import Layout from 'Layout';
+import SnackBar from 'SnackBar/SnackBar';
 import {
   CheckboxDemo,
   RadioDemo,
@@ -17,6 +19,7 @@ import {
   IconButtonDemo,
   MenuDemo,
   ListDemo,
+  TextFieldDemo,
 } from './Demos';
 
 
@@ -54,7 +57,8 @@ const css = oxygenCss({
 export default class App extends Component {
 
   state = {
-    drawerPosition: 0
+    drawerPosition: 0,
+    message: null
   };
 
   static childContextTypes = {
@@ -82,12 +86,16 @@ export default class App extends Component {
 
   go = () => {
 
-  }
+  };
+
+  randomMessage = () => {
+    this.setState({ time: Date.now(), message: 'Sheep says ' + Math.random() })
+  };
 
   renderMenu() {
     const { drawerPosition } = this.state;
     return (
-      <Drawer position={drawerPosition} onRequestClose={this.closeDrawer} onRequestOpen={this.openDrawer}>
+      <Drawer mdColor={'green'} position={drawerPosition} onRequestClose={this.closeDrawer} onRequestOpen={this.openDrawer}>
         <DrawerHeader>Header</DrawerHeader>
         <MenuItem href={'/'} onTouchTap={this.go} autoFocus icon={<ActionHome/>}>{'Home'}</MenuItem>
         <MenuItem href={'/users'} onTouchTap={this.go} icon={<SocialPerson/>}>{'Users'}</MenuItem>
@@ -101,15 +109,16 @@ export default class App extends Component {
 
   render() {
     const { mdTheme } = this;
+    const { message, time } = this.state;
     const menu = this.renderMenu();
     return (
       <div className={css.root}>
         <Layout >
           <Toolbar
-            color={mdTheme.primary}
+            mdColor={mdTheme.primary}
           leftElement={<IconButton onTouchTap={this.openDrawer}><NavigationMenu block/></IconButton>}
           >
-            Demo
+            <RaisedButton label={'Meeeeeh'} onTouchTap={this.randomMessage}/>
           </Toolbar>
           <div>
             <MenuButtonDemo />
@@ -122,8 +131,10 @@ export default class App extends Component {
             <IconButtonDemo />
             <MenuDemo />
             <ListDemo />
+            <TextFieldDemo />
           </div>
         </Layout>
+        <SnackBar message={message} time={time}/>
         {menu}
       </div>
     );

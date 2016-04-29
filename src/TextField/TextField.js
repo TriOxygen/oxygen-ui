@@ -17,7 +17,7 @@ class TextField extends Component {
     readOnly: PropTypes.bool,
     dense: PropTypes.bool,
     icon: PropTypes.node,
-    color: PropTypes.string,
+    mdColor: PropTypes.string,
     type: PropTypes.string,
     className: PropTypes.string,
     fullWidth: PropTypes.bool,
@@ -34,7 +34,8 @@ class TextField extends Component {
   };
 
   static contextTypes = {
-    mdTheme: PropTypes.object
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string
   };
 
   state = {
@@ -93,32 +94,27 @@ class TextField extends Component {
     }
   }
 
-  getPlaceholderStyle() {
-    const { mdTheme } = this.context;
-    return Object.assign({}, {
-      color: mdTheme.text.disabled
-    });
-  }
-
-  getUnderlineStyle(active = false) {
-    const { mdTheme } = this.context;
-    const { color, errorText } = this.props;
-    const colors = mdTheme.colors[color || mdTheme.primary];
-    const { focused } = this.state;
-    return Object.assign({
-      borderColor: active && focused ? colors[500].hex : errorText ? Colors.material.red[500].hex : theme.text.disabled,
-      transform: focused? 'scaleX(1)' : null,
-    });
-  }
-
-  getLabelStyle() {
-    const { mdTheme } = this.context;
-    const { color } = this.props;
-    const colors = mdTheme.colors[color || mdTheme.primary];
+  getStyles() {
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const { mdColor, errorText } = this.props;
+    const colors = mdTheme.colors[mdColor || contextColor || mdTheme.primary];
     const { focused, value } = this.state;
-    return Object.assign({
-      color: ( focused && !value) ? colors[500].text.secondary : mdTheme.text.secondary,
-    });
+    return {
+      placeholder: {
+        color: mdTheme.text.disabled
+      },
+      underline: {
+        borderColor: errorText ? Colors.material.red[500].hex : mdTheme.text.disabled,
+        transform: focused? 'scaleX(1)' : null,
+      },
+      underlineActive: {
+        borderColor: focused ? colors[500].hex : errorText ? Colors.material.red[500].hex : mdTheme.text.disabled,
+        transform: focused? 'scaleX(1)' : null,
+      },
+      label: {
+        color: ( focused && !value) ? colors[500].hex : mdTheme.text.secondary,
+      }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -195,11 +191,12 @@ class TextField extends Component {
     } else {
       placeholderText = !value ? placeholder : null;
     }
-    const rootClasses = classNames(styles.root, className, {
-      [styles.fullWidth]: fullWidth,
-      [styles.hasIcon]: icon,
-      [styles.dense]: dense,
-      [styles.hasFloatingLabel]: floatingLabelText,
+    const styles = this.getStyles();
+    const rootClasses = classNames(css.root, className, {
+      [css.fullWidth]: fullWidth,
+      [css.hasIcon]: icon,
+      [css.dense]: dense,
+      [css.hasFloatingLabel]: floatingLabelText,
     });
     const placeHolderClasses = classNames(placeHolderStyles.root, {
       [placeHolderStyles.hasFloatingLabel]: floatingLabelText,
@@ -212,20 +209,20 @@ class TextField extends Component {
       const labelClasses = classNames(labelStyles.root, {
         [labelStyles.focus]: focused || value
       });
-      floatingLabelEl = <label className={labelClasses} style={this.getLabelStyle()} onTouchTap={this.focus}>{floatingLabelText}</label>;
+      floatingLabelEl = <label className={labelClasses} style={styles.label} onTouchTap={this.focus}>{floatingLabelText}</label>;
     }
     return (
       <div className={rootClasses} onTouchTap={onTouchTap}>
-        {icon && <div className={styles.iconContainer}>{icon}</div>}
+        {icon && <div className={css.iconContainer}>{icon}</div>}
         <div className={placeHolderClasses}>
-          <span className={placeHolderStyles.text} style={this.getPlaceholderStyle()}>{placeholderText}</span>
+          <span className={placeHolderStyles.text} style={styles.placeholder}>{placeholderText}</span>
           {this.renderInputElement(other)}
-          {floatingLabelText && <hr className={underlineStyles.root} style={this.getUnderlineStyle()}/>}
-          {floatingLabelText && <hr className={underlineClasses} style={this.getUnderlineStyle(true)}/>}
+          {floatingLabelText && <hr className={underlineStyles.root} style={styles.underLine}/>}
+          {floatingLabelText && <hr className={underlineClasses} style={styles.underlineActive}/>}
           {floatingLabelEl}
           {children}
         </div>
-        {errorText && <div className={styles.errorText}>{errorText}</div>}
+        {errorText && <div className={css.errorText}>{errorText}</div>}
       </div>
     );
   }
@@ -233,7 +230,7 @@ class TextField extends Component {
 
 export default TextField;
 
-const styles = oxygenCss({
+const css = oxygenCss({
   root: {
     '&fullWidth': {
       display: 'block',

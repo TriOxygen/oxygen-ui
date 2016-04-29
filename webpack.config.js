@@ -23,8 +23,6 @@ var babelConfig = JSON.parse(fs.readFileSync(path.resolve('.babelrc')));
 // };
 
 
-console.log([path.join(__dirname, '..', 'src'), path.join(__dirname, 'app')]);
-
 module.exports = {
   cache: true,
   devtool: 'cheap-module-source-map',

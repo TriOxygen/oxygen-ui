@@ -16,16 +16,18 @@ class Radio extends Component {
     left: PropTypes.bool,
     checked: PropTypes.bool,
     disabled: PropTypes.bool,
-    theme: PropTypes.string,
+    mdColor: PropTypes.string,
+    defaultColor: PropTypes.string,
     onTouchTap: PropTypes.func
   };
 
   static defaultProps = {
-    color: 'teal'
+    defaultColor: 'teal'
   };
 
   static contextTypes = {
-    mdTheme: PropTypes.object
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string
   };
 
   state = {
@@ -53,20 +55,16 @@ class Radio extends Component {
   }
 
   getStyles() {
-    const { mdTheme } = this.context;
-    const { color, checked } = this.props;
-    const colors = mdTheme.colors[color];
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const { mdColor, checked } = this.props;
+    const colors = mdTheme.colors[mdColor || contextColor || this.props.defaultColor];
     return {
-      borderColor: colors[500].hex
-    };
-  }
-
-  getCheckStyles() {
-    const { mdTheme } = this.context;
-    const { color, checked } = this.props;
-    const colors = mdTheme.colors[color];
-    return {
-      backgroundColor: colors[500].hex
+      root: {
+        borderColor: colors[500].hex
+      },
+      check: {
+        backgroundColor: colors[500].hex
+      }
     };
   }
 
@@ -82,22 +80,22 @@ class Radio extends Component {
     const classes = classNames(radioStyles.border, {
       [radioStyles.active]: active,
       [radioStyles.checked]: checked,
-      [radioStyles.disabled]: disabled,
     });
 
+    const styles = this.getStyles();
     return (
       <div
         disabled={disabled}
         onKeyPress={this.handleKeyPress.bind(this)}
         onFocus={this.handleFocus.bind(this)}
         onBlur={this.handleBlur.bind(this)}
-        className={classNames(radioStyles.root, { [radioStyles.left]: left, [radioStyles.fullWidth]: fullWidth })}
+        className={classNames(radioStyles.root, { [radioStyles.left]: left, [radioStyles.fullWidth]: fullWidth, [radioStyles.disabled]: disabled, })}
         tabIndex={tabIndex}
         onTouchTap={this.handleTouchTap.bind(this)}
       >
         {left ? label : null}
-        <div className={classes} style={this.getStyles()}>
-          <span className={radioStyles.check} style={this.getCheckStyles()}/>
+        <div className={classes} style={styles.root}>
+          <span className={radioStyles.check} style={styles.check}/>
         </div>
         {!left ? label : null}
       </div>
@@ -113,6 +111,10 @@ const radioStyles = oxygenCss({
     cursor: 'pointer',
     padding: Units.phone.gutter.mini / 4,
     position: 'relative',
+    '&disabled': {
+      opacity: 0.25,
+      cursor: 'default'
+    },
     '&fullWidth': {
       display: 'block',
     },
@@ -140,10 +142,6 @@ const radioStyles = oxygenCss({
     verticalAlign: 'middle',
     '&active': {
       boxShadow: '0 0 10px rgba(255 , 255, 0, 1)',
-    },
-    '&disabled': {
-      opacity: 0.25,
-      cursor: 'default'
     },
     '&checked': {
       borderColor: Colors.material.teal[500].hex,

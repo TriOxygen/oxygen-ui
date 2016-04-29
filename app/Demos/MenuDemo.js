@@ -22,7 +22,7 @@ class FlatButtonDemo extends Component {
     return (
       <Paper className={demoStyles.container} fullWidth={false}>
         <DialogTitle>Menu</DialogTitle>
-        <Menu color={'yellow'}>
+        <Menu mdColor={'yellow'}>
           <MenuItem icon={<ContentClear/>} dense>Test</MenuItem>
           <MenuItem active icon={<ActionAccessibility/>} dense>Test</MenuItem>
           <MenuItem icon={<ActionAccountBalance/>} dense>Test</MenuItem>

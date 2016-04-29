@@ -22,7 +22,7 @@ class FlatButtonDemo extends Component {
     return (
       <Paper className={demoStyles.container} fullWidth={false}>
         <DialogTitle>List</DialogTitle>
-        <List color={'blue'}>
+        <List mdColor={'blue'}>
           <ListItem icon={<ContentClear/>} dense>Test</ListItem>
           <ListItem active icon={<ActionAccessibility/>} dense>Test</ListItem>
           <ListItem icon={<ActionAccountBalance/>} dense>Test</ListItem>

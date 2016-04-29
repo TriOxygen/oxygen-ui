@@ -18,17 +18,24 @@ class FlatButtonDemo extends Component {
         <DialogTitle>Flat buttons</DialogTitle>
         <ButtonContainer>
           <FlatButton label='Flat' />
-          <FlatButton color={mdTheme.primary} label='Primary' />
-          <FlatButton color={mdTheme.secondary} label='Secondary' />
-          <FlatButton color={mdTheme.tertiary} label='Tertiary' />
+          <FlatButton mdColor={mdTheme.primary} label='Primary' />
+          <FlatButton mdColor={mdTheme.secondary} label='Secondary' />
+          <FlatButton mdColor={mdTheme.tertiary} label='Tertiary' />
           <FlatButton disabled label='Flat disabled' />
         </ButtonContainer>
         <ButtonContainer>
           <FlatButton dense label='Flat' />
-          <FlatButton dense color={mdTheme.primary} label='Primary' />
-          <FlatButton dense color={mdTheme.secondary} label='Secondary' />
-          <FlatButton dense color={mdTheme.tertiary} label='Tertiary' />
+          <FlatButton dense mdColor={mdTheme.primary} label='Primary' />
+          <FlatButton dense mdColor={mdTheme.secondary} label='Secondary' />
+          <FlatButton dense mdColor={mdTheme.tertiary} label='Tertiary' />
           <FlatButton dense disabled label='Flat disabled' />
+        </ButtonContainer>
+        <ButtonContainer mdColor={'purple'}>
+          <FlatButton dense label='These' />
+          <FlatButton dense label='Get' />
+          <FlatButton dense label='Color' />
+          <FlatButton dense label='From' />
+          <FlatButton dense disabled label='Container' />
         </ButtonContainer>
       </Paper>
     );
