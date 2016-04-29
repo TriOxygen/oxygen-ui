@@ -48,6 +48,7 @@ export Drawer from './Drawer/Drawer';
 export DrawerHeader from './Drawer/DrawerHeader';
 
 export TextField from './TextField/TextField';
+export SearchBar from './TextField/SearchBar';
 export EnhancedTextArea from './TextField/EnhancedTextArea';
 // export CircularProgress from './CircularProgress';
 
