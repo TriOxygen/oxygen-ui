@@ -65,6 +65,14 @@ export default class App extends Component {
     mdTheme: PropTypes.object,
   };
 
+  getStyle() {
+    const { mdTheme } = this;
+    return {
+      backgroundColor: mdTheme.theme.background.hex,
+      color: mdTheme.text.default,
+    };
+  }
+
   constructor() {
     super(...arguments);
     this.mdTheme = new Theme('red', 'blue', 'grey', 'light');
@@ -112,7 +120,7 @@ export default class App extends Component {
     const { message, time } = this.state;
     const menu = this.renderMenu();
     return (
-      <div className={css.root}>
+      <div className={css.root} style={this.getStyle()}>
         <Layout >
           <Toolbar
             mdColor={mdTheme.primary}

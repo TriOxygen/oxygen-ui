@@ -26,7 +26,7 @@ class FlatButtonDemo extends Component {
           <TextField placeholder='Neatly Divided'/>
           <Divider />
           <TextField placeholder='Neatly Divided'/>
-w        </List>
+        </List>
       </Paper>
     );
   }

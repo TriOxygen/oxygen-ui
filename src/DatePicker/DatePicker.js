@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Motion, spring } from 'react-motion';
 import DatePickerContainer from './DatePickerContainer';
-import TextField from '../TextField';
+import TextField from '../TextField/TextField';
 
 export default class DatePicker extends Component {
 

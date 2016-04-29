@@ -20,7 +20,7 @@ class FlatButtonDemo extends Component {
   render() {
     const { mdTheme } = this.context;
     return (
-      <Paper className={demoStyles.container} fullWidth={false}>
+      <Paper className={demoStyles.container} fullWidth={false} style={{ width: 320 }}>
         <DialogTitle>Menu</DialogTitle>
         <Menu mdColor={'yellow'}>
           <MenuItem icon={<ContentClear/>} dense>Test</MenuItem>
