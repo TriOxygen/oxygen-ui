@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import TextField from 'TextField/TextField';
+import TextField from './TextField';
 import Paper from '../Paper';
 import { Shadow } from '../Styles';
 import classNames from 'classnames';
