@@ -1,4 +1,4 @@
 node_modules
 tmp
-dist
+dist/bundle.js
 npm-debug.log

@@ -2,7 +2,6 @@ src
 .gitignore
 .babelrc
 app
-dist
 server.js
 webpack.config.js
 index.html
