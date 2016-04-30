@@ -114,6 +114,7 @@ class FlatButton extends Component {
       disabled,
       style: this.getButtonStyles(),
       ...other,
+      tabIndex: 0,
       onKeyPress: this.handleKeyPress,
       onTouchTap: this.handleTouchTap,
       onClick: this.handleClick,
@@ -122,7 +123,7 @@ class FlatButton extends Component {
       onMouseEnter: this.handleMouseEnter,
       onMouseLeave: this.handleMouseLeave,
     };
-    const containerElement = link ? (disabled ? 'span' : 'a') : 'button';
+    const containerElement = link ? (disabled ? 'span' : 'a') : 'div';
     return React.createElement(containerElement, props, ink, children, label);
   }
 
@@ -142,6 +143,7 @@ const styles = oxygenCss({
     userSelect: 'none',
     backgroundColor: 'transparent',
     textTransform: 'uppercase',
+    textAlign: 'center',
     outline: 'none',
     tapHighlightColor: 'transparent',
     transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',

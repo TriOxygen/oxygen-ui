@@ -48,7 +48,6 @@ const styles = oxygenCss({
 });
 
 class ListItem extends Component {
-  static displayName = 'ListItem';
 
   static propTypes = {
     payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
