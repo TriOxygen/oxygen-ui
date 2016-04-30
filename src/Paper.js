@@ -44,7 +44,8 @@ class Paper extends Component {
       },
       colors && !transparent ? {
         backgroundColor: colors[500].hex,
-        color: colors[500].text.default
+        color: colors[500].text.default,
+        boxShadow: hover ? Shadow[zDepth + 1] : Shadow[zDepth]
       } : null,
       style);
   }
@@ -59,7 +60,7 @@ class Paper extends Component {
 
   render() {
     const { children, spaced, fullWidth, padded, rounded, className, hover, ...other } = this.props;
-    const classes = classNames(className, styles.root, {
+    const classes = classNames(styles.root, className, {
       [styles.fullWidth]: fullWidth,
       [styles.spaced]: spaced,
       [styles.padded]: padded,
@@ -90,6 +91,7 @@ const styles = oxygenCss({
     transition: 'box-shadow 450ms cubic-bezier(0.23, 1, 0.32, 1)',
     display: 'inline-block',
     verticalAlign: 'top',
+    position: 'relative',
     '&fullWidth': {
       display: 'block',
       flexGrow: 1

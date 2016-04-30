@@ -28,6 +28,7 @@ import {
   MenuDemo,
   ListDemo,
   TextFieldDemo,
+  BottomBarDemo,
 } from './Demos';
 
 
@@ -157,6 +158,7 @@ export default class App extends Component {
             <MenuDemo />
             <ListDemo />
             <TextFieldDemo />
+            <BottomBarDemo />
             <Paper fullWidth={false} style={{ width: 320, height: 320}}>
               <VerticalCenter>
                 <Spinner />

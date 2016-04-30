@@ -4,7 +4,7 @@ import Portal from '../Portal';
 
 const { snackBar } = Colors;
 
-export default class SnackBar extends Component {
+export default class SnackBarContainer extends Component {
 
   static propTypes = {
     message: PropTypes.string,
