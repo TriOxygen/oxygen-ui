@@ -37,6 +37,9 @@ class FlatButtonDemo extends Component {
           <FlatButton dense label='From' />
           <FlatButton dense disabled label='Container' />
         </ButtonContainer>
+        <ButtonContainer>
+          <FlatButton fullWidth label='Full width' />
+        </ButtonContainer>
       </Paper>
     );
   }

@@ -32,6 +32,7 @@ export Toolbar from './Toolbar/Toolbar';
 export ToolbarTitle from './Toolbar/ToolbarTitle';
 
 export SnackBar from './SnackBar/SnackBar';
+export Avatar from './Avatar';
 
 export SelectField from './SelectField';
 export VerticalCenter from './VerticalCenter';
