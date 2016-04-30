@@ -32,7 +32,7 @@ export default class BottomBarContainer extends Component {
     const { children, ...other } = this.props;
 
     return (
-      <Paper zDepth={2} className={css.root} rounded={false} style={this.getStyle()} {...other}>
+      <Paper {...other} zDepth={2} className={css.root} rounded={false} style={this.getStyle()}>
         {children}
       </Paper>
     );

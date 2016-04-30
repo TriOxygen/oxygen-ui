@@ -60,7 +60,7 @@ class Paper extends Component {
 
   render() {
     const { children, spaced, fullWidth, padded, rounded, className, hover, ...other } = this.props;
-    const classes = classNames(styles.root, className, {
+    const classes = classNames(className, styles.root, {
       [styles.fullWidth]: fullWidth,
       [styles.spaced]: spaced,
       [styles.padded]: padded,
@@ -91,7 +91,6 @@ const styles = oxygenCss({
     transition: 'box-shadow 450ms cubic-bezier(0.23, 1, 0.32, 1)',
     display: 'inline-block',
     verticalAlign: 'top',
-    position: 'relative',
     '&fullWidth': {
       display: 'block',
       flexGrow: 1
