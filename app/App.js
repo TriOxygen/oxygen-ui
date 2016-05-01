@@ -146,7 +146,7 @@ export default class App extends Component {
             <RaisedButton label={'Meeeeeh'} onTouchTap={this.randomMessage}/>
             <RaisedButton label={'Dialog'} onTouchTap={() => this.setState({ dialog: true })}/>
           </Toolbar>
-          <div>
+          <div style={{ overflow: 'scroll', height: '100%'}}>
             <MenuButtonDemo />
             <RaisedButtonDemo />
             <FlatButtonDemo />

@@ -29,6 +29,10 @@ class SelectField extends Component {
     this._node = ReactDOM.findDOMNode(this);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('mousewheel', this.handleMenuClose)
+  }
+
   handleClick = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -38,7 +42,8 @@ class SelectField extends Component {
     event.preventDefault();
     event.stopPropagation();
     const { left, top, width } = this._node.getBoundingClientRect();
-    this.setState({ menu: true, left, top, width });
+    window.addEventListener('mousewheel', this.handleMenuClose);
+    this.setState({ menu: true, left: left + document.body.scrollLeft, top: top + document.body.scrollTop, width });
   };
 
   handleMenuClose = () => {

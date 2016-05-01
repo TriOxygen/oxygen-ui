@@ -23,7 +23,7 @@ class BottomBarDemo extends Component {
   render() {
     const { bottomBar } = this.state;
     return (
-      <Paper fullWidth={false} spaced padded style={{ width: 320, height: 320}}>
+      <Paper fullWidth={false} spaced padded style={{ position: 'relative', width: 320, height: 320}}>
         <VerticalCenter>
           <RaisedButton label='Bottombar' onTouchTap={this.bottomBar} />
           <BottomBar open={bottomBar}>
