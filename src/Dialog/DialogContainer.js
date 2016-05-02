@@ -52,7 +52,7 @@ export default class DialogContainer extends Component {
       <Portal dialog>
         <Overlay
           onTouchTap={this.handleTap}
-          key="dialog" onKeyup={this.handleKey}
+          key="dialog"
           style={{ top: `${top}%`, opacity }}
         />
         <Paper

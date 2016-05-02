@@ -24,14 +24,14 @@ class FlatButtonDemo extends Component {
       <Paper className={demoStyles.container} fullWidth={false} style={{ width: 320 }}>
         <DialogTitle>List</DialogTitle>
         <List mdColor={'blue'}>
-          <ListItem icon={<Avatar src='http://lorempixel.com/72/72'/>} >Test</ListItem>
+          <ListItem icon={<Avatar src='https://placekitten.com/72/72'/>} >Test</ListItem>
           <ListItem active icon={<Avatar mdColor='red'>IE</Avatar>}>Test</ListItem>
           <ListItem icon={<Avatar mdColor='red'>C</Avatar>}>Test</ListItem>
           <ListItem divider icon={<Avatar mdColor='red'>A</Avatar>}>Test</ListItem>
           <ListItem dense icon={<ActionAccountBox/>}>Test</ListItem>
           <ListItem dense icon={<ActionAccountBox/>}>Test</ListItem>
         </List>
-        </Paper>
+      </Paper>
     );
   }
 }

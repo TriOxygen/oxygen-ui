@@ -31,8 +31,6 @@ class Toolbar extends Component {
     rightElement: PropTypes.node,
     mdColor: PropTypes.string,
     className: PropTypes.string,
-    onTouchTapLeftIcon: PropTypes.func,
-    onTouchTapRightIcon: PropTypes.func,
   };
 
   static contextTypes = {
@@ -60,20 +58,6 @@ class Toolbar extends Component {
       } : null,
     );
   }
-
-  handleTouchTapLeftIcon = () => {
-    const { onTouchTapLeftIcon } = this.props;
-    if (onTouchTapLeftIcon) {
-      onTouchTapLeftIcon();
-    }
-  };
-
-  handleTouchTapRightIcon = () => {
-    const { onTouchTapRightIcon } = this.props;
-    if (onTouchTapRightIcon) {
-      onTouchTapRightIcon();
-    }
-  };
 
   render() {
     const { children, leftElement, rightElement, className, primary, secondary, ...other } = this.props;

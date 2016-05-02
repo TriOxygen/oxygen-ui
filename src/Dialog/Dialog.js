@@ -33,10 +33,10 @@ export default class Dialog extends Component {
     const { open, children } = this.props;
 
     return (
-      <Motion style={{ y: spring(open ? 100 : 0, { stiffness: 300, damping: 25 }), opacity: spring(open ? 1 : 0), top: open ? 0 : -100 }}>
+      <Motion style={{ y: spring(open ? 100 : 0, { stiffness: 300, damping: 25 }), opacity: spring(open ? 1 : 0)}}>
         {interpolated => {
           if (interpolated.opacity > 0) {
-            return <DialogContainer {...interpolated} onRequestClose={this.handleRequestClose} onRequestOpen={this.handleRequestOpen}>{children}</DialogContainer>;
+            return <DialogContainer {...interpolated} top={open ? 0 : -100} onRequestClose={this.handleRequestClose} onRequestOpen={this.handleRequestOpen}>{children}</DialogContainer>;
           }
           return null;
         }}
