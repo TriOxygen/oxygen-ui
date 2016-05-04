@@ -16,6 +16,7 @@ export Paper from './Paper';
 export Divider from './Divider';
 export Portal from './Portal';
 export Overlay from './Overlay';
+export DropZone from './DropZone';
 
 export Grid from './Grid/Grid';
 export GridCell from './Grid/GridCell';
@@ -26,7 +27,6 @@ export DialogContent from './Dialog/DialogContent';
 export DialogActions from './Dialog/DialogActions';
 
 export DatePicker from './DatePicker/DatePicker';
-
 
 export Toolbar from './Toolbar/Toolbar';
 export ToolbarTitle from './Toolbar/ToolbarTitle';

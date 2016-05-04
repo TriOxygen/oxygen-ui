@@ -16,6 +16,7 @@ import DialogTitle from 'Dialog/DialogTitle';
 import Toolbar from 'Toolbar/Toolbar';
 import Layout from 'Layout';
 import SnackBar from 'SnackBar/SnackBar';
+import DropZone from 'DropZone';
 import {
   CheckboxDemo,
   RadioDemo,
@@ -117,6 +118,10 @@ export default class App extends Component {
     this.setState({ time: Date.now(), message: 'Delete confirmed', dialog: false });
   };
 
+  handleFileUpload = (files, event) => {
+    console.log(files);
+  };
+
   renderMenu() {
     const { drawerPosition } = this.state;
     return (
@@ -164,6 +169,11 @@ export default class App extends Component {
                 <Spinner />
               </VerticalCenter>
             </Paper>
+            <DropZone onDropAccepted={this.handleFileUpload} fullWidth={false} style={{ width: 320, height: 320}}>
+              <VerticalCenter>
+                <p>Drop files here</p>
+              </VerticalCenter>
+            </DropZone>
           </div>
         </Layout>
         <Dialog open={!!dialog} onRequestClose={this.closeDialog}>
