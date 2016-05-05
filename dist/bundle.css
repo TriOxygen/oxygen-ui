@@ -197,6 +197,11 @@
   opacity: 0;
   margin-right: 8px;
 }
+.omd_cA {
+  position: absolute;
+  right: -4px;
+  bottom: -16px;
+}
 .omd_bP {
   position: fixed;
   top: 0px;
@@ -729,9 +734,8 @@
 }
 .omd_bp {
   position: absolute;
-  right: 4px;
-  top: 50%;
-  margin-top: -12px;
+  right: 0px;
+  bottom: -4px;
 }
 .omd_U {
   position: fixed;

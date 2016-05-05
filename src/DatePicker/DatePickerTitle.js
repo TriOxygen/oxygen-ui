@@ -31,10 +31,10 @@ class DatePickerTitle extends Component {
 
   render() {
     const { date, weekDays, months } = this.props;
-    const year = date.getFullYear();
-    const month = months[date.getMonth()];
-    const dayOfTheMonth = date.getDate();
-    const weekDay = weekDays[(date.getDay() + 6) % 7];
+    const year = date && date.getFullYear();
+    const month = date && months[date.getMonth()];
+    const dayOfTheMonth = date && date.getDate();
+    const weekDay = date && weekDays[(date.getDay() + 6) % 7];
 
     return (
       <div style={this.getStyle()}>

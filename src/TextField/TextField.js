@@ -104,11 +104,11 @@ class TextField extends Component {
         color: mdTheme.text.disabled
       },
       underline: {
-        borderColor: errorText ? Colors.material.red[500].hex : mdTheme.text.disabled,
+        borderColor: errorText ? Colors.material.red[500].hex : mdTheme.text.divider,
         transform: focused? 'scaleX(1)' : null,
       },
       underlineActive: {
-        borderColor: focused ? colors[500].hex : errorText ? Colors.material.red[500].hex : mdTheme.text.disabled,
+        borderColor: focused ? colors[500].hex : errorText ? Colors.material.red[500].hex : mdTheme.text.divider,
         transform: focused? 'scaleX(1)' : null,
       },
       label: {
@@ -217,7 +217,7 @@ class TextField extends Component {
         <div className={placeHolderClasses}>
           <span className={placeHolderStyles.text} style={styles.placeholder}>{placeholderText}</span>
           {this.renderInputElement(other)}
-          {floatingLabelText && <hr className={underlineStyles.root} style={styles.underLine}/>}
+          {floatingLabelText && <hr className={underlineStyles.root} style={styles.underline}/>}
           {floatingLabelText && <hr className={underlineClasses} style={styles.underlineActive}/>}
           {floatingLabelEl}
           {children}

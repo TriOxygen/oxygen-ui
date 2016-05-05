@@ -164,12 +164,12 @@ export default class App extends Component {
             <ListDemo />
             <TextFieldDemo />
             <BottomBarDemo />
-            <Paper fullWidth={false} style={{ width: 320, height: 320}}>
+            <Paper padded spaced fullWidth={false} style={{ width: 320, height: 320}}>
               <VerticalCenter>
                 <Spinner />
               </VerticalCenter>
             </Paper>
-            <DropZone onDropAccepted={this.handleFileUpload} fullWidth={false} style={{ width: 320, height: 320}}>
+            <DropZone padded spaced onDropAccepted={this.handleFileUpload} fullWidth={false} style={{ width: 320, height: 320}}>
               <VerticalCenter>
                 <p>Drop files here</p>
               </VerticalCenter>

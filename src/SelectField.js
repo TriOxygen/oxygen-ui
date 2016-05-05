@@ -123,9 +123,8 @@ const css = oxygenCss({
   },
   arrow: {
     position: 'absolute',
-    right: Units.phone.gutter.mini / 2,
-    top: '50%',
-    marginTop: -12
+    right: 0,
+    bottom: `${Units.phone.gutter.mini / -2}px`,
   }
 });
 

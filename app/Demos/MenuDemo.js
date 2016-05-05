@@ -4,6 +4,7 @@ import Menu from 'Menus/Menu';
 import MenuItem from 'Menus/MenuItem';
 import SelectField from 'SelectField';
 import DialogTitle from 'Dialog/DialogTitle';
+import Divider from 'Divider';
 import demoStyles from './demoStyles';
 
 import ContentClear from 'oxygen-md-svg-icons/lib/Content/Clear';
@@ -25,13 +26,19 @@ class FlatButtonDemo extends Component {
         <DialogTitle>Menu</DialogTitle>
         <Menu mdColor={'yellow'}>
           <MenuItem icon={<ContentClear/>} dense>Test</MenuItem>
-          <MenuItem active icon={<ActionAccessibility/>} dense>Test</MenuItem>
+          <MenuItem icon={<ActionAccessibility/>} dense>Test</MenuItem>
           <MenuItem icon={<ActionAccountBalance/>} dense>Test</MenuItem>
           <MenuItem divider icon={<ActionAccountBalanceWallet/>} dense>Test</MenuItem>
           <MenuItem icon={<ActionAccountBox/>} dense>Test</MenuItem>
           <MenuItem icon={<ActionAccountBox/>} dense>Test</MenuItem>
         </Menu>
-
+        <Divider />
+        <SelectField placeholder='Drop down'>
+          <MenuItem label={'Add'} payload="add"/>
+          <MenuItem label={'Locked'} payload="locked"/>
+          <MenuItem label={'Active'} payload="active"/>
+        </SelectField>
+        <Divider />
         <SelectField floatingLabelText='Drop down'>
           <MenuItem label={'Add'} payload="add"/>
           <MenuItem label={'Locked'} payload="locked"/>

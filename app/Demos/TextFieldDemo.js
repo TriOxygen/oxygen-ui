@@ -22,7 +22,7 @@ class FlatButtonDemo extends Component {
           <TextField mdColor={'red'} floatingLabelText='Label' />
           <TextField floatingLabelText='Something with error text' errorText={'No way'}/>
           <DatePicker floatingLabelText='Pick some date' />
-          <DatePicker mdColor={'blue'} floatingLabelText='Pick some date' />
+          <DatePicker mdColor={'blue'} placeholder='Pick some date' />
           <Divider />
           <TextField placeholder='Neatly Divided'/>
           <Divider />

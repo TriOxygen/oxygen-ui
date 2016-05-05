@@ -17,6 +17,7 @@ class IconButton extends Component {
     link: PropTypes.bool,
     href: PropTypes.string,
     onTouchTap: PropTypes.func,
+    payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
   };
 
   state = {
@@ -77,9 +78,9 @@ class IconButton extends Component {
   };
 
   handleTouchTap = (event) => {
-    const { disabled, onTouchTap, href } = this.props;
+    const { disabled, onTouchTap, payload, href } = this.props;
     if (!disabled && onTouchTap) {
-      onTouchTap(href);
+      onTouchTap(payload, href);
       event.preventDefault();
       event.stopPropagation();
     }

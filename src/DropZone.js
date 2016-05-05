@@ -45,7 +45,7 @@ class DropZone extends Component {
     name: PropTypes.string,
   };
 
-  defaultProps = {
+  static defaultProps = {
     disablePreview: false,
     disableClick: false,
     multiple: true
@@ -169,8 +169,7 @@ class DropZone extends Component {
     const classes = classNames(className, css.root, {
       [css.active]: isDragActive,
       [css.reject]: isDragReject
-    })
-
+    });
     return (
       <Paper
         className={classes}

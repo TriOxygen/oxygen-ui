@@ -111,22 +111,23 @@ class Ink extends Component {
       });
     });
   }
+
   touchEvents() {
     if (this.props.hasTouch) {
       return {
-        onTouchStart: this._onPress.bind(this),
-        onTouchEnd: this._onRelease.bind(this),
-        onTouchCancel: this._onRelease.bind(this),
-        onTouchLeave: this._onRelease.bind(this),
-        onMouseDown: this._onPress.bind(this),
-        onMouseUp: this._onRelease.bind(this),
-        onMouseLeave: this._onRelease.bind(this)
+        onTouchStart: this._onPress,
+        onTouchEnd: this._onRelease,
+        onTouchCancel: this._onRelease,
+        onTouchLeave: this._onRelease,
+        onMouseDown: this._onPress,
+        onMouseUp: this._onRelease,
+        onMouseLeave: this._onRelease
       };
     }
     return {
-      onMouseDown: this._onPress.bind(this),
-      onMouseUp: this._onRelease.bind(this),
-      onMouseLeave: this._onRelease.bind(this)
+      onMouseDown: this._onPress,
+      onMouseUp: this._onRelease,
+      onMouseLeave: this._onRelease
     };
   }
 
@@ -146,7 +147,7 @@ class Ink extends Component {
     ctx.restore();
   }
 
-  _onPress(event) {
+  _onPress = (event) => {
     const { button, ctrlKey, clientX, clientY, changedTouches } = event;
     const timeStamp = Date.now();
 
@@ -157,11 +158,11 @@ class Ink extends Component {
     } else if (button === MOUSE_LEFT && !ctrlKey) {
       this.pushBlot(timeStamp, clientX, clientY);
     }
-  }
+  };
 
-  _onRelease() {
+  _onRelease = () => {
     this.state.store.release(Date.now());
-  }
+  };
 
   render() {
     const { density, height, width, touchEvents } = this.state;
