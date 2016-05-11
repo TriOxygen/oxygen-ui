@@ -25,21 +25,22 @@ const styles = oxygenCss({
     overflow: 'hidden',
     cursor: 'pointer',
     boxSizing: 'border-box',
-    lineHeight: `${Units.phone.list.item.height}px`,
-    height: `${Units.phone.list.item.height}px`,
+    // lineHeight: `${Units.phone.list.item.height}px`,
+    // height: `${Units.phone.list.item.height}px`,
     borderStyle: 'none none solid none',
     borderWidth: 1,
     borderColor: 'transparent',
+    padding: Units.phone.list.padding,
     '@desktop': {
-      lineHeight: `${Units.desktop.list.item.height}px`,
-      height: `${Units.desktop.list.item.height}px`,
+      // lineHeight: `${Units.desktop.list.item.height}px`,
+      // height: `${Units.desktop.list.item.height}px`,
     },
     '&dense': {
-      lineHeight: `${Units.phone.list.item.dense.height}px`,
-      height: `${Units.phone.list.item.dense.height}px`,
+      // lineHeight: `${Units.phone.list.item.dense.height}px`,
+      // height: `${Units.phone.list.item.dense.height}px`,
       '@desktop': {
-        lineHeight: `${Units.desktop.list.item.dense.height}px`,
-        height: `${Units.desktop.list.item.dense.height}px`,
+        // lineHeight: `${Units.desktop.list.item.dense.height}px`,
+        // height: `${Units.desktop.list.item.dense.height}px`,
 
       }
     },
@@ -131,8 +132,8 @@ class ListItem extends Component {
       >
         <View className={styles.listItem} row>
           {iconElement}
-          <Ink />
           {children}
+          <Ink />
         </View>
       </div>
     );

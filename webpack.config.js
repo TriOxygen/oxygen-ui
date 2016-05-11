@@ -24,7 +24,7 @@ var babelConfig = JSON.parse(fs.readFileSync(path.resolve('.babelrc')));
 
 
 module.exports = {
-  cache: true,
+  // cache: true,
   devtool: 'cheap-module-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:3002',

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 class EnhancedTextArea extends Component {
   static propTypes = {
+    limited: PropTypes.bool
   };
 
   handleInput = event => {
@@ -36,12 +37,13 @@ class EnhancedTextArea extends Component {
   }
 
   render() {
+    const { limited } = this.props;
     return (
       <div className={css.expandingArea}>
-        <pre className={classNames(css.shared, css.pre)}>
+        <pre className={classNames(css.shared, css.pre, { [css.limited]: limited})}>
           <span ref={span => this._span = span}></span><br />
         </pre>
-        <textarea {...this.props} ref={textarea => this._textarea = textarea} className={classNames(css.shared, css.textarea)}/>
+        <textarea {...this.props} ref={textarea => this._textarea = textarea} className={classNames(css.shared, css.textarea, { [css.limited]: limited})}/>
       </div>
     );
   }
@@ -57,9 +59,11 @@ const css = oxygenCss({
     wordWrap: 'break-word',
     margin: 0,
     padding: 0,
-    maxHeight: 200,
     fontFamily: 'inherit',
     fontSize: 'inherit'
+  },
+  limited: {
+    maxHeight: 200,
   },
   textarea: {
     border: 0,

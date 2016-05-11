@@ -106,7 +106,7 @@ export default class DatePicker extends Component {
     const { open, value } = this.state;
     const { placeholder, fullWidth, type, floatingLabelText, ...other } = this.props;
     const readable = value && this.dateTimeFormat.format(value) || '';
-    const styles = this.getStyles();
+    // const styles = this.getStyles();
 
     return (
       <TextField

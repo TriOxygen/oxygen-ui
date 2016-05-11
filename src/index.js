@@ -38,6 +38,7 @@ export Avatar from './Avatar';
 export SelectField from './SelectField';
 export VerticalCenter from './VerticalCenter';
 export Spinner from './Spinner';
+export SecondaryText from './SecondaryText';
 
 export Card from './Card/Card';
 export CardTitle from './Card/CardTitle';
