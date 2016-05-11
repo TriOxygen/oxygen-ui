@@ -30,7 +30,6 @@ const styles = oxygenCss({
     borderStyle: 'none none solid none',
     borderWidth: 1,
     borderColor: 'transparent',
-    padding: Units.phone.list.padding,
     '@desktop': {
       // lineHeight: `${Units.desktop.list.item.height}px`,
       // height: `${Units.desktop.list.item.height}px`,
@@ -44,7 +43,7 @@ const styles = oxygenCss({
 
       }
     },
-    padding: `0 ${Units.phone.list.item.padding / 2}px`,
+    padding: `${Units.phone.list.padding}px ${Units.phone.list.item.padding / 2}px`,
   },
 });
 
@@ -132,8 +131,8 @@ class ListItem extends Component {
       >
         <View className={styles.listItem} row>
           {iconElement}
-          {children}
           <Ink />
+          {children}
         </View>
       </div>
     );

@@ -2,13 +2,19 @@ import React, { Component, PropTypes } from 'react';
 import { Colors } from './Styles';
 import classNames from 'classnames';
 
-class SecondaryText extends Component {
+class Text extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     fullWidth: PropTypes.bool,
+    primary: PropTypes.bool,
+    secondary: PropTypes.bool,
     padded: PropTypes.bool,
     spaced: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    primary: true,
   };
 
   static contextTypes = {
@@ -16,22 +22,40 @@ class SecondaryText extends Component {
   };
 
   render() {
-    const { padded, spaced, fullWidth, children, className, ...other } = this.props;
+    const {
+      padded,
+      spaced,
+      fullWidth,
+      children,
+      className,
+      primary,
+      secondary,
+      ...other
+    } = this.props;
+
     const { shade } = this.context.mdTheme;
-    const classes = classNames(className, shade === 'light' ? css.dark : css.light, {
-      [css.padded]: padded,
-      [css.fullWidth]: fullWidth,
-      [css.spaced]: spaced
-    });
+    const classes = classNames(
+      className,
+      css.root, shade === 'light' ? css.dark : css.light, {
+        [css.primary]: primary,
+        [css.secondary]: secondary,
+        [css.padded]: padded,
+        [css.fullWidth]: fullWidth,
+        [css.spaced]: spaced
+      }
+    );
     return (
       <p {...other} className={classes}>{children}</p>
     );
   }
 }
 
-export default SecondaryText;
+export default Text;
 
 const css = oxygenCss({
+  root: {
+    margin: `0 0 ${Units.phone.gutter.mini}px 0`
+  },
   fullWidth: {
     display: 'block',
   },
