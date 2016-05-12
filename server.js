@@ -7,7 +7,7 @@ new WebpackDevServer(webpack(config), {
   stats: {
     colors: true
   },
-  noInfo: true,
+  // noInfo: true,
   hot: true,
   historyApiFallback: true
 }).listen(3002, 'localhost', function (err, result) {
