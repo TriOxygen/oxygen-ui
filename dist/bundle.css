@@ -522,6 +522,7 @@
   border-style: none none solid none;
   border-width: 1px;
   border-color: transparent;
+  padding: 8px 8px;
 }
 .omd_bJ.omd_cR {
   padding: 4px;
@@ -726,6 +727,24 @@
 }
 .omd_f.omd_i {
   display: block;
+}
+.omd_cS {
+  margin: 0 0 8px 0;
+}
+.omd_cE {
+  display: block;
+}
+.omd_cF {
+  padding: 4px;
+}
+.omd_cG {
+  margin: 4px;
+}
+.omd_cC {
+  color: rgba(0, 0, 0, 0.54);
+}
+.omd_cD {
+  color: rgba(255, 255, 255, 0.70);
 }
 .omd_bo {
   cursor: pointer;

@@ -30,7 +30,6 @@ const styles = oxygenCss({
     borderStyle: 'none none solid none',
     borderWidth: 1,
     borderColor: 'transparent',
-    // padding: Units.phone.list.padding / 2,
     '@desktop': {
       // lineHeight: `${Units.desktop.list.item.height}px`,
       // height: `${Units.desktop.list.item.height}px`,
@@ -48,6 +47,7 @@ const styles = oxygenCss({
 
       }
     },
+    padding: `${Units.phone.list.padding}px ${Units.phone.list.item.padding / 2}px`,
   },
 });
 
