@@ -64,6 +64,10 @@ class Toggle extends Component {
     }
   }
 
+  getValue() {
+    return this.state.checked;
+  }
+
   render() {
     const { left, fullWidth, label, disabled, rightAlign } = this.props;
     const { checked, active } = this.state;

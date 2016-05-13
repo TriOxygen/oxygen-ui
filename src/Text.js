@@ -36,8 +36,9 @@ class Text extends Component {
     const { shade } = this.context.mdTheme;
     const classes = classNames(
       className,
-      css.root, shade === 'light' ? css.dark : css.light, {
-        [css.primary]: primary,
+      css.root,
+      shade === 'light' ? css.dark : css.light,
+      {
         [css.secondary]: secondary,
         [css.padded]: padded,
         [css.fullWidth]: fullWidth,
@@ -54,7 +55,22 @@ export default Text;
 
 const css = oxygenCss({
   root: {
-    margin: `0 0 ${Units.phone.gutter.mini}px 0`
+    margin: `0 0 ${Units.phone.gutter.mini}px 0`,
+    whiteSpace: 'pre-line',
+    '&dark': {
+      color: Colors.text.dark.default
+    },
+    '&light': {
+      color: Colors.text.light.default
+    },
+    '&secondary': {
+      '&dark': {
+        color: Colors.text.dark.secondary
+      },
+      '&light': {
+        color: Colors.text.light.secondary
+      }
+    },
   },
   fullWidth: {
     display: 'block',
@@ -65,10 +81,4 @@ const css = oxygenCss({
   spaced: {
     margin: Units.phone.gutter.mini / 2,
   },
-  dark: {
-    color: Colors.text.dark.secondary
-  },
-  light: {
-    color: Colors.text.light.secondary
-  }
 });
