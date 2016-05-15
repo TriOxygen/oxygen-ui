@@ -65,12 +65,13 @@ class Heading extends Component {
     display1: PropTypes.bool,
     subheading: PropTypes.bool,
     title: PropTypes.bool,
+    className: PropTypes.string,
   };
 
   render() {
-    const { children, display4, display3, display2, display1, subheading, title } = this.props;
+    const { className, children, display4, display3, display2, display1, subheading, title } = this.props;
 
-    const classes = classNames(css.root, {
+    const classes = classNames(css.root, className, {
       [css.display4]: display4,
       [css.display3]: display3,
       [css.display2]: display2,

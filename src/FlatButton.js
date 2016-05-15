@@ -131,8 +131,6 @@ class FlatButton extends Component {
 
 export default FlatButton;
 
-console.log(Typography.phone.button.lineHeight);
-
 const styles = oxygenCss({
   flatButton: {
     '+flatButton': {

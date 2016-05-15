@@ -32,7 +32,7 @@
 }
 .omd_R {
   display: inline-block;
-  padding: NaNpx;
+  padding: 8px;
 }
 .omd_S {
   display: block;
@@ -291,6 +291,9 @@
   top: 0px;
 }
 .omd_A {
+  padding: 24px;
+}
+.omd_B {
   padding: 24px;
 }
 .omd_bq {
@@ -1260,7 +1263,7 @@
 }
 @media only screen and (min-width: 960px) {
   .omd_R {
-    padding: NaNpx;
+    padding: 8px;
   }
   .omd_bP {
     left: 50%;
