@@ -1,13 +1,13 @@
+import Typography from './Typography';
+
 const keylineIncrement = 64;
 
 const button = {
-  height: 36,
-  width: 64,
-  fontSize: 14,
-  lineHeight: 48,
+  minHeight: 36,
+  minWidth: 64,
   dense: {
-    height: 32,
-    width: 64,
+    minHeight: 32,
+    minWidth: 64,
   }
 };
 

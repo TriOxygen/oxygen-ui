@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import Ink from './Ink';
 import classNames from 'classnames';
-import { Shadow, Units } from './Styles';
+import { Shadow, Typography, Units } from './Styles';
 
 class RaisedButton extends Component {
   static propTypes = {
@@ -116,7 +116,6 @@ const styles = oxygenCss({
     },
     border: 'none',
     display: 'inline-block',
-    fontWeight: 600,
     textAlign: 'center',
     textDecoration: 'none',
     backgroundColor: 'rgba(158, 158, 158, 0.2)',
@@ -130,12 +129,13 @@ const styles = oxygenCss({
     transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
     cursor: 'pointer',
     boxShadow: Shadow[1],
-    minHeight: `${Units.phone.button.height}px`,
-    lineHeight: `${Units.phone.button.height}px`,
+    lineHeight: `${Units.phone.button.minHeight}px`,
+    fontSize: Typography.phone.button.fontSize,
+    fontWeight: Typography.phone.button.fontWeight,
+    minHeight: Units.phone.button.minHeight,
+    minWidth: Units.phone.button.minWidth,
     padding: `0 ${Units.phone.gutter.mini}px`,
     borderRadius: Units.phone.borderRadius,
-    fontSize: `${Units.phone.button.fontSize}px`,
-    minWidth: Units.phone.button.width,
     margin: 'auto 0',
     boxSizing: 'border-box',
     '&disabled': {
@@ -149,19 +149,13 @@ const styles = oxygenCss({
       boxShadow: Shadow[2]
     },
     '@desktop': {
-      minWidth: Units.desktop.button.width,
-      minHeight: `${Units.desktop.button.height}px`,
-      lineHeight: `${Units.desktop.button.height}px`,
-      padding: `0 ${Units.desktop.gutter.mini}px`,
-      borderRadius: Units.desktop.borderRadius,
-      fontSize: `${Units.desktop.button.fontSize}px`,
+      minWidth: Units.desktop.button.minWidth,
+      minHeight: Units.desktop.button.minHeight,
     },
     '&dense': {
-      minHeight: `${Units.phone.button.dense.height}px`,
-      lineHeight: `${Units.phone.button.dense.height}px`,
+      minHeight: Units.phone.button.dense.minHeight,
       '@desktop': {
-        minHeight: `${Units.desktop.button.dense.height}px`,
-        lineHeight: `${Units.desktop.button.dense.height}px`
+        minHeight: Units.desktop.button.dense.minHeight,
       },
     },
     '&fullWidth': {

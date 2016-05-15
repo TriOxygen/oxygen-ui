@@ -1,27 +1,16 @@
 import React, { PropTypes, Component } from 'react';
-import { Typography, Units } from '../Styles';
-import classNames from 'classnames';
+import Heading from '../Heading';
 
 export default class DialogTitle extends Component {
 
   static propTypes = {
     children: PropTypes.node,
-    className: PropTypes.string
   };
 
   render() {
-    const { children, className, ...other } = this.props;
-    const classes = classNames(className, css.title);
+    const { children, ...other } = this.props;
     return (
-      <div className={classes} {...other}>{children}</div>
+      <Heading title {...other}>{children}</Heading>
     );
   }
 }
-
-const css = oxygenCss({
-  title: {
-    padding: Units.phone.gutter.default,
-    fontSize: Typography.phone.title.fontSize,
-    fontWeight: Typography.phone.title.fontWeight,
-  },
-});

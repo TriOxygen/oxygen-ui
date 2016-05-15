@@ -17,6 +17,8 @@ import Toolbar from 'Toolbar/Toolbar';
 import Layout from 'Layout';
 import SnackBar from 'SnackBar/SnackBar';
 import DropZone from 'DropZone';
+import CircularProgress from 'CircularProgress';
+import Group from 'Group';
 import {
   CheckboxDemo,
   RadioDemo,
@@ -68,7 +70,8 @@ export default class App extends Component {
 
   state = {
     drawerPosition: 0,
-    message: null
+    message: null,
+    progress: 50,
   };
 
   static childContextTypes = {
@@ -86,6 +89,12 @@ export default class App extends Component {
   constructor() {
     super(...arguments);
     this.mdTheme = new Theme('red', 'blue', 'grey', 'light');
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ progress: Math.random() * 100 });
+    }, 1000);
   }
 
   getChildContext() {
@@ -139,7 +148,7 @@ export default class App extends Component {
 
   render() {
     const { mdTheme } = this;
-    const { message, time, dialog } = this.state;
+    const { message, time, dialog, progress } = this.state;
     const menu = this.renderMenu();
     return (
       <div className={css.root} style={this.getStyle()}>
@@ -165,9 +174,12 @@ export default class App extends Component {
             <TextFieldDemo />
             <BottomBarDemo />
             <Paper padded spaced fullWidth={false} style={{ width: 320, height: 320}}>
-              <VerticalCenter>
-                <Spinner />
-              </VerticalCenter>
+              <Group mdColor={'orange'} >
+                <VerticalCenter>
+                  <Spinner />
+                  <CircularProgress progress={progress} strokeWidth={4} />
+                </VerticalCenter>
+              </Group>
             </Paper>
             <DropZone padded spaced onDropAccepted={this.handleFileUpload} fullWidth={false} style={{ width: 320, height: 320}}>
               <VerticalCenter>

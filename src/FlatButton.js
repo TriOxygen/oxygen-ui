@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import Ink from './Ink';
-import { Units } from './Styles';
+import { Units, Typography } from './Styles';
 import classNames from 'classnames';
 
 class FlatButton extends Component {
@@ -131,6 +131,8 @@ class FlatButton extends Component {
 
 export default FlatButton;
 
+console.log(Typography.phone.button.lineHeight);
+
 const styles = oxygenCss({
   flatButton: {
     '+flatButton': {
@@ -138,7 +140,6 @@ const styles = oxygenCss({
     },
     border: 'none',
     display: 'inline-block',
-    fontWeight: 500,
     color: 'inherit',
     userSelect: 'none',
     backgroundColor: 'transparent',
@@ -149,33 +150,29 @@ const styles = oxygenCss({
     transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
     overflow: 'hidden',
     cursor: 'pointer',
-    minHeight: `${Units.phone.button.height}px`,
-    lineHeight: `${Units.phone.button.height}px`,
+    lineHeight: `${Units.phone.button.minHeight}px`,
+    fontSize: Typography.phone.button.fontSize,
+    fontWeight: Typography.phone.button.fontWeight,
+    minHeight: Units.phone.button.minHeight,
+    minWidth: Units.phone.button.minWidth,
     padding: `0 ${Units.phone.gutter.mini}px`,
     borderRadius: Units.phone.borderRadius,
-    fontSize: `${Units.phone.button.fontSize}px`,
     position: 'relative',
     margin: 'auto 0',
-        // margin: `0 ${Units.phone.gutter.mini}px`,
-    minWidth: Units.phone.button.width,
+    minWidth: Units.phone.button.minWidth,
     '@desktop': {
-      // margin: `0 ${Units.desktop.gutter.mini}px`,
-      minWidth: Units.desktop.button.width,
-      minHeight: `${Units.desktop.button.height}px`,
-      lineHeight: `${Units.desktop.button.height}px`,
-      padding: `0 ${Units.desktop.gutter.mini}px`,
-      borderRadius: Units.desktop.borderRadius,
-      fontSize: `${Units.desktop.button.fontSize}px`,
+      minWidth: Units.desktop.button.minWidth,
+      minHeight: Units.desktop.button.minHeight,
     },
     '&disabled': {
       cursor: 'default'
     },
     '&dense': {
-      minHeight: `${Units.phone.button.dense.height}px`,
-      lineHeight: `${Units.phone.button.dense.height}px`,
+      lineHeight: `${Units.phone.button.dense.minHeight}px`,
+      minHeight: Units.phone.button.dense.minHeight,
       '@desktop': {
-        minHeight: `${Units.desktop.button.dense.height}px`,
-        lineHeight: `${Units.desktop.button.dense.height}px`
+        lineHeight: `${Units.desktop.button.dense.minHeight}px`,
+        minHeight: Units.desktop.button.dense.minHeight,
       },
     },
     '&fullWidth': {

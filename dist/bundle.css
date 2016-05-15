@@ -32,7 +32,7 @@
 }
 .omd_R {
   display: inline-block;
-  padding: 6px;
+  padding: NaNpx;
 }
 .omd_S {
   display: block;
@@ -67,7 +67,7 @@
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.87);
   margin: 8px 0 ;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
 }
 .omd_b8 {
   padding: 0px;
@@ -120,7 +120,7 @@
 .omd_cd {
   padding: 24px;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
 }
 .omd_be {
   -webkit-user-select: none;
@@ -197,6 +197,19 @@
   opacity: 0;
   margin-right: 8px;
 }
+.omd_cT {
+  position: relative;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.omd_cU {
+  fill: none;
+  -webkit-transition: stroke-dashoffset .25s ease-in-out;
+  transition: stroke-dashoffset .25s ease-in-out;
+}
+.omd_cV {
+  fill: none;
+}
 .omd_cA {
   position: absolute;
   right: -4px;
@@ -263,7 +276,7 @@
 }
 .omd_bY {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
   margin: 0px;
   padding: 0 16px 16px 16px;
 }
@@ -279,11 +292,6 @@
 }
 .omd_A {
   padding: 24px;
-}
-.omd_B {
-  padding: 24px;
-  font-size: 20px;
-  font-weight: 700;
 }
 .omd_bq {
   height: 1px;
@@ -301,15 +309,16 @@
       -ms-user-select: none;
           user-select: none;
   box-sizing: border-box;
-  padding: 0 8px;
+  padding: 8px;
   height: 56px;
-  line-height: 56px;
+  line-height: 40px;
 }
 .omd_cv {
   position: relative;
   border-style: dashed;
   border-width: 2px;
   border-color: #DDD;
+  cursor: pointer;
 }
 .omd_cv.omd_cx {
   border-style: solid;
@@ -325,7 +334,6 @@
 .omd_j {
   border: none;
   display: inline-block;
-  font-weight: 500;
   color: inherit;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -340,14 +348,15 @@
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   overflow: hidden;
   cursor: pointer;
-  min-height: 36px;
   line-height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 36px;
+  min-width: 64px;
   padding: 0 8px;
   border-radius: 2px;
-  font-size: 14px;
   position: relative;
   margin: auto 0;
-  min-width: 64px;
 }
 .omd_j + .omd_j {
   margin-left: 8px;
@@ -356,8 +365,8 @@
   cursor: default;
 }
 .omd_j.omd_l {
-  min-height: 32px;
   line-height: 32px;
+  min-height: 32px;
 }
 .omd_j.omd_m {
   display: block;
@@ -382,7 +391,7 @@
   overflow: hidden;
   margin: 0px;
   padding: 0px;
-  font-size: 14px;
+  font-size: undefinedpx;
   cursor: pointer;
   width: 56px;
   height: 56px;
@@ -450,6 +459,57 @@
   -webkit-align-self: center;
       -ms-flex-item-align: center;
           align-self: center;
+}
+.omd_cW {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
+  letter-spacing: 0px;
+}
+.omd_cX {
+  margin: 0 0 14px 0;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0px;
+}
+.omd_cY {
+  margin: 0 0 14px 0;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: 0px;
+}
+.omd_cZ {
+  margin: 0 0 14px 0;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 84px;
+  letter-spacing: 0.05px;
+}
+.omd_c0 {
+  margin: 0 0 14px 0;
+  font-size: 112px;
+  font-weight: 300;
+  line-height: 128px;
+  letter-spacing: 0.1px;
+}
+.omd_c1 {
+}
+.omd_c2 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+.omd_c3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.05px;
 }
 .omd_b {
   position: relative;
@@ -681,7 +741,6 @@
 .omd_f {
   border: none;
   display: inline-block;
-  font-weight: 600;
   text-align: center;
   text-decoration: none;
   background-color: rgba(158, 158, 158, 0.2);
@@ -699,12 +758,13 @@
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   cursor: pointer;
   box-shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12);
-  min-height: 36px;
   line-height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 36px;
+  min-width: 64px;
   padding: 0 8px;
   border-radius: 2px;
-  font-size: 14px;
-  min-width: 64px;
   margin: auto 0;
   box-sizing: border-box;
 }
@@ -723,7 +783,6 @@
 }
 .omd_f.omd_h {
   min-height: 32px;
-  line-height: 32px;
 }
 .omd_f.omd_i {
   display: block;
@@ -1201,7 +1260,7 @@
 }
 @media only screen and (min-width: 960px) {
   .omd_R {
-    padding: 6px;
+    padding: NaNpx;
   }
   .omd_bP {
     left: 50%;
@@ -1214,21 +1273,17 @@
     width: 640px;
   }
   .omd_w {
-    padding: 0 8px;
+    padding: 8px;
     height: 56px;
-    line-height: 56px;
+    line-height: 40px;
   }
   .omd_j.omd_l {
-    min-height: 32px;
     line-height: 32px;
+    min-height: 32px;
   }
   .omd_j {
     min-width: 64px;
     min-height: 36px;
-    line-height: 36px;
-    padding: 0 8px;
-    border-radius: 2px;
-    font-size: 14px;
   }
   .omd_b.omd_d {
     width: 36px;
@@ -1258,15 +1313,10 @@
   }
   .omd_f.omd_h {
     min-height: 32px;
-    line-height: 32px;
   }
   .omd_f {
     min-width: 64px;
     min-height: 36px;
-    line-height: 36px;
-    padding: 0 8px;
-    border-radius: 2px;
-    font-size: 14px;
   }
   .omd_C {
     padding: 0 8px;
