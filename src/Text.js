@@ -7,14 +7,12 @@ class Text extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     fullWidth: PropTypes.bool,
-    primary: PropTypes.bool,
     secondary: PropTypes.bool,
     padded: PropTypes.bool,
     spaced: PropTypes.bool,
   };
 
   static defaultProps = {
-    primary: true,
   };
 
   static contextTypes = {
@@ -28,7 +26,6 @@ class Text extends Component {
       fullWidth,
       children,
       className,
-      primary,
       secondary,
       ...other
     } = this.props;

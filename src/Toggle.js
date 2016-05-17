@@ -47,6 +47,10 @@ class Toggle extends Component {
     this.setState({ active: false });
   }
 
+  getValue() {
+    return this.state.checked;
+  }
+
   handleKeyPress(e) {
     if (e.keyCode === 0 || e.keyCode === 32 || e.keyCode == 13) {
       this.handleTouchTap();

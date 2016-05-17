@@ -34,6 +34,10 @@ const styles = oxygenCss({
       // lineHeight: `${Units.desktop.list.item.height}px`,
       // height: `${Units.desktop.list.item.height}px`,
     },
+    '&padded': {
+      padding: Units.phone.list.padding / 2,
+
+    },
     '&dense': {
       // lineHeight: `${Units.phone.list.item.dense.height}px`,
       // height: `${Units.phone.list.item.dense.height}px`,
@@ -52,6 +56,7 @@ class ListItem extends Component {
   static propTypes = {
     payload: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
     mdColor: PropTypes.string,
+    padded: PropTypes.bool,
     style: PropTypes.object,
     dense: PropTypes.bool,
     active: PropTypes.bool,
@@ -59,6 +64,10 @@ class ListItem extends Component {
     icon: PropTypes.node,
     children: PropTypes.node,
     onTouchTap: PropTypes.func
+  };
+
+  static defaultProps = {
+    padded: true,
   };
 
   static contextTypes = {
@@ -112,12 +121,13 @@ class ListItem extends Component {
 
 
   render() {
-    const { dense, children, icon, style, onTouchTap, ...other } = this.props;
+    const { dense, padded, children, icon, style, onTouchTap, ...other } = this.props;
     let iconElement;
     if (icon) {
       iconElement = React.cloneElement(icon, { className: styles.icon });
     }
     const rootClasses = classNames(styles.root, {
+      [styles.padded]: padded,
       [styles.dense]: dense
     });
     return (
