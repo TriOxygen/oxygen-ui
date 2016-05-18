@@ -32,7 +32,7 @@
 }
 .omd_e {
   display: inline-block;
-  padding: 6px;
+  padding: 8px;
 }
 .omd_f {
   display: block;
@@ -67,7 +67,7 @@
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.87);
   margin: 8px 0 ;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
 }
 .omd_n {
   padding: 0px;
@@ -120,7 +120,7 @@
 .omd_u {
   padding: 24px;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
 }
 .omd_v {
   -webkit-user-select: none;
@@ -197,6 +197,29 @@
   opacity: 0;
   margin-right: 8px;
 }
+.omd_cJ {
+  position: relative;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.omd_cK {
+  fill: none;
+  -webkit-transition: stroke-dashoffset .25s ease-in-out;
+  transition: stroke-dashoffset .25s ease-in-out;
+}
+.omd_cL {
+  fill: none;
+}
+.omd_c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  box-sizing: border-box;
+}
 .omd_E {
   position: absolute;
   right: -4px;
@@ -263,7 +286,7 @@
 }
 .omd_O {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
   margin: 0px;
   padding: 0 16px 16px 16px;
 }
@@ -282,8 +305,6 @@
 }
 .omd_S {
   padding: 24px;
-  font-size: 20px;
-  font-weight: 700;
 }
 .omd_T {
   height: 1px;
@@ -301,15 +322,16 @@
       -ms-user-select: none;
           user-select: none;
   box-sizing: border-box;
-  padding: 0 8px;
+  padding: 8px;
   height: 56px;
-  line-height: 56px;
+  line-height: 40px;
 }
 .omd_W {
   position: relative;
   border-style: dashed;
   border-width: 2px;
   border-color: #DDD;
+  cursor: pointer;
 }
 .omd_W.omd_X {
   border-style: solid;
@@ -325,7 +347,6 @@
 .omd_0 {
   border: none;
   display: inline-block;
-  font-weight: 500;
   color: inherit;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -340,14 +361,15 @@
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   overflow: hidden;
   cursor: pointer;
-  min-height: 36px;
   line-height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 36px;
+  min-width: 64px;
   padding: 0 8px;
   border-radius: 2px;
-  font-size: 14px;
   position: relative;
   margin: auto 0;
-  min-width: 64px;
 }
 .omd_0 + .omd_0 {
   margin-left: 8px;
@@ -356,8 +378,8 @@
   cursor: default;
 }
 .omd_0.omd_2 {
-  min-height: 32px;
   line-height: 32px;
+  min-height: 32px;
 }
 .omd_0.omd_3 {
   display: block;
@@ -382,7 +404,7 @@
   overflow: hidden;
   margin: 0px;
   padding: 0px;
-  font-size: 14px;
+  font-size: undefinedpx;
   cursor: pointer;
   width: 56px;
   height: 56px;
@@ -450,6 +472,71 @@
   -webkit-align-self: center;
       -ms-flex-item-align: center;
           align-self: center;
+}
+.omd_cM {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
+  letter-spacing: 0px;
+}
+.omd_cM.omd_cU {
+  margin: 0 0 10px 0;
+}
+.omd_cN {
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0px;
+}
+.omd_cN.omd_cU {
+  margin: 0 0 14px 0;
+}
+.omd_cO {
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: 0px;
+}
+.omd_cO.omd_cU {
+  margin: 0 0 14px 0;
+}
+.omd_cP {
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 84px;
+  letter-spacing: 0.05px;
+}
+.omd_cP.omd_cU {
+  margin: 0 0 14px 0;
+}
+.omd_cQ {
+  font-size: 112px;
+  font-weight: 300;
+  line-height: 128px;
+  letter-spacing: 0.1px;
+}
+.omd_cQ.omd_cU {
+  margin: 0 0 14px 0;
+}
+.omd_cR {
+}
+.omd_cS {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+.omd_cS.omd_cU {
+  margin: 0 0 10px 0;
+}
+.omd_cT {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0.05px;
+}
+.omd_cT.omd_cU {
+  margin: 0 0 10px 0;
 }
 .omd_bf {
   position: relative;
@@ -520,6 +607,7 @@
   cursor: pointer;
   box-sizing: border-box;
   border-style: none none solid none;
+  min-height: 56px;
   border-width: 1px;
   border-color: transparent;
   padding: 8px 8px;
@@ -681,7 +769,6 @@
 .omd_bM {
   border: none;
   display: inline-block;
-  font-weight: 600;
   text-align: center;
   text-decoration: none;
   background-color: rgba(158, 158, 158, 0.2);
@@ -699,12 +786,13 @@
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   cursor: pointer;
   box-shadow: 0 1px 6px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.12);
-  min-height: 36px;
   line-height: 36px;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 36px;
+  min-width: 64px;
   padding: 0 8px;
   border-radius: 2px;
-  font-size: 14px;
-  min-width: 64px;
   margin: auto 0;
   box-sizing: border-box;
 }
@@ -723,7 +811,6 @@
 }
 .omd_bM.omd_bO {
   min-height: 32px;
-  line-height: 32px;
 }
 .omd_bM.omd_bP {
   display: block;
@@ -1110,7 +1197,7 @@
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.omd_cy {
+.omd_cY {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -1125,9 +1212,20 @@
   height: 56px;
   z-index: 1;
 }
+.omd_cY.omd_cZ {
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  position: absolute;
+}
+.omd_cY.omd_c0 {
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  position: fixed;
+}
 .omd_cz {
-  font-size: 16px;
-  font-weight: 400;
+  padding: 0 8px;
 }
 .omd_cA {
   display: -webkit-box;
@@ -1182,7 +1280,7 @@
 }
 @media only screen and (min-width: 960px) {
   .omd_e {
-    padding: 6px;
+    padding: 8px;
   }
   .omd_F {
     left: 50%;
@@ -1195,21 +1293,17 @@
     width: 640px;
   }
   .omd_V {
-    padding: 0 8px;
+    padding: 8px;
     height: 56px;
-    line-height: 56px;
+    line-height: 40px;
   }
   .omd_0.omd_2 {
-    min-height: 32px;
     line-height: 32px;
+    min-height: 32px;
   }
   .omd_0 {
     min-width: 64px;
     min-height: 36px;
-    line-height: 36px;
-    padding: 0 8px;
-    border-radius: 2px;
-    font-size: 14px;
   }
   .omd_bf.omd_bh {
     width: 36px;
@@ -1239,17 +1333,12 @@
   }
   .omd_bM.omd_bO {
     min-height: 32px;
-    line-height: 32px;
   }
   .omd_bM {
     min-width: 64px;
     min-height: 36px;
-    line-height: 36px;
-    padding: 0 8px;
-    border-radius: 2px;
-    font-size: 14px;
   }
-  .omd_cy {
+  .omd_cY {
     padding: 0 8px;
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 56px;

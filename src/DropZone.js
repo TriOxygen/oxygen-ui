@@ -13,6 +13,7 @@ const css = oxygenCss({
     borderStyle: 'dashed',
     borderWidth: 2,
     borderColor: '#DDD',
+    cursor: 'pointer',
     '&active': {
       borderStyle: 'solid',
       borderColor: '#CFC',

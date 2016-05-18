@@ -15,7 +15,8 @@ export default class Portal extends Component {
     menu: PropTypes.bool
   };
 
-  componentWillMount() {
+
+  setup() {
     const { style, className, menu, positioned, dialog, tooltip } = this.props;
     this.node = document.createElement('div');
     this.node.className = classNames(className, css.root, {
@@ -27,6 +28,18 @@ export default class Portal extends Component {
     document.body.appendChild(this.node);
     CSSPropertyOperations.setValueForStyles(this.node, style);
     this.renderPortal(this.props);
+  }
+
+  componentDidMount() {
+    if (!document) {
+      this.setup();
+    }
+  }
+
+  componentWillMount() {
+    if (document) {
+      this.setup();
+    }
   }
 
   componentWillReceiveProps(nextProps) {

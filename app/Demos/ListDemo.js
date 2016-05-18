@@ -27,13 +27,8 @@ class FlatButtonDemo extends Component {
         <List mdColor={'blue'}>
           <ListItem divider icon={<Avatar src='https://placekitten.com/72/72'/>} >Test</ListItem>
           <ListItem divider icon={<Avatar mdColor='red'>IE</Avatar>}>Test</ListItem>
-<<<<<<< HEAD
           <ListItem divider icon={<Avatar mdColor='red'>C</Avatar>}><div><Text primary>Test</Text><Text secondary>Secondary text</Text></div></ListItem>
           <ListItem divider divider icon={<Avatar mdColor='red'>A</Avatar>}>Test</ListItem>
-=======
-          <ListItem divider icon={<Avatar mdColor='red'>C</Avatar>}><div><Text>Test</Text><Text secondary>Secondary text</Text></div></ListItem>
-          <ListItem divider icon={<Avatar mdColor='red'>A</Avatar>}>Test</ListItem>
->>>>>>> 94f44af2d77d026539c18f451b0360d96b312382
           <ListItem divider dense icon={<ActionAccountBox/>}>Test</ListItem>
           <ListItem divider dense icon={<ActionAccountBox/>}>Test</ListItem>
         </List>

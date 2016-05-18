@@ -28,6 +28,7 @@ const styles = oxygenCss({
     // lineHeight: `${Units.phone.list.item.height}px`,
     // height: `${Units.phone.list.item.height}px`,
     borderStyle: 'none none solid none',
+    minHeight: `${Units.phone.list.item.height}px`,
     borderWidth: 1,
     borderColor: 'transparent',
     '@desktop': {

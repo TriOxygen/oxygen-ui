@@ -48,9 +48,9 @@ export default ButtonContainer;
 const styles = oxygenCss({
   root: {
     display: 'inline-block',
-    padding: `${(Units.phone.button.lineHeight - Units.phone.button.height) / 2}px`,
+    padding: Units.phone.gutter.mini,
     '@desktop': {
-      padding: `${(Units.desktop.button.lineHeight - Units.desktop.button.height) / 2}px`,
+      padding: Units.phone.gutter.mini,
     }
     // padding: `${Units.gutter.mini}px 0`,
   },

@@ -1,132 +1,94 @@
-import React, { PropTypes, Component} from 'react';
+import React, { PropTypes, Component } from 'react';
+import { Units } from './Styles';
+import shallowCompare from 'react-addons-shallow-compare';
 
-const styles = {
+const css = oxygenCss({
   root: {
-    display: 'inline-block',
-    verticalAlign: ' middle'
-  }
-};
+    position: 'relative',
+    transform: 'rotate(-90deg)'
+  },
+  fg: {
+    fill: 'none',
+    transition: 'stroke-dashoffset .25s ease-in-out'
+  },
+  bg: {
+    fill: 'none'
+  },
+});
 
 export default class CircularProgress extends Component {
-  static displayName = 'CircularProgress';
-
-  static propTypes = {
+  static propTypes= {
     children: PropTypes.node,
-    theme: PropTypes.object,
+    strokeWidth: PropTypes.number,
     size: PropTypes.number,
-    startDegree: PropTypes.number,
-    endDegree: PropTypes.number,
-    progressWidth: PropTypes.number,
-    trackWidth: PropTypes.number,
-    cornersWidth: PropTypes.number,
     progress: PropTypes.number,
-    fillColor: PropTypes.string,
-    trackColor: PropTypes.string,
-    progressColor: PropTypes.string
-  };
-
-  static contextTypes = {
-    theme: PropTypes.object
+    backgroundColor: PropTypes.string,
+    mdColor: PropTypes.string
   };
 
   static defaultProps = {
-    fillColor: 'transparent',
-    startDegree: 0,
-    progress: 0,
-    progressWidth: 4,
-    trackWidth: 3.9,
-    cornersWidth: 2,
-    size: 1
+    backgroundColor: '#DDDDDD',
+    size: Units.phone.keylineIncrement,
+    progress: 50,
+    strokeWidth: 4,
   };
 
+  static contextTypes = {
+    mdTheme: PropTypes.object,
+    mdColor: PropTypes.string
+  };
 
-  getPoint(size, radius, degree) {
-    const distance = degree / 180 * Math.PI;
-
-    return {
-      x: radius * Math.sin(distance) + size / 2,
-      y: this.props.trackWidth / 2 + radius * (1 - Math.cos(distance))
-    };
+  shouldComponentUpdate(nextProps) {
+    return shallowCompare(this, nextProps);
   }
 
   render() {
-    const theme = this.context.theme || this.props.theme;
-    const {units} = theme;
-    const {children, startDegree} = this.props;
-    const size = this.props.size * units.keylineIncrement;
-    let { progress } = this.props;
-
-    const innerRadius = size / 2 - this.props.trackWidth / 2;
-    const endDegree = startDegree + progress * 360 / 100;
-    const start = this.getPoint(size, innerRadius, this.props.startDegree);
-    const end = this.getPoint(size, innerRadius, endDegree);
-    if (progress > 100) {
-      progress = 0;
-    } else if (progress < 0) {
-      progress = 0;
-    }
-    let progressPath = null;
-    if (progress < 50) {
-      progressPath = `M ${start.x} ${start.y} A ${innerRadius} ${innerRadius}, 0, 0, 1, ${end.x},${end.y}`;
-    } else {
-      const middle = this.getPoint(size, innerRadius, startDegree + 180);
-      progressPath =
-        `M ${start.x} ${start.y} A ${innerRadius} ${innerRadius}, 0, 0, 1, ${middle.x},${middle.y}
-        M ${middle.x} ${middle.y} A ${innerRadius} ${innerRadius}, 0, 0, 1, ${end.x},${end.y}`;
-    }
-
-    const trackColor = this.props.trackColor || theme.text.divider;
-    const progressColor = this.props.progressColor || theme.primary[500].material;
-
-    const progressStyle = {
-      strokeWidth: this.props.progressWidth,
-      stroke: progressColor,
-      fill: 'none'
-    };
-
-    const trackStyle = {
-      fill: this.props.fillColor,
-      stroke: trackColor,
-      strokeWidth: this.props.trackWidth
-    };
-
-    let text;
-    if (this.props.progress > 0 ) {
-      text = <text x={size / 2} y={size / 2} fontSize={size / 4} fill={theme.text.default} textAnchor="middle" style={{alignmentBaseline: 'middle'}}>{Math.round(progress)}</text>;
-    }
+    const {
+      strokeWidth,
+      size,
+      progress,
+      backgroundColor,
+      mdColor
+    } = this.props;
+    const radius = size / 2;
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const colors = mdTheme.colors[mdColor || contextColor];
+    const foregroundColor = colors && colors[500].hex || mdTheme.colors[mdTheme.primary][500].hex;
+    const innerRadius = radius - strokeWidth / 2;
+    const viewBox = `0 0 ${size} ${size}`;
+    const dashArray = innerRadius * Math.PI * 2;
+    const dashOffset = dashArray - dashArray * progress / 100;
 
     return (
-      <svg style={styles.root} {...this.props} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+      <svg
+        className={css.root}
+        width={size}
+        height={size}
+        viewBox={viewBox}
+      >
         <circle
-          cx={size / 2}
-          cy={size / 2}
+          className={css.bg}
+          style= {{
+            stroke: backgroundColor,
+          }}
+          cx={radius}
+          cy={radius}
           r={innerRadius}
-          style={trackStyle}
+          strokeWidth={`${strokeWidth}px`}
         />
-
-        {progress > 0 ?
-        <path
-          d={progressPath}
-          style={progressStyle}
-        /> : null}
-
-        {progress > 0 ?
         <circle
-          cx={start.x}
-          cy={start.y}
-          r={this.props.cornersWidth}
-          fill={progressColor}
-        /> : null}
-
-        {progress > 0 ?
-        <circle
-          cx={end.x}
-          cy={end.y}
-          r={this.props.cornersWidth}
-          fill={progressColor}
-        /> : null}
-        {text}
-        {children}
+          className={css.fg}
+          cx={radius}
+          cy={radius}
+          r={innerRadius}
+          strokeLinecap="round"
+          strokeWidth={`${strokeWidth}px`}
+          style={{
+            stroke: foregroundColor,
+            strokeDasharray: dashArray,
+            strokeDashoffset: dashOffset
+          }}
+        />
       </svg>
     );
   }

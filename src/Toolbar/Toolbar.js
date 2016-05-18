@@ -3,7 +3,7 @@ import { Shadow, Units } from '../Styles';
 import View from '../View';
 import classNames from 'classnames';
 
-const styles = oxygenCss({
+const css = oxygenCss({
   root: {
     userSelect: 'none',
     boxSizing: 'border-box',
@@ -12,6 +12,18 @@ const styles = oxygenCss({
     flex: `0 0 ${Units.phone.toolbar.height}px`,
     height: Units.phone.toolbar.height,
     zIndex: 1,
+    '&absolute': {
+      left: 0,
+      right: 0,
+      top: 0,
+      position: 'absolute'
+    },
+    '&fixed': {
+      left: 0,
+      right: 0,
+      top: 0,
+      position: 'fixed'
+    },
     '@desktop': {
       padding: `0 ${Units.desktop.gutter.mini}px`,
       flex: `0 0 ${Units.desktop.toolbar.height}px`,
@@ -24,13 +36,14 @@ class Toolbar extends Component {
   static propTypes = {
     zDepth: PropTypes.number,
     transparent: PropTypes.bool,
-    primary: PropTypes.bool,
-    secondary: PropTypes.bool,
+    absolute: PropTypes.bool,
+    fixed: PropTypes.bool,
     children: PropTypes.node,
     leftElement: PropTypes.node,
     rightElement: PropTypes.node,
     mdColor: PropTypes.string,
     className: PropTypes.string,
+    style: PropTypes.object,
   };
 
   static contextTypes = {
@@ -43,9 +56,8 @@ class Toolbar extends Component {
 
   getStyle() {
     const { mdTheme } = this.context;
-    const { zDepth, mdColor, transparent } = this.props;
+    const { zDepth, mdColor, style, transparent } = this.props;
     const colors = mdTheme.colors[mdColor];
-
     return Object.assign({},
       transparent ? null : {
         backgroundColor: mdTheme.theme.statusBar.hex,
@@ -56,12 +68,16 @@ class Toolbar extends Component {
         backgroundColor: colors[500].hex,
         color: colors[500].text.default
       } : null,
+      style
     );
   }
 
   render() {
-    const { children, leftElement, rightElement, className, primary, secondary, ...other } = this.props;
-    const classes = classNames(styles.root, className);
+    const { children, leftElement, rightElement, className, absolute, fixed, style, ...other } = this.props;
+    const classes = classNames(css.root, className, {
+      [css.absolute]: absolute,
+      [css.fixed]: fixed,
+    });
     return (
       <View row className={classes} style={this.getStyle()} {...other}>
         {leftElement && <View grow={0} >{leftElement}</View>}

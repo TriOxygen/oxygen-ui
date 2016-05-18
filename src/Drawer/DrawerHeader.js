@@ -48,13 +48,13 @@ const styles = oxygenCss({
   root: {
     userSelect: 'none',
     boxSizing: 'border-box',
-    padding: `0 ${Units.phone.gutter.mini}px`,
+    padding: Units.phone.gutter.mini,
     height: Units.phone.toolbar.height,
-    lineHeight: `${Units.phone.toolbar.height}px`,
+    lineHeight: `${Units.phone.toolbar.height - 2 * Units.phone.gutter.mini}px`,
     '@desktop': {
-      padding: `0 ${Units.desktop.gutter.mini}px`,
+      padding: Units.desktop.gutter.mini,
       height: Units.desktop.toolbar.height,
-      lineHeight: `${Units.desktop.toolbar.height}px`
+      lineHeight: `${Units.desktop.toolbar.height - 2 * Units.desktop.gutter.mini}px`
     }
   }
 });

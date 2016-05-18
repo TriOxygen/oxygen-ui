@@ -17,6 +17,8 @@ import Toolbar from 'Toolbar/Toolbar';
 import Layout from 'Layout';
 import SnackBar from 'SnackBar/SnackBar';
 import DropZone from 'DropZone';
+import CircularProgress from 'CircularProgress';
+import Group from 'Group';
 import {
   CheckboxDemo,
   RadioDemo,
@@ -29,6 +31,8 @@ import {
   MenuDemo,
   ListDemo,
   TextFieldDemo,
+  ContentDemo,
+  FixedContentDemo,
   BottomBarDemo,
 } from './Demos';
 
@@ -68,7 +72,8 @@ export default class App extends Component {
 
   state = {
     drawerPosition: 0,
-    message: null
+    message: null,
+    progress: 50,
   };
 
   static childContextTypes = {
@@ -86,6 +91,12 @@ export default class App extends Component {
   constructor() {
     super(...arguments);
     this.mdTheme = new Theme('red', 'blue', 'grey', 'light');
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ progress: Math.random() * 100 });
+    }, 1000);
   }
 
   getChildContext() {
@@ -125,7 +136,7 @@ export default class App extends Component {
   renderMenu() {
     const { drawerPosition } = this.state;
     return (
-      <Drawer mdColor={'green'} position={drawerPosition} onRequestClose={this.closeDrawer} onRequestOpen={this.openDrawer}>
+      <Drawer position={drawerPosition} onRequestClose={this.closeDrawer} onRequestOpen={this.openDrawer}>
         <DrawerHeader>Header</DrawerHeader>
         <MenuItem href={'/'} onTouchTap={this.go} autoFocus icon={<ActionHome/>}>{'Home'}</MenuItem>
         <MenuItem href={'/users'} onTouchTap={this.go} icon={<SocialPerson/>}>{'Users'}</MenuItem>
@@ -139,14 +150,14 @@ export default class App extends Component {
 
   render() {
     const { mdTheme } = this;
-    const { message, time, dialog } = this.state;
+    const { message, time, dialog, progress } = this.state;
     const menu = this.renderMenu();
     return (
       <div className={css.root} style={this.getStyle()}>
         <Layout >
           <Toolbar
             mdColor={mdTheme.primary}
-          leftElement={<IconButton onTouchTap={this.openDrawer}><NavigationMenu block/></IconButton>}
+            leftElement={<IconButton onTouchTap={this.openDrawer}><NavigationMenu block/></IconButton>}
           >
             <RaisedButton label={'Meeeeeh'} onTouchTap={this.randomMessage}/>
             <RaisedButton label={'Dialog'} onTouchTap={() => this.setState({ dialog: true })}/>
@@ -164,10 +175,15 @@ export default class App extends Component {
             <ListDemo />
             <TextFieldDemo />
             <BottomBarDemo />
+            <ContentDemo />
+            <FixedContentDemo />
             <Paper padded spaced fullWidth={false} style={{ width: 320, height: 320}}>
-              <VerticalCenter>
-                <Spinner />
-              </VerticalCenter>
+              <Group mdColor={'orange'} >
+                <VerticalCenter>
+                  <Spinner />
+                  <CircularProgress progress={progress} strokeWidth={4} />
+                </VerticalCenter>
+              </Group>
             </Paper>
             <DropZone padded spaced onDropAccepted={this.handleFileUpload} fullWidth={false} style={{ width: 320, height: 320}}>
               <VerticalCenter>

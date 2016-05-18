@@ -39,6 +39,9 @@ export SelectField from './SelectField';
 export VerticalCenter from './VerticalCenter';
 export Spinner from './Spinner';
 export Text from './Text';
+export Heading from './Heading';
+
+export Content from './Content/Content';
 
 export Card from './Card/Card';
 export CardTitle from './Card/CardTitle';
@@ -47,13 +50,14 @@ export CardMedia from './Card/CardMedia';
 export CardContent from './Card/CardContent';
 export CardActions from './Card/CardActions';
 
+export Group from './Group';
 export Drawer from './Drawer/Drawer';
 export DrawerHeader from './Drawer/DrawerHeader';
 
 export TextField from './TextField/TextField';
 export SearchBar from './TextField/SearchBar';
 export EnhancedTextArea from './TextField/EnhancedTextArea';
-// export CircularProgress from './CircularProgress';
+export CircularProgress from './CircularProgress';
 
 import * as Menus from './Menus';
 import * as Lists from './Lists';
