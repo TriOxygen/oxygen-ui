@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ContentContainer from './ContentContainer';
 import { Motion, spring } from 'react-motion';
 
-class ContentWithFixedHeader extends Component {
+class Content extends Component {
   static propTypes = {
     children: PropTypes.node,
     Wrapper: PropTypes.func,
@@ -76,4 +76,4 @@ class ContentWithFixedHeader extends Component {
   }
 }
 
-export default ContentWithFixedHeader;
+export default Content;
