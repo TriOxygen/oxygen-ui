@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import CSSPropertyOperations from 'react/lib/CSSPropertyOperations';
+import ExecutionEnvironment from 'exenv';
 import ReactDOM, { unmountComponentAtNode } from 'react-dom';
 import classNames from 'classnames';
 
@@ -31,13 +32,7 @@ export default class Portal extends Component {
   }
 
   componentDidMount() {
-    if (!document) {
-      this.setup();
-    }
-  }
-
-  componentWillMount() {
-    if (document) {
+    if (ExecutionEnvironment.canUseDOM) {
       this.setup();
     }
   }
