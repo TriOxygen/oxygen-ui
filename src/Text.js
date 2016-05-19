@@ -17,11 +17,12 @@ class Text extends Component {
   };
 
   render() {
-    const { padded, spaced, fullWidth, primary, secondary, children, className, ...other } = this.props;
+    const { padded, spaced, fullWidth, secondary, children, className, ...other } = this.props;
     const { shade } = this.context.mdTheme;
     const classes = classNames(
       css.root,
-      className, shade === 'light' ? css.dark : css.light,
+      className,
+      shade === 'light' ? css.dark : css.light,
       {
         [css.secondary]: secondary,
         [css.padded]: padded,
