@@ -23,7 +23,6 @@ const styles = oxygenCss({
     transition: 'background-color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms',
     position: 'relative',
     overflow: 'hidden',
-    cursor: 'pointer',
     boxSizing: 'border-box',
     // lineHeight: `${Units.phone.list.item.height}px`,
     // height: `${Units.phone.list.item.height}px`,
@@ -31,6 +30,9 @@ const styles = oxygenCss({
     minHeight: `${Units.phone.list.item.height}px`,
     borderWidth: 1,
     borderColor: 'transparent',
+    '&interactive': {
+      cursor: 'pointer',
+    },
     '@desktop': {
       // lineHeight: `${Units.desktop.list.item.height}px`,
       // height: `${Units.desktop.list.item.height}px`,
@@ -106,11 +108,17 @@ class ListItem extends Component {
   }
 
   handleMouseEnter() {
-    this.setState({ hover: true });
+    const { onTouchTap } = this.props;
+    if (onTouchTap) {
+      this.setState({ hover: true });
+    }
   }
 
   handleMouseLeave() {
-    this.setState({ hover: false });
+    const { onTouchTap } = this.props;
+    if (onTouchTap) {
+      this.setState({ hover: false });
+    }
   }
 
   handleTouchTap = () => {
@@ -129,6 +137,7 @@ class ListItem extends Component {
     }
     const rootClasses = classNames(styles.root, {
       [styles.padded]: padded,
+      [styles.interactive]: onTouchTap,
       [styles.dense]: dense
     });
     return (
@@ -142,7 +151,7 @@ class ListItem extends Component {
       >
         <View className={styles.listItem} row>
           {iconElement}
-          <Ink />
+          {onTouchTap && <Ink />}
           {children}
         </View>
       </div>
