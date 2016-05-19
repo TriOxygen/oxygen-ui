@@ -41,6 +41,8 @@ export Spinner from './Spinner';
 export Text from './Text';
 export Heading from './Heading';
 
+export Content from './Content/Content';
+
 export Card from './Card/Card';
 export CardTitle from './Card/CardTitle';
 export CardImage from './Card/CardImage';

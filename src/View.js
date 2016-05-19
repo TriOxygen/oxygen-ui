@@ -10,7 +10,10 @@ const styles = oxygenCss({
     flexDirection: 'row',
   },
   middle: {
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+  verticalAlign: {
+    margin: 'auto'
   },
   responsiveRow: {
     flexDirection: 'row',
@@ -60,9 +63,10 @@ export default class View extends Component {
   };
 
   render() {
-    const { className, middle, row, column, children, responsiveRow, ...other } = this.props;
+    const { className, middle, auto, row, column, children, responsiveRow, ...other } = this.props;
     const classes = classNames(className, styles.root, {
       [styles.row]: row,
+      [styles.verticalAlign]: auto,
       [styles.middle]: middle,
       [styles.responsiveRow]: responsiveRow,
       [styles.column]: !row && column

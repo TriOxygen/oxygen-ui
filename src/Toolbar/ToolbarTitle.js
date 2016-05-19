@@ -1,6 +1,12 @@
 import React, { PropTypes, Component } from 'react';
-import { Typography } from '../Styles';
-import classNames from 'classnames';
+import Heading from '../Heading';
+import { Units } from '../Styles';
+
+const css = oxygenCss({
+  title: {
+    padding: `0 ${Units.phone.gutter.mini}px`
+  }
+});
 
 export default class ToolbarTitle extends Component {
 
@@ -11,16 +17,8 @@ export default class ToolbarTitle extends Component {
 
   render() {
     const { children, className, ...other } = this.props;
-    const classes = classNames(className, css.title);
     return (
-      <div className={classes} {...other}>{children}</div>
+      <Heading margin={false} className={css.title} title {...other}>{children}</Heading>
     );
   }
 }
-
-const css = oxygenCss({
-  title: {
-    fontSize: Typography.phone.subheading.fontSize,
-    fontWeight: Typography.phone.subheading.fontWeight,
-  },
-});

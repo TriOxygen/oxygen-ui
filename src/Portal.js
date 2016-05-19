@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import CSSPropertyOperations from 'react/lib/CSSPropertyOperations';
+import ExecutionEnvironment from 'exenv';
 import ReactDOM, { unmountComponentAtNode } from 'react-dom';
 import classNames from 'classnames';
 
@@ -15,7 +16,8 @@ export default class Portal extends Component {
     menu: PropTypes.bool
   };
 
-  componentWillMount() {
+
+  setup() {
     const { style, className, menu, positioned, dialog, tooltip } = this.props;
     this.node = document.createElement('div');
     this.node.className = classNames(className, css.root, {
@@ -27,6 +29,12 @@ export default class Portal extends Component {
     document.body.appendChild(this.node);
     CSSPropertyOperations.setValueForStyles(this.node, style);
     this.renderPortal(this.props);
+  }
+
+  componentDidMount() {
+    if (ExecutionEnvironment.canUseDOM) {
+      this.setup();
+    }
   }
 
   componentWillReceiveProps(nextProps) {

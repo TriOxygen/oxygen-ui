@@ -122,6 +122,9 @@ class TextField extends Component {
     if (typeof value !== 'undefined') {
       this.setState({ value });
     }
+    if (nextProps.defaultValue !== this.props.defaultValue) {
+      this.setState({ value: nextProps.defaultValue });
+    }
   }
 
   getValue() {

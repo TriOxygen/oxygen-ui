@@ -14,16 +14,34 @@ class SelectField extends Component {
     children: PropTypes.node,
     onChange: PropTypes.func,
     theme: PropTypes.object,
+    defaultValue: PropTypes.oneOfType([PropTypes.object, PropTypes.string, PropTypes.bool, PropTypes.number, PropTypes.array]),
     fullWidth: PropTypes.bool,
     placeholder: PropTypes.string
   };
 
-  state = {
-    hover: false,
-    active: false,
-    menu: false,
-    payload: null
-  };
+  constructor() {
+    super(...arguments);
+    const { defaultValue } = this.props;
+    let value;
+    let payload;
+    if (this.props.children.length) {
+      this.props.children.some(child => {
+        if (child.props.payload === defaultValue) {
+          value = child.props.label;
+          payload = child.props.payload;
+          return true;
+        }
+      });
+    }
+    this.state = {
+      value,
+      payload,
+      hover: false,
+      active: false,
+      menu: false,
+    };
+
+  }
 
   componentDidMount() {
     this._node = ReactDOM.findDOMNode(this);
@@ -70,6 +88,15 @@ class SelectField extends Component {
     return this.state.payload;
   }
 
+  renderChildren() {
+    const { payload } = this.state;
+    return React.Children.map(this.props.children, child => {
+      return React.cloneElement(child, {
+        active: payload === child.props.payload,
+      });
+    });
+  }
+
   render() {
     const { left, top, width, menu, value } = this.state;
     const { children, ...other } = this.props;
@@ -103,7 +130,7 @@ class SelectField extends Component {
                       opacity: progress
                     }}
                   >
-                    {children}
+                    {this.renderChildren()}
                   </Menu>
                 </Portal>
               );

@@ -7,6 +7,8 @@ export ToggleDemo from './ToggleDemo';
 export CheckboxDemo from './CheckboxDemo';
 export IconButtonDemo from './IconButtonDemo';
 export MenuDemo from './MenuDemo';
+export ContentDemo from './ContentDemo';
 export ListDemo from './ListDemo';
 export TextFieldDemo from './TextFieldDemo';
 export BottomBarDemo from './BottomBarDemo';
+export FixedContentDemo from './FixedContentDemo';

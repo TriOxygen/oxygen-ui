@@ -33,16 +33,16 @@ class FlatButtonDemo extends Component {
           <MenuItem icon={<ActionAccountBox/>} dense>Test</MenuItem>
         </Menu>
         <Divider />
-        <SelectField placeholder='Drop down'>
-          <MenuItem label={'Add'} payload="add"/>
-          <MenuItem label={'Locked'} payload="locked"/>
-          <MenuItem label={'Active'} payload="active"/>
+        <SelectField defaultValue='locked' placeholder='Drop down'>
+          <MenuItem label={'Adddddd'} payload="add"/>
+          <MenuItem label={'Lockedddddd'} payload="locked"/>
+          <MenuItem label={'Activeeeee'} payload="active"/>
         </SelectField>
         <Divider />
-        <SelectField floatingLabelText='Drop down'>
-          <MenuItem label={'Add'} payload="add"/>
-          <MenuItem label={'Locked'} payload="locked"/>
-          <MenuItem label={'Active'} payload="active"/>
+        <SelectField defaultValue='active' floatingLabelText='Drop down'>
+          <MenuItem label={'Addddddddd'} payload="add"/>
+          <MenuItem label={'Lockedddddd'} payload="locked"/>
+          <MenuItem label={'Activeeeeeee'} payload="active"/>
         </SelectField>
 
         </Paper>

@@ -31,6 +31,8 @@ import {
   MenuDemo,
   ListDemo,
   TextFieldDemo,
+  ContentDemo,
+  FixedContentDemo,
   BottomBarDemo,
 } from './Demos';
 
@@ -134,7 +136,7 @@ export default class App extends Component {
   renderMenu() {
     const { drawerPosition } = this.state;
     return (
-      <Drawer mdColor={'green'} position={drawerPosition} onRequestClose={this.closeDrawer} onRequestOpen={this.openDrawer}>
+      <Drawer position={drawerPosition} onRequestClose={this.closeDrawer} onRequestOpen={this.openDrawer}>
         <DrawerHeader>Header</DrawerHeader>
         <MenuItem href={'/'} onTouchTap={this.go} autoFocus icon={<ActionHome/>}>{'Home'}</MenuItem>
         <MenuItem href={'/users'} onTouchTap={this.go} icon={<SocialPerson/>}>{'Users'}</MenuItem>
@@ -155,7 +157,7 @@ export default class App extends Component {
         <Layout >
           <Toolbar
             mdColor={mdTheme.primary}
-          leftElement={<IconButton onTouchTap={this.openDrawer}><NavigationMenu block/></IconButton>}
+            leftElement={<IconButton onTouchTap={this.openDrawer}><NavigationMenu block/></IconButton>}
           >
             <RaisedButton label={'Meeeeeh'} onTouchTap={this.randomMessage}/>
             <RaisedButton label={'Dialog'} onTouchTap={() => this.setState({ dialog: true })}/>
@@ -173,6 +175,8 @@ export default class App extends Component {
             <ListDemo />
             <TextFieldDemo />
             <BottomBarDemo />
+            <ContentDemo />
+            <FixedContentDemo />
             <Paper padded spaced fullWidth={false} style={{ width: 320, height: 320}}>
               <Group mdColor={'orange'} >
                 <VerticalCenter>

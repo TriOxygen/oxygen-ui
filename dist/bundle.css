@@ -210,6 +210,16 @@
 .omd_cV {
   fill: none;
 }
+.omd_c4 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  box-sizing: border-box;
+}
 .omd_cA {
   position: absolute;
   right: -4px;
@@ -464,55 +474,69 @@
           align-self: center;
 }
 .omd_cW {
-  margin: 0 0 10px 0;
   font-size: 24px;
   font-weight: 300;
   line-height: 32px;
   letter-spacing: 0px;
 }
+.omd_cW.omd_c5 {
+  margin: 0 0 10px 0;
+}
 .omd_cX {
-  margin: 0 0 14px 0;
   font-size: 34px;
   font-weight: 400;
   line-height: 40px;
   letter-spacing: 0px;
 }
-.omd_cY {
+.omd_cX.omd_c5 {
   margin: 0 0 14px 0;
+}
+.omd_cY {
   font-size: 45px;
   font-weight: 400;
   line-height: 48px;
   letter-spacing: 0px;
 }
-.omd_cZ {
+.omd_cY.omd_c5 {
   margin: 0 0 14px 0;
+}
+.omd_cZ {
   font-size: 56px;
   font-weight: 400;
   line-height: 84px;
   letter-spacing: 0.05px;
 }
-.omd_c0 {
+.omd_cZ.omd_c5 {
   margin: 0 0 14px 0;
+}
+.omd_c0 {
   font-size: 112px;
   font-weight: 300;
   line-height: 128px;
   letter-spacing: 0.1px;
 }
+.omd_c0.omd_c5 {
+  margin: 0 0 14px 0;
+}
 .omd_c1 {
 }
 .omd_c2 {
-  margin: 0 0 10px 0;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.1px;
 }
-.omd_c3 {
+.omd_c2.omd_c5 {
   margin: 0 0 10px 0;
+}
+.omd_c3 {
   font-size: 20px;
   font-weight: 300;
   line-height: 28px;
   letter-spacing: 0.05px;
+}
+.omd_c3.omd_c5 {
+  margin: 0 0 10px 0;
 }
 .omd_b {
   position: relative;
@@ -580,12 +604,15 @@
   transition: background-color 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
   box-sizing: border-box;
   border-style: none none solid none;
+  min-height: 56px;
   border-width: 1px;
   border-color: transparent;
   padding: 8px 8px;
+}
+.omd_bJ.omd_c6 {
+  cursor: pointer;
 }
 .omd_bJ.omd_cR {
   padding: 4px;
@@ -790,24 +817,6 @@
 .omd_f.omd_i {
   display: block;
 }
-.omd_cS {
-  margin: 0 0 8px 0;
-}
-.omd_cE {
-  display: block;
-}
-.omd_cF {
-  padding: 4px;
-}
-.omd_cG {
-  margin: 4px;
-}
-.omd_cC {
-  color: rgba(0, 0, 0, 0.54);
-}
-.omd_cD {
-  color: rgba(255, 255, 255, 0.70);
-}
 .omd_bo {
   cursor: pointer;
 }
@@ -945,12 +954,8 @@
   overflow: auto;
 }
 .omd_cJ {
-  padding: 0px;
-  margin: 0px;
+  margin: 0 0 8px 0;
   white-space: pre-line;
-}
-.omd_cJ + .omd_cJ {
-  margin: 8px 0 0 0;
 }
 .omd_cJ.omd_cO {
   color: rgba(0, 0, 0, 0.87);
@@ -969,8 +974,11 @@
 .omd_cK {
   display: block;
 }
+.omd_cL {
+  padding: 4px;
+}
 .omd_cM {
-  margin: 4px 4px 8px 4px;
+  margin: 4px;
 }
 .omd_bL {
   position: relative;
@@ -1191,7 +1199,7 @@
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.omd_C {
+.omd_c7 {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -1206,9 +1214,20 @@
   height: 56px;
   z-index: 1;
 }
+.omd_c7.omd_c8 {
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  position: absolute;
+}
+.omd_c7.omd_c9 {
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  position: fixed;
+}
 .omd_cr {
-  font-size: 16px;
-  font-weight: 400;
+  padding: 0 8px;
 }
 .omd_n {
   display: -webkit-box;
@@ -1246,6 +1265,9 @@
       -ms-flex-align: center;
               -ms-grid-row-align: center;
           align-items: center;
+}
+.omd_c_ {
+  margin: auto;
 }
 .omd_H {
   -webkit-box-orient: horizontal;
@@ -1321,7 +1343,7 @@
     min-width: 64px;
     min-height: 36px;
   }
-  .omd_C {
+  .omd_c7 {
     padding: 0 8px;
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 56px;

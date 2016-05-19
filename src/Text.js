@@ -12,16 +12,28 @@ class Text extends Component {
     spaced: PropTypes.bool,
   };
 
+  static defaultProps = {
+  };
+
   static contextTypes = {
     mdTheme: PropTypes.object
   };
 
   render() {
-    const { padded, spaced, fullWidth, secondary, children, className, ...other } = this.props;
+    const {
+      padded,
+      spaced,
+      fullWidth,
+      children,
+      className,
+      secondary,
+      ...other
+    } = this.props;
+
     const { shade } = this.context.mdTheme;
     const classes = classNames(
-      css.root,
       className,
+      css.root,
       shade === 'light' ? css.dark : css.light,
       {
         [css.secondary]: secondary,
@@ -40,12 +52,8 @@ export default Text;
 
 const css = oxygenCss({
   root: {
-    padding: 0,
-    margin: 0,
+    margin: `0 0 ${Units.phone.gutter.mini}px 0`,
     whiteSpace: 'pre-line',
-    '+root': {
-      margin: `${Units.phone.gutter.mini}px 0 0 0`,
-    },
     '&dark': {
       color: Colors.text.dark.default
     },
@@ -59,12 +67,15 @@ const css = oxygenCss({
       '&light': {
         color: Colors.text.light.secondary
       }
-    }
+    },
   },
   fullWidth: {
     display: 'block',
   },
+  padded: {
+    padding: Units.phone.gutter.mini / 2,
+  },
   spaced: {
-    margin: `${Units.phone.gutter.mini / 2}px ${Units.phone.gutter.mini / 2}px ${Units.phone.gutter.mini}px ${Units.phone.gutter.mini / 2}px`,
+    margin: Units.phone.gutter.mini / 2,
   },
 });
