@@ -15,6 +15,7 @@ class TextField extends Component {
     onBlur: PropTypes.func,
     autoFocus: PropTypes.bool,
     readOnly: PropTypes.bool,
+    multiline: PropTypes.bool,
     dense: PropTypes.bool,
     icon: PropTypes.node,
     mdColor: PropTypes.string,
@@ -156,6 +157,7 @@ class TextField extends Component {
       if (multiline) {
         return (
           <EnhancedTextArea
+            {...props}
             ref="input"
             className={inputStyles.root}
             type={type}
@@ -163,13 +165,13 @@ class TextField extends Component {
             onBlur={this.handleBlur}
             onKeyUp={this.handleKey}
             onFocus={this.handleFocus}
-            {...props}
             value={value}
           />
         );
       }
       return (
         <input
+          {...props}
           ref="input"
           className={inputStyles.root}
           type={type}
@@ -177,7 +179,6 @@ class TextField extends Component {
           onBlur={this.handleBlur}
           onKeyUp={this.handleKey}
           onFocus={this.handleFocus}
-          {...props}
           value={value}
         />
       );

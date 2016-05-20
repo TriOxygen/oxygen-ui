@@ -16,12 +16,14 @@ class Grid extends Component {
 
   static defaultProps = {
     gutter: true,
+    center: true,
   };
 
   render() {
     const { top, gutter, className, bottom, center, children, ...other } = this.props;
     const classes = classNames(css.grid, className, {
       [css.top]: top,
+      [css.center]: center,
       [css.bottom]: bottom,
       [css.gutter]: gutter,
       [css.center]: center,
@@ -44,6 +46,10 @@ export default Grid;
 const css = oxygenCss({
   grid: {
     display: 'flex',
+    '&center':{
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     '&gutter': {
       margin: `${Units.phone.gutter.mini}px`,
     },
@@ -53,9 +59,6 @@ const css = oxygenCss({
     },
     '&bottom': {
       alignItems: 'flex-end',
-    },
-    '&center': {
-      alignItems: 'center',
     },
   }
 });

@@ -78,6 +78,7 @@ class Heading extends Component {
     display2: PropTypes.bool,
     display1: PropTypes.bool,
     subheading: PropTypes.bool,
+    mdColor: PropTypes.string,
     title: PropTypes.bool,
     className: PropTypes.string,
     margin: PropTypes.bool,
@@ -86,6 +87,20 @@ class Heading extends Component {
   static defaultProps = {
     margin: true
   };
+
+  static contextTypes = {
+    mdTheme: PropTypes.object
+  };
+
+  getStyle(theme) {
+    const { mdColor } = this.props;
+    const { mdTheme, mdColor: contextColor } = this.context;
+    const colors = mdTheme.colors[mdColor || contextColor];
+    return Object.assign({}, colors && {
+      backgroundColor: colors[500].hex,
+      color:colors[500].text.default,
+    });
+  }
 
   render() {
     const {
@@ -98,6 +113,7 @@ class Heading extends Component {
       display1,
       subheading,
       title,
+      ...other
     } = this.props;
 
     const classes = classNames(css.root, className, {
@@ -110,7 +126,7 @@ class Heading extends Component {
       [css.title]: title,
     });
     return (
-      <div className={classes}>{children}</div>
+      <div {...other} className={classes} style={this.getStyle()}>{children}</div>
     );
   }
 }

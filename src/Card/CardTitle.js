@@ -6,12 +6,21 @@ export default class CardTitle extends Component {
 
   static propTypes = {
     children: PropTypes.node,
+    padded: PropTypes.bool,
     className: PropTypes.string
   };
 
+  static contextTypes = {
+    mdTheme: PropTypes.object
+  };
+
   render() {
-    const { children, className, ...other } = this.props;
-    const classes = classNames(className, css.title);
+    const { mdTheme } = this.context;
+    const { children, padded, className, ...other } = this.props;
+    const classes = classNames(className, css.title, {
+      [css.dark]: mdTheme.shade === 'dark',
+      [css.padded]: padded
+    });
     return (
       <div className={classes} {...other}>{children}</div>
     );
@@ -20,8 +29,16 @@ export default class CardTitle extends Component {
 
 const css = oxygenCss({
   title: {
-    padding: Units.phone.gutter.default,
-    fontSize: Typography.phone.title.fontSize,
-    fontWeight: Typography.phone.title.fontWeight,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    background: 'rgba(255, 255, 255, 0.5)',
+    '&dark': {
+      background: 'rgba(0, 0, 0, 0.5)',
+    },
+    '&padded': {
+      padding: Units.phone.gutter.mini
+    }
   },
 });

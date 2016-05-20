@@ -50,7 +50,7 @@ class SplitPane extends Component {
     const { hasChild } = this.state;
     const width = this._width;
     return (
-      <Motion style={{ progress: spring(hasChild ? 1 : 0, { stiffness: 300, damping: 25 }) }}>
+      <Motion style={{ progress: spring(hasChild ? 1 : 0, { stiffness: 300, damping: 25, precision: 0.01 }) }}>
         {interpolated => {
           let leftStyle, rightStyle;
           const deficit = ( width - this.props.leftWidth) * interpolated.progress;

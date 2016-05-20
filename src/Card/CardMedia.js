@@ -5,10 +5,12 @@ import { Units, Colors, Typography } from '../Styles';
 export default class CardImage extends Component {
 
   static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string,
   };
 
   render() {
-    const { className, title, subtitle, children, ...other } = this.props;
+    const { className, children, ...other } = this.props;
     const child = React.Children.only(children);
     return (
       <div className={classNames(className, css.container)}>
@@ -26,7 +28,7 @@ const css = oxygenCss({
   container: {
     position: 'relative',
     boxSizing: 'border-box',
-    },
+  },
   mediaHolder: {
     width: '100%',
     paddingBottom: `${9 / 16 * 100}%`,
