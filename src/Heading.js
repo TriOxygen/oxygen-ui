@@ -97,8 +97,8 @@ class Heading extends Component {
     const { mdTheme, mdColor: contextColor } = this.context;
     const colors = mdTheme.colors[mdColor || contextColor];
     return Object.assign({}, colors && {
-      backgroundColor: colors[500].hex,
-      color:colors[500].text.default,
+      backgroundColor: colors[300].hex,
+      color:colors[300].text.default,
     });
   }
 

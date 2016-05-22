@@ -3,17 +3,29 @@ import Paper from './Paper';
 import Heading from './Heading';
 import Divider from './Divider';
 import Collapse from 'react-collapse';
+import View from './View';
+import ContentRemoveCircleOutline from 'oxygen-md-svg-icons/lib/Content/RemoveCircleOutline';
+import ContentAddCircleOutline from 'oxygen-md-svg-icons/lib/Content/AddCircleOutline';
 
 const css = oxygenCss({
-  padded: {
+  heading: {
     padding: `${Units.phone.gutter.mini}px`,
+    cursor: 'pointer',
+    transition: 'ease background 0.45s'
   }
 });
 
 class InputGroup extends Component {
   static propTypes = {
     children: PropTypes.node,
-    title: PropTypes.node
+    isOpened: PropTypes.bool,
+    title: PropTypes.node,
+    closedColor: PropTypes.string,
+  };
+
+  static defaultProps = {
+    isOpened: true,
+    closedColor: 'grey'
   };
 
   static contextTypes = {
@@ -21,7 +33,7 @@ class InputGroup extends Component {
   };
 
   state = {
-    isOpened: false
+    isOpened: this.props.isOpened
   };
 
   toggle = () => {
@@ -30,10 +42,29 @@ class InputGroup extends Component {
 
   render() {
     const { mdTheme } = this.context;
-    const { children, title, ...other } = this.props;
+    const { isOpened } = this.state;
+    const { children, title, closedColor, ...other } = this.props;
+    const mdColor = isOpened && mdTheme.secondary || closedColor;
+    const iconColor = mdTheme.colors[mdColor][300].text.disabled;
     return (
       <Paper spaced {...other}>
-        {typeof title === 'string' ? <Heading onTouchTap={this.toggle} mdColor={mdTheme.secondary} margin={false} className={css.padded} title>{title}</Heading> : title}
+        <Heading
+          onTouchTap={this.toggle}
+          mdColor={mdColor}
+          margin={false}
+          className={css.heading}
+          title
+        >
+          <View>
+            <View grow={1} auto column wrap>
+              {title}
+            </View>
+            <View grow={0} style={{ color: iconColor }}>
+              {isOpened && <ContentRemoveCircleOutline block />}
+              {!isOpened && <ContentAddCircleOutline block />}
+            </View>
+          </View>
+        </Heading>
         <Divider />
         <Collapse isOpened={isOpened}>
           {children}
@@ -44,3 +75,4 @@ class InputGroup extends Component {
 }
 
 export default InputGroup;
+

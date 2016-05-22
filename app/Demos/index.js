@@ -12,3 +12,4 @@ export ListDemo from './ListDemo';
 export TextFieldDemo from './TextFieldDemo';
 export BottomBarDemo from './BottomBarDemo';
 export FixedContentDemo from './FixedContentDemo';
+export InputGroupDemo from './InputGroupDemo';

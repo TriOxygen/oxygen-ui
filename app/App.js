@@ -34,6 +34,7 @@ import {
   ContentDemo,
   FixedContentDemo,
   BottomBarDemo,
+  InputGroupDemo
 } from './Demos';
 
 
@@ -177,6 +178,7 @@ export default class App extends Component {
             <BottomBarDemo />
             <ContentDemo />
             <FixedContentDemo />
+            <InputGroupDemo />
             <Paper padded spaced fullWidth={false} style={{ width: 320, height: 320}}>
               <Group mdColor={'orange'} >
                 <VerticalCenter>
