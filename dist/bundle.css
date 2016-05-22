@@ -599,8 +599,11 @@
   top: 0px;
   width: 100%;
 }
-.omd_dc {
+.omd_dg {
   padding: 8px;
+  cursor: pointer;
+  -webkit-transition: ease background 0.45s;
+  transition: ease background 0.45s;
 }
 .omd_v {
   height: 100%;
