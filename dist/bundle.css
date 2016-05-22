@@ -42,6 +42,8 @@
 }
 .omd_b2 {
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 .omd_b3 {
   cursor: default;
@@ -219,6 +221,12 @@
   position: relative;
   overflow: auto;
   box-sizing: border-box;
+}
+.omd_c- {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 320px;
 }
 .omd_cA {
   position: absolute;

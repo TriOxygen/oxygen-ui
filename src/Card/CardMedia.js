@@ -5,13 +5,15 @@ import { Units, Colors, Typography } from '../Styles';
 export default class CardImage extends Component {
 
   static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string
   };
 
   render() {
-    const { className, title, subtitle, children, ...other } = this.props;
+    const { className, children, ...other } = this.props;
     const child = React.Children.only(children);
     return (
-      <div className={classNames(className, css.container)}>
+      <div className={classNames(className, css.container)} {...other}>
         <div className={css.mediaHolder}>
           <div className={css.media}>
             {React.cloneElement(child, {className: classNames(child.props.className, css.element)})}

@@ -34,5 +34,7 @@ export default Card;
 const css = oxygenCss({
   clickable: {
     cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden'
   },
 })

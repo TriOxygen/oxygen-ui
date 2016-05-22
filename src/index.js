@@ -40,6 +40,7 @@ export VerticalCenter from './VerticalCenter';
 export Spinner from './Spinner';
 export Text from './Text';
 export Heading from './Heading';
+export Cover from './Cover';
 
 export Content from './Content/Content';
 
