@@ -6,6 +6,9 @@ const styles = oxygenCss({
     boxSizing: 'border-box',
     display: 'flex',
   },
+  wrap: {
+    whiteSpace: 'pre-line'
+  },
   row: {
     flexDirection: 'row',
   },
@@ -58,14 +61,16 @@ export default class View extends Component {
     flex: PropTypes.number,
     grow: PropTypes.number,
     shrink: PropTypes.number,
+    wrap: PropTypes.bool,
     responsiveRow: PropTypes.bool,
     width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   };
 
   render() {
-    const { className, middle, auto, row, column, children, responsiveRow, ...other } = this.props;
+    const { className, middle, auto, wrap, row, column, children, responsiveRow, ...other } = this.props;
     const classes = classNames(className, styles.root, {
       [styles.row]: row,
+      [styles.wrap]: wrap,
       [styles.verticalAlign]: auto,
       [styles.middle]: middle,
       [styles.responsiveRow]: responsiveRow,

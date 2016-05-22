@@ -14,6 +14,7 @@ class FlatButton extends Component {
     href: PropTypes.string,
     onTouchTap: PropTypes.func,
     label: PropTypes.string,
+    autoFocus: PropTypes.bool,
     children: PropTypes.node
   };
 
@@ -63,6 +64,14 @@ class FlatButton extends Component {
       event.stopPropagation();
     }
   };
+
+  componentDidMount() {
+    if (this.props.autoFocus) {
+      this._timer = setTimeout(() => {
+        this._input.focus();
+      }, 200);
+    }
+  }
 
   handleClick = (event) => {
     event.preventDefault();
@@ -115,6 +124,7 @@ class FlatButton extends Component {
       style: this.getButtonStyles(),
       ...other,
       tabIndex: 0,
+      ref: input => this._input = input,
       onKeyPress: this.handleKeyPress,
       onTouchTap: this.handleTouchTap,
       onClick: this.handleClick,

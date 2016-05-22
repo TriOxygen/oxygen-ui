@@ -12,6 +12,7 @@ export default class Drawer extends Component {
     right: PropTypes.bool,
     children: PropTypes.node,
     position: PropTypes.number,
+    mdColor: PropTypes.string,
     onRequestClose: PropTypes.func,
     onRequestOpen: PropTypes.func,
   };

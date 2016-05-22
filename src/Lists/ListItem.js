@@ -12,10 +12,16 @@ const styles = oxygenCss({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap'
   },
-  icon: {
+  leftElement: {
     marginRight: `${Units.phone.list.padding}px`,
     '@desktop': {
       marginRight: `${Units.desktop.list.padding}px`
+    }
+  },
+  rightElement: {
+    marginLeft: `${Units.phone.list.padding}px`,
+    '@desktop': {
+      marginLeft: `${Units.desktop.list.padding}px`
     }
   },
   'root': {
@@ -27,7 +33,7 @@ const styles = oxygenCss({
     // lineHeight: `${Units.phone.list.item.height}px`,
     // height: `${Units.phone.list.item.height}px`,
     borderStyle: 'none none solid none',
-    minHeight: `${Units.phone.list.item.height}px`,
+    // minHeight: `${Units.phone.list.item.height}px`,
     borderWidth: 1,
     borderColor: 'transparent',
     '&interactive': {
@@ -50,7 +56,6 @@ const styles = oxygenCss({
 
       }
     },
-    padding: `${Units.phone.list.padding}px ${Units.phone.list.item.padding / 2}px`,
   },
 });
 
@@ -64,7 +69,8 @@ class ListItem extends Component {
     dense: PropTypes.bool,
     active: PropTypes.bool,
     divider: PropTypes.bool,
-    icon: PropTypes.node,
+    leftElement: PropTypes.node,
+    rightElement: PropTypes.node,
     children: PropTypes.node,
     onTouchTap: PropTypes.func
   };
@@ -130,10 +136,14 @@ class ListItem extends Component {
 
 
   render() {
-    const { dense, padded, children, icon, style, onTouchTap, ...other } = this.props;
-    let iconElement;
-    if (icon) {
-      iconElement = React.cloneElement(icon, { className: styles.icon });
+    const { dense, padded, children, leftElement, rightElement, style, onTouchTap, ...other } = this.props;
+    let leftComponent;
+    let rightComponent;
+    if (leftElement) {
+      leftComponent = React.cloneElement(leftElement, { className: styles.leftComponent });
+    }
+    if (rightElement) {
+      rightComponent = <div>{React.cloneElement(rightElement, { className: styles.rightComponent })}</div>;
     }
     const rootClasses = classNames(styles.root, {
       [styles.padded]: padded,
@@ -150,9 +160,10 @@ class ListItem extends Component {
         {...other}
       >
         <View className={styles.listItem} row>
-          {iconElement}
+          {leftElement}
           {onTouchTap && <Ink />}
-          {children}
+          <View grow={1} auto column wrap>{children}</View>
+          {rightElement}
         </View>
       </div>
     );

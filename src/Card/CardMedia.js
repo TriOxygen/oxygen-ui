@@ -28,7 +28,7 @@ const css = oxygenCss({
   container: {
     position: 'relative',
     boxSizing: 'border-box',
-    },
+  },
   mediaHolder: {
     width: '100%',
     paddingBottom: `${9 / 16 * 100}%`,

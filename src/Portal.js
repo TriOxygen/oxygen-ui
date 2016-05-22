@@ -27,7 +27,8 @@ export default class Portal extends Component {
       [css.tooltip]: tooltip
     });
     document.body.appendChild(this.node);
-    CSSPropertyOperations.setValueForStyles(this.node, style);
+    this.node.style = CSSPropertyOperations.createMarkupForStyles(style);
+    // CSSPropertyOperations.setValueForStyles(this.node, style, this);
     this.renderPortal(this.props);
   }
 

@@ -41,6 +41,7 @@ export Spinner from './Spinner';
 export Text from './Text';
 export Heading from './Heading';
 export Cover from './Cover';
+export InputGroup from './InputGroup';
 
 export Content from './Content/Content';
 
@@ -75,3 +76,5 @@ export { ListItem as ListItem };
 export { List as List };
 
 export SplitPane from './SplitPane';
+
+export pureRender from './Utils/pureRender';
