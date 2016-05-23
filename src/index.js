@@ -52,6 +52,8 @@ export CardMedia from './Card/CardMedia';
 export CardContent from './Card/CardContent';
 export CardActions from './Card/CardActions';
 
+export RangeSlider from './RangeSlider';
+export RangeSelector from './RangeSelector';
 export Group from './Group';
 export Drawer from './Drawer/Drawer';
 export DrawerHeader from './Drawer/DrawerHeader';

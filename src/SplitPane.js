@@ -12,6 +12,7 @@ class SplitPane extends Component {
   static propTypes = {
     children: PropTypes.node,
     leftComponent: PropTypes.node,
+    onRest: PropTypes.func,
     leftWidth: PropTypes.number,
   };
 
@@ -41,8 +42,17 @@ class SplitPane extends Component {
 
   handleResize = () => {
     const { width } = this._node.getBoundingClientRect();
+    const { hasChild } = this.state;
+    const { onRest } = this.props;
     this._width = width;
-    this.setState({ hasChild: this.state.hasChild });
+    this.forceUpdate();
+    onRest && onRest(hasChild);
+  }
+
+  handleRest = () => {
+    const { onRest } = this.props;
+    const { hasChild } = this.state;
+    onRest && onRest(hasChild);
   }
 
   render() {
@@ -50,7 +60,7 @@ class SplitPane extends Component {
     const { hasChild } = this.state;
     const width = this._width;
     return (
-      <Motion style={{ progress: spring(hasChild ? 1 : 0, { stiffness: 300, damping: 25, precision: 0.01 }) }}>
+      <Motion onRest={this.handleRest} style={{ progress: spring(hasChild ? 1 : 0, { stiffness: 300, damping: 25, precision: 0.01 }) }}>
         {interpolated => {
           let leftStyle, rightStyle;
           const deficit = ( width - this.props.leftWidth) * interpolated.progress;

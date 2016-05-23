@@ -5,6 +5,7 @@ import DatePicker from 'DatePicker/DatePicker';
 import Divider from 'Divider';
 import List from 'Lists/List';
 import DialogTitle from 'Dialog/DialogTitle';
+import RangeSelector from 'RangeSelector';
 import demoStyles from './demoStyles';
 
 class FlatButtonDemo extends Component {
@@ -15,6 +16,9 @@ class FlatButtonDemo extends Component {
 
   enterPressed(value) {
     console.log(value);
+  }
+
+  handleChange = value => {
   }
 
   render() {
@@ -30,9 +34,7 @@ class FlatButtonDemo extends Component {
           <Divider />
           <TextField onPressEnter={this.enterPressed} placeholder='Neatly Divided'/>
           <Divider />
-          <TextField onPressEnter={this.enterPressed} placeholder='Neatly Divided'/>
-          <Divider />
-          <TextField onPressEnter={this.enterPressed} placeholder='Neatly Divided'/>
+          <RangeSelector label={'Range'} mdColor={mdTheme.primary} defaultValue={0} min={0} max={4}/>
         </List>
       </Paper>
     );

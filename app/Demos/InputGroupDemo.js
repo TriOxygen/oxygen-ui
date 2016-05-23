@@ -29,9 +29,6 @@ class FlatButtonDemo extends Component {
         <Divider />
         <TextField onPressEnter={this.enterPressed} placeholder='Neatly Divided'/>
         <Divider />
-        <TextField onPressEnter={this.enterPressed} placeholder='Neatly Divided'/>
-        <Divider />
-        <TextField onPressEnter={this.enterPressed} placeholder='Neatly Divided'/>
       </InputGroup>
     );
   }
