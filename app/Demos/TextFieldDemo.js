@@ -8,7 +8,7 @@ import DialogTitle from 'Dialog/DialogTitle';
 import RangeSelector from 'RangeSelector';
 import demoStyles from './demoStyles';
 
-class FlatButtonDemo extends Component {
+class TextFieldDemo extends Component {
 
   static contextTypes = {
     mdTheme: PropTypes.object
@@ -24,7 +24,7 @@ class FlatButtonDemo extends Component {
   render() {
     const { mdTheme } = this.context;
     return (
-      <Paper className={demoStyles.container} fullWidth={false} style={{ width: 320 }}>
+      <Paper className={demoStyles.container} fullWidth={false}>
         <DialogTitle>Text fields</DialogTitle>
         <List mdColor={'blue'}>
           <TextField onPressEnter={this.enterPressed} mdColor={'red'} floatingLabelText='Label' />
@@ -34,11 +34,11 @@ class FlatButtonDemo extends Component {
           <Divider />
           <TextField onPressEnter={this.enterPressed} placeholder='Neatly Divided'/>
           <Divider />
-          <RangeSelector label={'Range'} mdColor={mdTheme.primary} defaultValue={0} min={0} max={4}/>
+          <RangeSelector label={'Range'} mdColor={mdTheme.primary} defaultValue={2} min={2} max={100}/>
         </List>
       </Paper>
     );
   }
 }
 
-export default FlatButtonDemo;
+export default TextFieldDemo;

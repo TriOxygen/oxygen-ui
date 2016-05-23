@@ -6,7 +6,7 @@ import DialogTitle from 'Dialog/DialogTitle';
 
 import ContentClear from 'oxygen-md-svg-icons/lib/Content/Clear';
 
-class FloatingActionButtonDemo extends Component {
+class CheckboxDemo extends Component {
 
   static contextTypes = {
     mdTheme: PropTypes.object
@@ -27,4 +27,4 @@ class FloatingActionButtonDemo extends Component {
   }
 }
 
-export default FloatingActionButtonDemo;
+export default CheckboxDemo;
