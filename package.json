@@ -61,6 +61,8 @@
     "exenv": "^1.2.1",
     "react": "^15.1.0",
     "react-addons-shallow-compare": "^15.1.0",
+    "react-collapse": "^2.2.3",
+    "react-height": "^2.1.0",
     "react-motion": "^0.4.3"
   }
 }
