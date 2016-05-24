@@ -13,7 +13,7 @@ import ActionAccountBalance from 'oxygen-md-svg-icons/lib/Action/AccountBalance'
 import ActionAccountBalanceWallet from 'oxygen-md-svg-icons/lib/Action/AccountBalanceWallet';
 import ActionAccountBox from 'oxygen-md-svg-icons/lib/Action/AccountBox';
 
-class FlatButtonDemo extends Component {
+class ListDemo extends Component {
 
   static contextTypes = {
     mdTheme: PropTypes.object
@@ -37,4 +37,4 @@ class FlatButtonDemo extends Component {
   }
 }
 
-export default FlatButtonDemo;
+export default ListDemo;

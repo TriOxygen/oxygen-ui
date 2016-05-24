@@ -119,9 +119,9 @@ class Ink extends Component {
         onTouchEnd: this._onRelease,
         onTouchCancel: this._onRelease,
         onTouchLeave: this._onRelease,
-        onMouseDown: this._onPress,
-        onMouseUp: this._onRelease,
-        onMouseLeave: this._onRelease
+        // onMouseDown: this._onPress,
+        // onMouseUp: this._onRelease,
+        // onMouseLeave: this._onRelease
       };
     }
     return {

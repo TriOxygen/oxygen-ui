@@ -7,7 +7,7 @@ import demoStyles from './demoStyles';
 
 import ContentClear from 'oxygen-md-svg-icons/lib/Content/Clear';
 
-class FlatButtonDemo extends Component {
+class IconButtonDemo extends Component {
 
   static contextTypes = {
     mdTheme: PropTypes.object
@@ -29,4 +29,4 @@ class FlatButtonDemo extends Component {
   }
 }
 
-export default FlatButtonDemo;
+export default IconButtonDemo;

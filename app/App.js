@@ -95,9 +95,9 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
-      this.setState({ progress: Math.random() * 100 });
-    }, 1000);
+    // setInterval(() => {
+    //   this.setState({ progress: Math.random() * 100 });
+    // }, 1000);
   }
 
   getChildContext() {
@@ -163,8 +163,8 @@ export default class App extends Component {
             <RaisedButton label={'Meeeeeh'} onTouchTap={this.randomMessage}/>
             <RaisedButton label={'Dialog'} onTouchTap={() => this.setState({ dialog: true })}/>
           </Toolbar>
-          <div style={{ overflow: 'scroll', height: '100%'}}>
-            <MenuButtonDemo />
+          <MenuButtonDemo />
+          <div style={{ justifyContent: 'center', overflow: 'scroll', height: '100%', display: 'flex', 'flexWrap': 'wrap'}}>
             <RaisedButtonDemo />
             <FlatButtonDemo />
             <FloatingActionButtonDemo />
@@ -174,12 +174,11 @@ export default class App extends Component {
             <IconButtonDemo />
             <MenuDemo />
             <ListDemo />
-            <TextFieldDemo />
             <BottomBarDemo />
             <ContentDemo />
             <FixedContentDemo />
             <InputGroupDemo />
-            <Paper padded spaced fullWidth={false} style={{ width: 320, height: 320}}>
+            <Paper padded spaced fullWidth={false} style={{ width: 320 }}>
               <Group mdColor={'orange'} >
                 <VerticalCenter>
                   <Spinner />
@@ -187,11 +186,12 @@ export default class App extends Component {
                 </VerticalCenter>
               </Group>
             </Paper>
-            <DropZone padded spaced onDropAccepted={this.handleFileUpload} fullWidth={false} style={{ width: 320, height: 320}}>
+            <DropZone padded spaced onDropAccepted={this.handleFileUpload} fullWidth={false} style={{ width: 320}}>
               <VerticalCenter>
                 <p>Drop files here</p>
               </VerticalCenter>
             </DropZone>
+            <TextFieldDemo />
           </div>
         </Layout>
         <Dialog open={!!dialog} onRequestClose={this.closeDialog}>

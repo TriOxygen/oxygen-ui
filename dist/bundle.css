@@ -874,6 +874,8 @@
   height: 12px;
 }
 .omd_c- > .omd_db {
+  -webkit-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
   margin-left: -13px;
   cursor: pointer;
   position: absolute;
@@ -1115,6 +1117,10 @@
   padding-left: 48px;
 }
 .omd_ca.omd_cg .omd_cf {
+}
+.omd_ca.omd_df {
+  border-style: none none solid none;
+  border-width: 1px;
 }
 .omd_cd {
   position: absolute;

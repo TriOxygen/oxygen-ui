@@ -10,7 +10,7 @@ import IconButton from 'IconButton';
 
 import NavigationMenu from 'oxygen-md-svg-icons/lib/Navigation/Menu';
 
-class FloatingActionButtonDemo extends Component {
+class FixedContentDemo extends Component {
 
   static contextTypes = {
     mdTheme: PropTypes.object
@@ -30,11 +30,11 @@ class FloatingActionButtonDemo extends Component {
       </Toolbar>
     );
     return (
-      <Content autoHide header={toolbar} Wrapper={List} style={{ position: 'relative', width: 480, height: 320}} spaced fullWidth={false}>
+      <Content autoHide header={toolbar} Wrapper={List} style={{ position: 'relative', width: 480 }} spaced fullWidth={false}>
         {items}
       </Content>
     );
   }
 }
 
-export default FloatingActionButtonDemo;
+export default FixedContentDemo;

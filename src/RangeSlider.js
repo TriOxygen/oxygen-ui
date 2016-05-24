@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import { Shadow, Colors, Units } from './Styles';
+import { Motion, spring } from 'react-motion';
 import pureRender from './Utils/pureRender';
 
 function capitalize(str) {
@@ -48,6 +49,7 @@ const css = oxygenCss({
       height: 12,
     },
     '>handle': {
+      transform: 'translate3d(0,0,0)',
       marginLeft: -13,
       cursor: 'pointer',
       position: 'absolute',
@@ -116,17 +118,16 @@ class RangeSlider extends Component {
 
 
 
-  getStyles() {
+  getStyles(value) {
     const { mdTheme, mdColor: contextColor } = this.context;
     const { mdColor, defaultColor, orientation, max, min } = this.props;
-    const { value } = this.state;
     const colors = mdTheme.colors[mdColor || contextColor || defaultColor];
 
     const dimension = constants[orientation].dimension;
     const direction = constants[orientation].direction;
 
 
-    const percentage = value / (max - min);
+    const percentage = Math.round( 100 * (value - min) / (max - min) ) / 100;
     return {
       handle: {
         backgroundColor: colors[500].hex,
@@ -183,7 +184,6 @@ class RangeSlider extends Component {
   }
 
   position = (e) => {
-
     const { orientation } = this.props;
     const coordinateStyle = constants[orientation].coordinate;
     const directionStyle = constants[orientation].direction;
@@ -197,26 +197,38 @@ class RangeSlider extends Component {
 
   render() {
     const { orientation, className } = this.props;
-    const styles = this.getStyles();
+    const { value } = this.state;
     const classes = classNames(css.root, css[orientation], className);
     return (
-      <div
-        ref={_slider => this._slider = _slider}
-        className={classes}
-        onMouseDown={this.setPosition}
-        onClick={this.handleNoop}>
-        <div
-          ref={_fill => this._fill = _fill}
-          className={css.fill}
-          style={styles.fill} />
-        <div
-          ref={_handle => this._handle = _handle}
-          className={css.handle}
-          onMouseDown={this.handleKnobMouseDown}
-          onTouchMove={this.handleDrag}
-          onClick={this.handleNoop}
-          style={styles.handle} />
-      </div>
+      <Motion style={{ value: spring(value, { stiffness: 300, damping: 25, precision: 0.01 })}}>
+        {interpolated => {
+          const styles = this.getStyles(interpolated.value);
+          return (
+            <div
+              ref={_slider => this._slider = _slider}
+              className={classes}
+              onMouseDown={this.setPosition}
+              onClick={this.handleNoop}
+            >
+              <div
+                ref={_fill => this._fill = _fill}
+                className={css.fill}
+                style={styles.fill}
+              />
+              <div
+                ref={_handle => this._handle = _handle}
+                className={css.handle}
+                onMouseDown={this.handleKnobMouseDown}
+                onTouchStart={this.handleKnobMouseDown}
+                onTouchMove={this.handleDrag}
+                onTouchEnd={this.handleDragEnd}
+                onClick={this.handleNoop}
+                style={styles.handle}
+              />
+            </div>
+          );
+        }}
+      </Motion>
     );
   }
 

@@ -8,7 +8,7 @@ import List from 'Lists/List';
 import DialogTitle from 'Dialog/DialogTitle';
 import demoStyles from './demoStyles';
 
-class FlatButtonDemo extends Component {
+class InputGroupDemo extends Component {
 
   static contextTypes = {
     mdTheme: PropTypes.object
@@ -34,4 +34,4 @@ class FlatButtonDemo extends Component {
   }
 }
 
-export default FlatButtonDemo;
+export default InputGroupDemo;

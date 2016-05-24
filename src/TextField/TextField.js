@@ -6,7 +6,6 @@ import EnhancedTextArea from './EnhancedTextArea';
 
 const ENTER = 13;
 
-
 class TextField extends Component {
 
   static propTypes = {
@@ -127,8 +126,7 @@ class TextField extends Component {
     const { value } = nextProps;
     if (typeof value !== 'undefined') {
       this.setState({ value });
-    }
-    if (nextProps.defaultValue !== this.props.defaultValue) {
+    } else if (nextProps.defaultValue !== this.props.defaultValue) {
       this.setState({ value: nextProps.defaultValue });
     }
   }

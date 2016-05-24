@@ -40,7 +40,21 @@ class SelectField extends Component {
       active: false,
       menu: false,
     };
+  }
 
+  componentWillReceiveProps(nextProps) {
+    const { children, defaultValue } = this.props;
+    if (nextProps.defaultValue !== defaultValue) {
+      if (children.length) {
+        const selectedChild = children.find(child => child.props.payload === nextProps.defaultValue);
+        if (selectedChild) {
+          this.setState({
+            value: selectedChild.props.label,
+            payload: selectedChild.props.payload
+          });
+        }
+      }
+    }
   }
 
   componentDidMount() {

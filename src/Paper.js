@@ -93,7 +93,7 @@ const styles = oxygenCss({
     verticalAlign: 'top',
     '&fullWidth': {
       display: 'block',
-      flexGrow: 1
+      flexGrow: 1,
     },
     '&padded': {
       padding: Units.phone.gutter.mini,
