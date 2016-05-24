@@ -27,8 +27,8 @@ class FlatButtonDemo extends Component {
       <Paper className={demoStyles.container} fullWidth={false} style={{ width: 320 }}>
         <DialogTitle>Text fields</DialogTitle>
         <List mdColor={'blue'}>
-          <TextField onPressEnter={this.enterPressed} mdColor={'red'} floatingLabelText='Label' />
-          <TextField onPressEnter={this.enterPressed} floatingLabelText='Something with error text' errorText={'No way'}/>
+          <TextField divider onPressEnter={this.enterPressed} mdColor={'red'} floatingLabelText='Label' />
+          <TextField divider onPressEnter={this.enterPressed} floatingLabelText='Something with error text' errorText={'No way'}/>
           <DatePicker floatingLabelText='Pick some date' />
           <DatePicker mdColor={'blue'} placeholder='Pick some date' />
           <Divider />

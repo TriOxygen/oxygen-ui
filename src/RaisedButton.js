@@ -13,6 +13,7 @@ class RaisedButton extends Component {
     link: PropTypes.bool,
     href: PropTypes.string,
     onTouchTap: PropTypes.func,
+    className: PropTypes.string,
     children: PropTypes.node,
     inversed: PropTypes.bool
   };
@@ -87,9 +88,9 @@ class RaisedButton extends Component {
 
   render() {
     const theme = this.props.theme || this.context.theme;
-    const { link, disabled, fullWidth, dense, label, children, ...other } = this.props;
+    const { link, disabled, fullWidth, dense, label, children, className, ...other } = this.props;
     const ink = !disabled && <Ink />;
-    const buttonClasses = classNames(styles.raisedButton, {
+    const buttonClasses = classNames(styles.raisedButton, className, {
       [styles.dense]: dense,
       [styles.disabled]: disabled,
       [styles.fullWidth]: fullWidth

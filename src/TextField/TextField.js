@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import classNames from 'classnames';
 import { Colors, Typography, Units } from '../Styles';
+import Divider from '../Divider';
 import EnhancedTextArea from './EnhancedTextArea';
 
 const ENTER = 13;
@@ -20,6 +21,7 @@ class TextField extends Component {
     icon: PropTypes.node,
     mdColor: PropTypes.string,
     type: PropTypes.string,
+    divider: PropTypes.bool,
     className: PropTypes.string,
     fullWidth: PropTypes.bool,
     floatingLabelText: PropTypes.string,
@@ -101,6 +103,9 @@ class TextField extends Component {
     const colors = mdTheme.colors[mdColor || contextColor || mdTheme.primary];
     const { focused, value } = this.state;
     return {
+      root: {
+        borderColor: mdTheme.text.divider
+      },
       placeholder: {
         color: mdTheme.text.disabled
       },
@@ -186,7 +191,7 @@ class TextField extends Component {
   }
 
   render() {
-    const { placeholder, fullWidth, dense, defaultValue, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
+    const { divider, placeholder, fullWidth, dense, defaultValue, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
     const { focused, value } = this.state;
     let placeholderText;
     let floatingLabelEl;
@@ -197,6 +202,7 @@ class TextField extends Component {
     }
     const styles = this.getStyles();
     const rootClasses = classNames(css.root, className, {
+      [css.divider]: divider,
       [css.fullWidth]: fullWidth,
       [css.hasIcon]: icon,
       [css.dense]: dense,
@@ -216,13 +222,13 @@ class TextField extends Component {
       floatingLabelEl = <label className={labelClasses} style={styles.label} onTouchTap={this.focus}>{floatingLabelText}</label>;
     }
     return (
-      <div className={rootClasses} onTouchTap={onTouchTap}>
+      <div className={rootClasses} onTouchTap={onTouchTap} style={styles.root}>
         {icon && <div className={css.iconContainer}>{icon}</div>}
         <div className={placeHolderClasses}>
           <span className={placeHolderStyles.text} style={styles.placeholder}>{placeholderText}</span>
           {this.renderInputElement(other)}
-          {floatingLabelText && <hr className={underlineStyles.root} style={styles.underline}/>}
-          {floatingLabelText && <hr className={underlineClasses} style={styles.underlineActive}/>}
+          {!divider && floatingLabelText && <hr className={underlineStyles.root} style={styles.underline}/>}
+          {!divider && floatingLabelText && <hr className={underlineClasses} style={styles.underlineActive}/>}
           {floatingLabelEl}
           {children}
         </div>
@@ -266,6 +272,10 @@ const css = oxygenCss({
         // left: 48 + Units.phone.gutter.mini
       }
     },
+    '&divider': {
+      borderStyle: 'none none solid none',
+      borderWidth: 1
+    }
   },
   iconContainer: {
     position: 'absolute',
