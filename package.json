@@ -63,6 +63,7 @@
     "react-addons-shallow-compare": "^15.1.0",
     "react-collapse": "^2.2.3",
     "react-height": "^2.1.0",
-    "react-motion": "^0.4.3"
+    "react-motion": "^0.4.3",
+    "shallowequal": "^0.2.2"
   }
 }

@@ -6,6 +6,7 @@ import Collapse from 'react-collapse';
 import View from './View';
 import ContentRemoveCircleOutline from 'oxygen-md-svg-icons/lib/Content/RemoveCircleOutline';
 import ContentAddCircleOutline from 'oxygen-md-svg-icons/lib/Content/AddCircleOutline';
+import shallowEqual from 'shallowequal';
 
 const css = oxygenCss({
   heading: {
@@ -31,6 +32,11 @@ class InputGroup extends Component {
   static contextTypes = {
     mdTheme: PropTypes.object
   };
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(!shallowEqual(nextState, this.state) || nextProps.isOpened != this.props.isOpened);
+    return !shallowEqual(nextState, this.state) || nextProps.isOpened != this.props.isOpened;
+  }
 
   state = {
     isOpened: this.props.isOpened
