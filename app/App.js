@@ -18,6 +18,7 @@ import Layout from 'Layout';
 import SnackBar from 'SnackBar/SnackBar';
 import DropZone from 'DropZone';
 import CircularProgress from 'CircularProgress';
+import Collapsible from 'Collapsible';
 import Group from 'Group';
 import {
   CheckboxDemo,
@@ -75,6 +76,7 @@ export default class App extends Component {
     drawerPosition: 0,
     message: null,
     progress: 50,
+    collapsibleOpen: false,
   };
 
   static childContextTypes = {
@@ -151,7 +153,7 @@ export default class App extends Component {
 
   render() {
     const { mdTheme } = this;
-    const { message, time, dialog, progress } = this.state;
+    const { message, time, dialog, progress, collapsibleOpen } = this.state;
     const menu = this.renderMenu();
     return (
       <div className={css.root} style={this.getStyle()}>
@@ -164,7 +166,8 @@ export default class App extends Component {
             <RaisedButton label={'Dialog'} onTouchTap={() => this.setState({ dialog: true })}/>
           </Toolbar>
           <MenuButtonDemo />
-          <div style={{ justifyContent: 'center', overflow: 'scroll', height: '100%', display: 'flex', 'flexWrap': 'wrap'}}>
+          <div style={{ overflow: 'scroll', height: '100%', }}>
+          {/*
             <RaisedButtonDemo />
             <FlatButtonDemo />
             <FloatingActionButtonDemo />
@@ -192,6 +195,20 @@ export default class App extends Component {
               </VerticalCenter>
             </DropZone>
             <TextFieldDemo />
+          */}
+            <Paper spaced fullWidth={false} style={{ width: 320 }}>
+              <FlatButton label='Toggle' onTouchTap={() => this.setState({ collapsibleOpen: !this.state.collapsibleOpen })} />
+              <Collapsible open={collapsibleOpen}>
+                1<br />
+                2<br />
+                3<br />
+                4<br />
+                5<br />
+                6<br />
+                7<br />
+                8<br />
+              </Collapsible>
+            </Paper>
           </div>
         </Layout>
         <Dialog open={!!dialog} onRequestClose={this.closeDialog}>
@@ -203,7 +220,7 @@ export default class App extends Component {
           </DialogActions>
         </Dialog>
         <SnackBar message={message} time={time}/>
-        {menu}
+        {}
       </div>
     );
   }

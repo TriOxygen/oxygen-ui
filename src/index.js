@@ -34,6 +34,7 @@ export ToolbarTitle from './Toolbar/ToolbarTitle';
 export SnackBar from './SnackBar/SnackBar';
 export BottomBar from './BottomBar/BottomBar';
 export Avatar from './Avatar';
+export Collapsible from './Collapsible';
 
 export SelectField from './SelectField';
 export VerticalCenter from './VerticalCenter';

@@ -63,13 +63,16 @@ class SplitPane extends Component {
       <Motion onRest={this.handleRest} style={{ progress: spring(hasChild ? 1 : 0, { stiffness: 300, damping: 25, precision: 0.01 }) }}>
         {interpolated => {
           let leftStyle, rightStyle;
-          const deficit = ( width - this.props.leftWidth) * interpolated.progress;
+          const progress = interpolated.progress > 1 ? 1 : interpolated.progress;
+          const rightWidth = width - this.props.leftWidth;
+          const left = Math.round(width - rightWidth * progress);
           if (width) {
             leftStyle = {
-              width: width - deficit
+              width: left
             };
             rightStyle = {
-              width: deficit
+              width: rightWidth,
+              left
             };
           } else {
             if (hasChild) {
@@ -77,20 +80,22 @@ class SplitPane extends Component {
                 width: this.props.leftWidth
               };
               rightStyle = {
-                left: this.props.leftWidth
+                left: this.props.leftWidth,
+                right: 0
               };
             } else {
               leftStyle = {
                 right: 0
               };
               rightStyle = {
-                width: 0
+                left: width + 1,
+                width: 1
               };
 
             }
           }
           return (
-            <div className={css.root} style={{ overflow: interpolated.progress ? 'hidden' : null }}>
+            <div className={css.root} style={{ overflow: progress ? 'hidden' : null }}>
               <div className={css.left} style={leftStyle}>
                 {leftComponent}
               </div>
@@ -119,7 +124,6 @@ const css = oxygenCss({
   },
   right: {
     position: 'absolute',
-    right: 0,
     top: 0,
     bottom: 0,
     overflow: 'auto',
