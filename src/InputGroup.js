@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Paper from './Paper';
 import Heading from './Heading';
 import Divider from './Divider';
-import Collapse from 'react-collapse';
+import Collapsible from './Collapsible';
 import View from './View';
 import ContentRemoveCircleOutline from 'oxygen-md-svg-icons/lib/Content/RemoveCircleOutline';
 import ContentAddCircleOutline from 'oxygen-md-svg-icons/lib/Content/AddCircleOutline';
@@ -19,13 +19,13 @@ const css = oxygenCss({
 class InputGroup extends Component {
   static propTypes = {
     children: PropTypes.node,
-    isOpened: PropTypes.bool,
+    open: PropTypes.bool,
     title: PropTypes.node,
     closedColor: PropTypes.string,
   };
 
   static defaultProps = {
-    isOpened: true,
+    open: true,
     closedColor: 'grey'
   };
 
@@ -33,23 +33,19 @@ class InputGroup extends Component {
     mdTheme: PropTypes.object
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return !shallowEqual(nextState, this.state) || nextProps.isOpened != this.props.isOpened;
-  }
-
   state = {
-    isOpened: this.props.isOpened
+    open: this.props.open
   };
 
   toggle = () => {
-    this.setState({ isOpened: !this.state.isOpened });
+    this.setState({ open: !this.state.open });
   };
 
   render() {
     const { mdTheme } = this.context;
-    const { isOpened } = this.state;
+    const { open } = this.state;
     const { children, title, closedColor, ...other } = this.props;
-    const mdColor = isOpened && mdTheme.secondary || closedColor;
+    const mdColor = open && mdTheme.secondary || closedColor;
     const iconColor = mdTheme.colors[mdColor][300].text.disabled;
     return (
       <Paper spaced {...other}>
@@ -65,15 +61,15 @@ class InputGroup extends Component {
               {title}
             </View>
             <View grow={0} style={{ color: iconColor }}>
-              {isOpened && <ContentRemoveCircleOutline block />}
-              {!isOpened && <ContentAddCircleOutline block />}
+              {open && <ContentRemoveCircleOutline block />}
+              {!open && <ContentAddCircleOutline block />}
             </View>
           </View>
         </Heading>
         <Divider />
-        <Collapse isOpened={isOpened}>
+        <Collapsible open={open}>
           {children}
-        </Collapse>
+        </Collapsible>
       </Paper>
     );
   }
