@@ -12,6 +12,7 @@ class TextField extends Component {
     children: PropTypes.node,
     onTouchTap: PropTypes.func,
     onFocus: PropTypes.func,
+    onChange: PropTypes.func,
     onBlur: PropTypes.func,
     autoFocus: PropTypes.bool,
     readOnly: PropTypes.bool,
@@ -58,7 +59,10 @@ class TextField extends Component {
   };
 
   handleChange = (event) => {
-    this.setState({ value: event.target.value });
+    const { onChange } = this.props;
+    const { value } = event.target;
+    this.setState({ value });
+    onChange && onChange(value);
   };
 
   handleKey = (event) => {

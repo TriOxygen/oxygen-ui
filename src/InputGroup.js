@@ -34,7 +34,6 @@ class InputGroup extends Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(!shallowEqual(nextState, this.state) || nextProps.isOpened != this.props.isOpened);
     return !shallowEqual(nextState, this.state) || nextProps.isOpened != this.props.isOpened;
   }
 
