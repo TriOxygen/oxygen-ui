@@ -37,6 +37,10 @@ class InputGroup extends Component {
     open: this.props.open
   };
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return !shallowEqual(nextState, this.state) || nextProps.open != this.props.open;
+  // }
+
   toggle = () => {
     this.setState({ open: !this.state.open });
   };
