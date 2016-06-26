@@ -33,13 +33,13 @@ class InputGroup extends Component {
     mdTheme: PropTypes.object
   };
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return !shallowEqual(nextState, this.state) || nextProps.open != this.props.open;
-  // }
-
   state = {
     open: this.props.open
   };
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return !shallowEqual(nextState, this.state) || nextProps.open != this.props.open;
+  // }
 
   toggle = () => {
     this.setState({ open: !this.state.open });

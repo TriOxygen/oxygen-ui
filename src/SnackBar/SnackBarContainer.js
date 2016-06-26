@@ -10,6 +10,7 @@ export default class SnackBarContainer extends Component {
     message: PropTypes.string,
     position: PropTypes.number,
     onRequestNext: PropTypes.func,
+    onRequestClose: PropTypes.func,
   };
 
   static defaultProps = {
@@ -23,6 +24,11 @@ export default class SnackBarContainer extends Component {
     if (this.props.onRequestNext) {
       this.props.onRequestNext();
     }
+  }
+
+  requestClose = () => {
+    const { onRequestClose } = this.props;
+    onRequestClose && onRequestClose();
   }
 
   getStyle() {
@@ -43,7 +49,7 @@ export default class SnackBarContainer extends Component {
 
     return (
       <Portal tooltip>
-        <div className={css.container} style={this.getStyle()}>
+        <div className={css.container} style={this.getStyle()} onTouchTap={this.requestClose}>
           {message}
         </div>
       </Portal>

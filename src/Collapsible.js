@@ -38,6 +38,16 @@ class Collapsible extends Component {
     }
   }
 
+  checkChange = () => {
+    const { open } = this.props;
+    if (open) {
+      const { height } = this.state;
+      if (this._content.offsetHeight !== height) {
+        this.setState({ height: this._content.offsetHeight });
+      }
+    }
+  }
+
   render() {
     const { children, open } = this.props;
     const { height } = this.state;
@@ -55,7 +65,7 @@ class Collapsible extends Component {
         { interpolated => {
           return (
             <div ref={_wrapper => this._wrapper = _wrapper} style={{ height: interpolated.height }}>
-              <div ref={_content => this._content = _content}>
+              <div ref={_content => this._content = _content} onKeyUp={this.checkChange}>
                 {children}
               </div>
             </div>
