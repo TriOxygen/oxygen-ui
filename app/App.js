@@ -61,6 +61,10 @@ const css = oxygenCss({
     fontSize: 14,
     fontWeight: 400,
   },
+  A: {
+    color: '#4078c0',
+    textDecoration: 'none'
+  },
   root: {
     position: 'absolute',
     left: 0,
