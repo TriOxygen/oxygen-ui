@@ -36,7 +36,6 @@ const styles = oxygenCss({
       '@desktop': {
         lineHeight: `${Units.desktop.menu.item.dense.height}px`,
         height: `${Units.desktop.menu.item.dense.height}px`,
-
       }
     }
   },
