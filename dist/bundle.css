@@ -1075,6 +1075,7 @@
   left: 0px;
   height: 100%;
   resize: none;
+  overflow: hidden;
 }
 .omd_b_ {
   display: block;
@@ -1159,9 +1160,7 @@
 .omd_cj {
   position: relative;
   border: 0px;
-  resize: none;
   background: transparent;
-  line-height: 16px;
   min-height: 16px;
   font-size: 14px;
   font-weight: 300;

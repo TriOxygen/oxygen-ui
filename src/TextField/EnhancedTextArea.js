@@ -69,12 +69,12 @@ const css = oxygenCss({
     border: 0,
     boxSizing: 'border-box',
     width: '100%',
-    // overflow: 'hidden',
     position: 'absolute',
     top: 0,
     left: 0,
     height: '100%',
-    resize: 'none'
+    resize: 'none',
+    overflow: 'hidden'
   },
   pre: {
     display: 'block',
