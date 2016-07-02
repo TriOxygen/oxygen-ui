@@ -193,7 +193,20 @@ class TextField extends Component {
   }
 
   render() {
-    const { divider, placeholder, fullWidth, dense, defaultValue, floatingLabelText, icon, children, className, onTouchTap, errorText, ...other } = this.props;
+    const {
+      divider,
+      placeholder,
+      fullWidth,
+      dense,
+      defaultValue,
+      floatingLabelText,
+      icon,
+      children,
+      className,
+      onTouchTap,
+      errorText,
+      ...other
+    } = this.props;
     const { focused, value } = this.state;
     let placeholderText;
     let floatingLabelEl;

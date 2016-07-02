@@ -67,7 +67,18 @@ export default class View extends Component {
   };
 
   render() {
-    const { className, middle, auto, wrap, row, column, children, responsiveRow, ...other } = this.props;
+    const {
+      className,
+      middle,
+      auto,
+      wrap,
+      row,
+      column,
+      children,
+      responsiveRow,
+      grow,
+      ...other
+    } = this.props;
     const classes = classNames(className, styles.root, {
       [styles.row]: row,
       [styles.wrap]: wrap,

@@ -73,7 +73,19 @@ class Toolbar extends Component {
   }
 
   render() {
-    const { children, leftElement, rightElement, className, absolute, fixed, style, ...other } = this.props;
+    const {
+      zDepth,
+      transparent,
+      mdColor,
+      children,
+      leftElement,
+      rightElement,
+      className,
+      absolute,
+      fixed,
+      style,
+      ...other
+    } = this.props;
     const classes = classNames(css.root, className, {
       [css.absolute]: absolute,
       [css.fixed]: fixed,

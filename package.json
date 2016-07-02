@@ -1,5 +1,5 @@
 {
-  "name": "oxygen-md",
+  "name": "oxygen-ui",
   "version": "1.0.0",
   "description": "Material Design Components",
   "main": "lib/index.js",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TriOxygen/oxygen-md.git"
+    "url": "git+https://github.com/TriOxygen/oxygen-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/TriOxygen/oxygen-md/issues"
+    "url": "https://github.com/TriOxygen/oxygen-ui/issues"
   },
-  "homepage": "https://github.com/TriOxygen/oxygen-md#readme",
+  "homepage": "https://github.com/TriOxygen/oxygen-ui#readme",
   "engines": {
     "node": ">=0.12"
   },
