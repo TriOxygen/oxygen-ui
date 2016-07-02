@@ -48,6 +48,10 @@ class Collapsible extends Component {
     }
   }
 
+  componentDidUpdate() {
+    this.checkChange();
+  }
+
   render() {
     const { children, open } = this.props;
     const { height } = this.state;
