@@ -88,7 +88,18 @@ class RaisedButton extends Component {
 
   render() {
     const theme = this.props.theme || this.context.theme;
-    const { link, disabled, fullWidth, dense, label, children, className, ...other } = this.props;
+    const {
+      link,
+      disabled,
+      fullWidth,
+      dense,
+      label,
+      children,
+      className,
+      mdColor,
+      inversed,
+      ...other
+    } = this.props;
     const ink = !disabled && <Ink />;
     const buttonClasses = classNames(styles.raisedButton, className, {
       [styles.dense]: dense,

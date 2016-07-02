@@ -63,7 +63,17 @@ export default class DrawerContainer extends Component {
   };
 
   render() {
-    const { overlay, width, right, children, ...other } = this.props;
+    const {
+      overlay,
+      width,
+      right,
+      children,
+      onRequestOpen,
+      onRequestClose,
+      closeOnEsc,
+      position: foo,
+      ...other
+    } = this.props;
     let { position } = this.props;
     if (position > 1) {
       position = 1;
@@ -73,9 +83,8 @@ export default class DrawerContainer extends Component {
     return (
       <Portal menu>
         {overlay && <Overlay
-          center={false}
           onTouchTap={this.handleTap}
-          onKeyup={this.handleKey}
+          onKeyUp={this.handleKey}
           style={{ opacity: position, top: `${overlayPosition}%` }}
         />}
         <Paper

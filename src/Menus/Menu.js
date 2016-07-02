@@ -96,7 +96,7 @@ class Menu extends Component {
   };
 
   render() {
-    const { children, mdColor, padded, ...other } = this.props;
+    const { children, mdColor, padded, closeOnEsc, ...other } = this.props;
     return (
       <Paper {...other} className={padded && css.padded || null}>
         {React.Children.map(children, child => {

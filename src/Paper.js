@@ -59,7 +59,7 @@ class Paper extends Component {
   };
 
   render() {
-    const { children, spaced, fullWidth, padded, rounded, className, hover, ...other } = this.props;
+    const { children, spaced, fullWidth, padded, rounded, className, hover, zDepth, ...other } = this.props;
     const classes = classNames(className, styles.root, {
       [styles.fullWidth]: fullWidth,
       [styles.spaced]: spaced,

@@ -171,7 +171,6 @@ export default class App extends Component {
           </Toolbar>
           <MenuButtonDemo />
           <div style={{ overflow: 'scroll', height: '100%', }}>
-          {/*
             <RaisedButtonDemo />
             <FlatButtonDemo />
             <FloatingActionButtonDemo />
@@ -199,7 +198,6 @@ export default class App extends Component {
               </VerticalCenter>
             </DropZone>
             <TextFieldDemo />
-          */}
             <Paper spaced fullWidth={false} style={{ width: 320 }}>
               <FlatButton label='Toggle' onTouchTap={() => this.setState({ collapsibleOpen: !this.state.collapsibleOpen })} />
               <Collapsible open={collapsibleOpen}>

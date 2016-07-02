@@ -201,10 +201,13 @@ class TextField extends Component {
       defaultValue,
       floatingLabelText,
       icon,
+      mdColor,
+      multiline,
       children,
       className,
       onTouchTap,
       errorText,
+      onPressEnter,
       ...other
     } = this.props;
     const { focused, value } = this.state;

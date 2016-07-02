@@ -105,6 +105,7 @@ class Heading extends Component {
   render() {
     const {
       className,
+      mdColor,
       children,
       margin,
       display4,

@@ -87,7 +87,7 @@ class IconButton extends Component {
   };
 
   render() {
-    const { dense, disabled, children, className, link, ...other } = this.props;
+    const { dense, disabled, children, className, link, mdColor, ...other } = this.props;
     const ink = !disabled && <Ink />;
     const buttonClasses = classNames(styles.iconButton, className, {
       [styles.dense]: dense,

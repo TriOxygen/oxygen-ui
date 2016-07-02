@@ -162,6 +162,10 @@ class DropZone extends Component {
       name,
       className,
       children,
+      disablePreview,
+      onDropAccepted,
+      disableClick,
+      onDropRejected,
       ...other
     } = this.props;
 

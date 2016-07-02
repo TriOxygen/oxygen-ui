@@ -136,7 +136,7 @@ class ListItem extends Component {
 
 
   render() {
-    const { dense, padded, children, leftElement, rightElement, style, onTouchTap, ...other } = this.props;
+    const { payload, divider, dense, padded, children, leftElement, rightElement, style, onTouchTap, ...other } = this.props;
     let leftComponent;
     let rightComponent;
     if (leftElement) {

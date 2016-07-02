@@ -111,7 +111,17 @@ class FlatButton extends Component {
   };
 
   render() {
-    const { link, disabled, fullWidth, dense, label, children, ...other } = this.props;
+    const {
+      link,
+      disabled,
+      fullWidth,
+      dense,
+      label,
+      children,
+      mdColor,
+      payload,
+      ...other
+    } = this.props;
     const ink = !disabled && <Ink />;
     const buttonClasses = classNames(styles.flatButton, {
       [styles.dense]: dense,

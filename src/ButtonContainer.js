@@ -30,7 +30,14 @@ class ButtonContainer extends Component {
   };
 
   render() {
-    const { children, alignRight, fullWidth, className, ...other } = this.props;
+    const {
+      mdColor,
+      children,
+      alignRight,
+      fullWidth,
+      className,
+      ...other
+    } = this.props;
     const rootClasses = classNames(styles.root, className, {
       [styles.fullWidth]: fullWidth,
       [styles.alignRight]: alignRight

@@ -63,7 +63,6 @@ class FloatingActionButton extends Component {
   };
 
   static defaultProps = {
-    primary: true
   };
 
   getButtonStyles() {
@@ -144,7 +143,7 @@ class FloatingActionButton extends Component {
   };
 
   render() {
-    const { disabled, children, link, mini, icon, ...other } = this.props;
+    const { disabled, children, link, mini, icon, mdColor, inversed, ...other } = this.props;
     const ink = !disabled && <Ink />;
     const classes = classNames(styles.floatingActionButton, {
       [styles.mini]: mini,

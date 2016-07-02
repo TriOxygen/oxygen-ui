@@ -172,7 +172,7 @@ class MenuItem extends Component {
   };
 
   render() {
-    const { disabled, children, icon, dense, href, label, className, ...other } = this.props;
+    const { disabled, payload, divider, children, icon, dense, href, label, className, ...other } = this.props;
     let iconElement;
     let tabIndex;
     if (icon) {
