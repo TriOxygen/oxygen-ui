@@ -3,7 +3,7 @@
   "plugins":  [
     ["oxygen-css", {
       "vendorPrefixes": true,
-      "prefix": "omd",
+      "prefix": "oui",
       "compressClassNames": true,
       "bundleFile": "dist/bundle.css",
       "context": "./lib/Styles/index.js",
