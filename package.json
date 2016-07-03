@@ -1,12 +1,13 @@
 {
   "name": "oxygen-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Material Design Components",
   "main": "lib/index.js",
   "scripts": {
     "start": "BABEL_DISABLE_CACHE=1 NODE_ENV=development NODE_PATH=$NODE_PATH:./src node --harmony server.js",
     "buildStyles": "babel ./src/Styles --out-dir ./lib/Styles",
-    "build": "npm run buildStyles &&  babel ./src --out-dir ./lib"
+    "build": "npm run buildStyles &&  babel ./src --out-dir ./lib",
+    "deploy": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
@@ -43,7 +44,6 @@
   "author": "Özgür Ayten <ozgur.gene@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "attr-accept": "^1.0.3",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.1.0",
